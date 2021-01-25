@@ -3,7 +3,7 @@
 
 Meeting Time: Fridays 4:00 P.M.
 
-###Personas
+### Personas
 **Name:** Randolph “Randy” Johnson
 
 ![Randy](randy.png)
