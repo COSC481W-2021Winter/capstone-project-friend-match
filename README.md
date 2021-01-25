@@ -3,10 +3,11 @@
 
 Meeting Time: Fridays 4:00 P.M.
 
+###Personas
 **Name:** Randolph “Randy” Johnson
 
 Photo:
- 
+![Randy](randy.png)
 
 **Screening Questions:**
 Do you have any friends?
