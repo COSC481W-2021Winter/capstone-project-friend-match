@@ -6,7 +6,8 @@ Meeting Time: Fridays 4:00 P.M.
 ### Personas
 **Name:** Randolph “Randy” Johnson
 
-<img src="randy.png" width="310" align="left" />
+<img src="randy.png" width="100" align="left" />
+<br/>
 
 **Screening Questions:**
 Do you have any friends?
