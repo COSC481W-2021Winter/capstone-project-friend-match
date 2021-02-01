@@ -10,8 +10,10 @@ Meeting Time: Fridays 4:00 P.M.
 - Users with a valid account will be able to log in to the service
 - Users who attempt to log in with invalid account info will receive a warning indicating the account is invalid
 - The Home page will display a potential match, allowing the user to swipe either left or right on the profile
+- The Home page will include twenty (20) fictional users, allowing the user to test the swiping functionality
 - Users will be able to view their own profile on a separate page
 - Users will be able to edit their own profile from inside the profile page
+
 
 
 ### Personas
