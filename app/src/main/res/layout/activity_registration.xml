@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.registration.RegistrationActivity"
+    style="@style/activityVerticalLayout"
+    android:background="@color/backgroundPrimary">
+
+    <LinearLayout
+        style="@style/inputVerticalLayout"
+        android:layout_marginTop="0dp"
+        android:background="@color/backgroundSecondary">
+
+        <TextView
+            style="@style/textViewLabel"
+            android:text="email"
+            android:textColor="@color/textSecondary"/>
+
+        <EditText
+            style="@style/editText"
+            android:hint="example@email.com"
+            android:textColor="@color/textPrimary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/inputVerticalLayout"
+        android:background="@color/backgroundSecondary">
+
+        <TextView
+            style="@style/textViewLabel"
+            android:text="email"
+            android:textColor="@color/textSecondary"/>
+
+        <EditText
+            style="@style/editText"
+            android:hint="example@email.com"
+            android:textColor="@color/textPrimary"/>
+
+    </LinearLayout>
+
+</LinearLayout>
