@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/signUp.css">
+</head>
+  <body>
+    <div class="container">
+		<form id = "signUp">
+		<div class="row">
+			<div class="column">
+				<div class="input_div">
+					<label>First name:</label><br>
+					<input type="text" id="firstName" name="firastName" placeholder="ex. Bob">
+				</div>
+			</div>
+			<div class="column">
+				<div class="input_div">
+					<label>Last name:</label><br>
+					<input type="text" id="lastName" name="lastName" placeholder="ex. Allen">
+				</div>
+			</div>
+		</div>
+		<div class="input_div">
+			<label>Username:</label><br>
+			<input type="text" id="username" name="username" placeholder="ex. BobAllen242">
+		</div>
+		<div class="input_div">
+			<label>Password:</label><br>
+			<input type="password" id="password" name="password" onkeyup='check();' placeholder="ex. qwerty">
+		</div>
+		<div class="input_div">
+			<label>Confirm Password:</label><br>
+			<input type="password" id="confirmPassword" name="confirmPassword" onkeyup='check();' placeholder="ex. qwerty">
+			<span id='message'></span>
+		</div>
+		</form>
+		<script>
+			var check = function(){
+				if(document.getElementById('password').value == document.getElementById('confirmPassword').value){
+					document.getElementById('message').innerHTML = '*matching';
+					document.getElementById('message').style.color = 'green';
+				}
+				else{
+					document.getElementById('message').innerHTML = '*not matching';
+					document.getElementById('message').style.color = 'red';
+				}
+			}
+		</script>
+      <a href="signupgohere" class="button">Sign Up</a>
+    </div>
+  </body>
+</html>
