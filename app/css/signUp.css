@@ -40,10 +40,6 @@ body {
   margin: 2px;
 }
 
-.container div{
-	flex:1;
-}
-
 .row{
 	display: flex;
 }
@@ -53,7 +49,6 @@ body {
 }
 
 .input_div {
-	flex:100%;
 	text-align: left;
 	padding: .25em;
 }
