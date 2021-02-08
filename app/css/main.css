@@ -59,3 +59,11 @@ body {
   width: 30%;
   margin: .5em;
 }
+
+.header {
+  width: 100%;
+  text-align: center;
+  background: #000;
+  color: white;
+  font-size: 10px;
+}
