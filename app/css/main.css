@@ -62,9 +62,12 @@ body {
 }
 
 .header {
+  position: fixed;
   width: 100%;
+  top: 0;
+  height: 100px;
   text-align: center;
-  background: #000;
+  background: #666;
   color: white;
-  font-size: 10px;
+  font-size: 600pt;
 }
