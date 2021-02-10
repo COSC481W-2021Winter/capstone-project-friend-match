@@ -45,17 +45,30 @@ body {
 }
 
 .column {
+	width: 130px;
+	display: flex;
+}
+
+.column input{
+	width: 120px;
 	flex: 50%;
 }
 
 .input_div {
 	text-align: left;
 	padding: .25em;
+	flex: 50%;
 }
 
 .input_div label{
 	font-size: 10pt;
 	margin-left: 1.5em;
+}
+
+.input_div input{
+	font-size: 10pt;
+	margin-left: 5%;
+	width: 90%
 }
 
 .input_div span{
@@ -73,9 +86,4 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   display: inline-block;
-}
-
-#logo {
-  width: 30%;
-  margin: .5em;
 }
