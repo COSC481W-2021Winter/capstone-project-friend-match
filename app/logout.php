@@ -8,5 +8,5 @@
 <?php
   session_destroy();
   ?>
-  <meta http-equiv="refresh" content="0; url='index.html'"/>
+  <meta http-equiv="refresh" content="0; url='login.html'"/>
 </html>
