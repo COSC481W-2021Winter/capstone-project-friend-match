@@ -71,3 +71,24 @@ body {
   color: white;
   font-size: 600pt;
 }
+
+ul.navBar {
+    list-style-type: none;
+    width: 98.10%;
+    background-color:lightblue;
+    text-align: center;
+    font-size: 150%;
+    border: var(--default-border);
+    border-radius: var(--border-radius);
+    margin-top:-0.25%;
+    margin-left: -.25%;
+}
+li.navBar {
+  display: inline;
+}
+a.navBar {
+  text-decoration: none;
+  color:#6a0dad ;
+  padding: 10%;
+}
+
