@@ -72,6 +72,62 @@ body {
   font-size: 600pt;
 }
 
+
+
+#deck {
+  width: 100%;
+  margin: auto !important;
+  height: 100%;
+  position: absolute;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.buddy {
+  display: none;
+  margin: auto;
+  background: #fff;
+  border-radius: 2%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #fff;
+  padding: 2%;
+  width: 50%;
+  height: 50%;
+  top: 40%;
+  left: 40%;
+  position: absolute;
+  cursor: hand;
+}
+.rotate-left {
+  transform: rotate(30deg) scale(0.8);
+  transition: 1s;
+  margin-left: 400px;
+  cursor: e-resize;
+  opacity: 0;
+  z-index: 10;
+}
+.rotate-right {
+  transform: rotate(-30deg) scale(0.8);
+  transition: 1s;
+  opacity: 0;
+  margin-left: -400px;
+  cursor: w-resize;
+  z-index: 10;
+}
+.avatar {
+  background: #222;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: auto 160% !important;
+  background-position: center;
+ background-repeat: no-repeat;
+}
+
 ul.navBar {
     list-style-type: none;
     width: 98.10%;
@@ -91,4 +147,3 @@ a.navBar {
   color:#6a0dad ;
   padding: 10%;
 }
-
