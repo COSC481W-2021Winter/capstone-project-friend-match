@@ -62,9 +62,41 @@ body {
 }
 
 .header {
+  position: fixed;
   width: 100%;
+  top: 0;
+  height: 100px;
   text-align: center;
-  background: #000;
+  background: #666;
   color: white;
-  font-size: 10px;
+  font-size: 600pt;
 }
+
+:root {
+  --default-border: solid lightgrey 1px;
+  --border-radius: 1.25em;
+}
+
+
+
+ul.navBar {
+    list-style-type: none;
+    width: 98.10%;
+    background-color:lightblue;
+    text-align: center;
+    font-size: 400%;
+    border: var(--default-border);
+    border-radius: var(--border-radius);
+    margin-top:-0.25%;
+    margin-left: -.25%;
+}
+li.navBar {
+  display: inline;
+}
+a.navBar {
+  text-decoration: none;
+  color:#6a0dad ;
+  margin-left:7%;
+}
+
+
