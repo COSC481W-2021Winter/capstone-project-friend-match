@@ -9,48 +9,70 @@
 </head>
   <body>
     <div class="container">
+		<span id='fieldsNotFilled'></span>
 		<form id = "signUp">
 		<div class="row">
 			<div class="column">
 				<div class="input_div">
 					<label>First name:</label><br>
-					<input type="text" id="firstName" name="firastName" placeholder="ex. Bob">
+					<input type="text" id="firstName" name="field" placeholder="ex. Bob">
 				</div>
 			</div>
 			<div class="column">
 				<div class="input_div">
 					<label>Last name:</label><br>
-					<input type="text" id="lastName" name="lastName" placeholder="ex. Allen">
+					<input type="text" id="lastName" name="field" placeholder="ex. Allen">
 				</div>
 			</div>
 		</div>
 		<div class="input_div">
 			<label>Username:</label><br>
-			<input type="text" id="username" name="username" placeholder="ex. BobAllen242">
+			<input type="text" id="username" name="field" placeholder="ex. BobAllen242">
 		</div>
 		<div class="input_div">
 			<label>Password:</label><br>
-			<input type="password" id="password" name="password" onkeyup='check();' placeholder="ex. qwerty">
+			<input type="password" id="password" name="field" onkeyup='check();' placeholder="ex. qwerty">
 		</div>
 		<div class="input_div">
 			<label>Confirm Password:</label><br>
-			<input type="password" id="confirmPassword" name="confirmPassword" onkeyup='check();' placeholder="ex. qwerty">
-			<span id='message'></span>
+			<input type="password" id="confirmPassword" name="field" onkeyup='check();' placeholder="ex. qwerty">
+			<span id='confirmDifferent'></span>
 		</div>
 		</form>
 		<script>
 			var check = function(){
 				if(document.getElementById('password').value == document.getElementById('confirmPassword').value){
-					document.getElementById('message').innerHTML = '*matching';
-					document.getElementById('message').style.color = 'green';
+					document.getElementById('confirmDifferent').innerHTML = '*matching';
+					document.getElementById('confirmDifferent').style.color = 'green';
 				}
 				else{
-					document.getElementById('message').innerHTML = '*not matching';
-					document.getElementById('message').style.color = 'red';
+					document.getElementById('confirmDifferent').innerHTML = '*not matching';
+					document.getElementById('confirmDifferent').style.color = 'red';
 				}
 			}
 		</script>
-      <a href="signupgohere" class="button">Sign Up</a>
+		
+		<div class="row">
+			<a href="signupgohere" class="button">Cancel</a>
+			<a class="button" id="next" onClick="vaildateFilledIn()">Next</a>
+		</div>
+		
+		<script>
+			function vaildateFilledIn() {
+				var arr = document.getElementsByName('field');
+				var error = false;
+				for( var i = 0; i < arr.length; i++){
+					if(isNaN(arr[i].value) || arr[i].value == ""){
+						arr[i].style.borderColor = 'red';
+						error = true
+					}
+				}
+				if(error){
+					document.getElementById('fieldsNotFilled').innerHTML = '*Please fill in all fields';
+					document.getElementById('fieldsNotFilled').style.color = 'red';
+				}
+			}
+		</script>
     </div>
   </body>
 </html>
