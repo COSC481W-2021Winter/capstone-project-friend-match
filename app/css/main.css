@@ -72,36 +72,25 @@ body {
   font-size: 600pt;
 }
 
-
-
-#deck {
-  width: 100%;
-  margin: auto !important;
-  height: 100%;
+.outer-deck {
   position: absolute;
-  list-style-type: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  background: #d2a90a;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
-.buddy {
-  display: none;
-  margin: auto;
+
+.inner-card {
+  position: absolute;
   background: #fff;
-  border-radius: 2%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  color: #fff;
   padding: 2%;
   width: 50%;
   height: 50%;
-  top: 40%;
-  left: 40%;
-  position: absolute;
-  cursor: hand;
+  top: 25%;
+  left: 25%;
+  text-align: center;
 }
+
 .rotate-left {
   transform: rotate(30deg) scale(0.8);
   transition: 1s;
