@@ -20,6 +20,21 @@
             }
           });
       });
+
+      // var swipe_left = 0;
+      // var swipe_right = 0;
+      //
+      // $(".inner-card").on("swipeleft", function(){
+      //   swipe_left = swipe_left + 1;
+      //   console.log(swipe_left);
+      //   $(this).hide();
+      // });
+      //
+      // $(".inner-card").on("swiperight", function(){
+      //   swipe_right = swipe_right + 1;
+      //   console.log(swipe_right);
+      //   $(this).hide();
+      // });
     </script>
   </head>
 
