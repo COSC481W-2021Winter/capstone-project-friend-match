@@ -48,7 +48,7 @@
 			</form>
 
 			<!--Description Form-->
-			<form method="post" action=<?php echo ($_SERVER["PHP_SELF"]);?>>
+			<form method="post" action="home.php">
 				<p>Enter Your Self Description:</p>
 				<textarea id="desc" name="desc" rows="5" cols="50"></textarea>
 				<input type="submit" name="submit1" value="Submit">	
