@@ -122,7 +122,7 @@ ul.navBar {
     width: 98.10%;
     background-color:lightblue;
     text-align: center;
-    font-size: 150%;
+    font-size: 400%;
     border: var(--default-border);
     border-radius: var(--border-radius);
     margin-top:-0.25%;
@@ -134,5 +134,10 @@ li.navBar {
 a.navBar {
   text-decoration: none;
   color:#6a0dad ;
-  padding: 10%;
+  margin-left:7%;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 70a9faeb4b2cf7e0e71627a75ab06a18d7d4e3a6
