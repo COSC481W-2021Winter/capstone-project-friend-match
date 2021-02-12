@@ -16,6 +16,7 @@
             axis: 'x',
             containment: ".outer-deck",
             stop: function(event_type, ui){
+              $(this).hide();
               console.log("stopped dragging");
             }
           });
