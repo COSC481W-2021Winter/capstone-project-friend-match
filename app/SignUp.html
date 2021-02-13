@@ -75,8 +75,9 @@
 				
 				//if no errors, direct to profileedit
 				else{
-					var loc = window.location.pathname;
-					var dir = loc.substring(0, loc.lastIndexOf('/'));
+					var currentfile = window.location.pathname;
+					//removes current file its at and grabs just directory
+					var directory = loc.substring(0, loc.lastIndexOf('/'));
 					window.location.pathname = dir+'/profileedit.php'
 				}
 				
