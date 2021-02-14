@@ -10,7 +10,7 @@
 
 
 </head>
-<div style="margin-top:-16%;margin-bottom:16%;width: 99%;">
+<div style="margin-top:-7%;margin-bottom:16%;width: 99%;">
 <ul class = "navBar">
 	<li class="navBar"> <a href="home.php" class="navBarH">Home </a></li>
 	<li class="navBar"> <a href="profile.html" class="navBar" >Profile </a></li>
@@ -19,20 +19,17 @@
 </div>
 <body>
   <div class="container">
-    <img id="pfp" src="capstone-project-friend-match\randy.png" alt="profilepic">
-  </div>
+    <img style="border-style: solid;" id="pfp" src="\capstone-project-friend-match\randy.png" alt="profilepic"></img>
   <div class="bio">
-    <p id="bio">
+    <pre>
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-    </p>
+    </pre>
   </div>
+  <div style="display: table;">
+  <div style="display: table-cell;">
     <form name="hobbies" method="" action="">
       <select name="hlist" size="7">
         <option disabled>Walking</option>
@@ -51,9 +48,17 @@
         <option disabled>Rock Climbing</option>
       </select>
     </form>
-    <p1>
-
+  </div>
+    <div style="display: table-cell;">
+    <p1 class="bio">
+      City: Evergreen
     </p1>
-
+  </div>
+  <div style="display: table-cell;">
+    <a href="profileedit.php">
+      <button class="button">Edit</button>
+    </a>
+  </div>
+  </div>
 </body>
 </html>

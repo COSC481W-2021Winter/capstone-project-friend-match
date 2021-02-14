@@ -34,7 +34,7 @@
 	<div style="margin-top:.30%">
 		<ul class = "navBar">
 			<li class="navBar"> <a href="home.php" class="navBarH">Home</a></li>
-			<li class="navBar"> <a href="profile" class="navBar" >Profile</a></li>
+			<li class="navBar"> <a href="profile.html" class="navBar" >Profile</a></li>
 			<li class="navBar"> <a href="logout.php" class="navBar">Log Out</a></li>
 		</ul>
 	</div>

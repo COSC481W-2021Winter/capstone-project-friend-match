@@ -117,6 +117,10 @@ body {
   background-position: center;
  background-repeat: no-repeat;
 }
+.bio {
+  text-align: center;
+  padding: 3%;
+}
 
 
 <<<<<<< HEAD
@@ -124,4 +128,3 @@ body {
 
 
 >>>>>>> 70a9faeb4b2cf7e0e71627a75ab06a18d7d4e3a6
-
