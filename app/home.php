@@ -3,9 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css"/>
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
+	  <link rel="stylesheet" type="text/css" href="css/nav.css"/>
     <link rel="stylesheet" href="css/swipes.css"/>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -33,16 +33,16 @@
 
 	<div style="margin-top:.30%">
 		<ul class = "navBar">
-			<li class="navBar"> <a href="home.php" class="navBarH">Home </a></li>
-			<li class="navBar"> <a href="profile" class="navBar" >Profile </a></li>
-			<li class="navBar"> <a href="logout.php" class="navBar">Log Out </a></li>
+			<li class="navBar"> <a href="home.php" class="navBarH">Home</a></li>
+			<li class="navBar"> <a href="profile" class="navBar" >Profile</a></li>
+			<li class="navBar"> <a href="logout.php" class="navBar">Log Out</a></li>
 		</ul>
 	</div>
   <body>
     <!-- Cards -->
       <div class="outer-deck" id="deck">
         <!-- deck plays by "sandwich rules" (first div is bottom, like the bread) -->
-        <div class="inner-end"><p style="color: #000;">Number of Left Swipes: <span id="left_swipes"></span><br>Number of Right Swipes: <span id="right_swipes"></span></div>
+        <div class="inner-end"><br>Number of Likes: <span id="right_swipes">0</span><p style="color: #000;">Number of Dislikes: <span id="left_swipes">0</span></div>
         <div class="inner-card"><p style="color: #000;"><b>Name0</b><br>Biography</p></div>
         <div class="inner-card"><p style="color: #000;"><b>Name1</b><br>Biography</p></div>
         <div class="inner-card"><p style="color: #000;"><b>Name2</b><br>Biography</p></div>
