@@ -7,6 +7,7 @@
 
 <?php
   session_destroy();
+  header("refresh: 0");
   ?>
-  <meta http-equiv="refresh" content="0; url='login.html'"/>
+  <meta http-equiv="refresh" content="0; url='index.html'"/>
 </html>
