@@ -1,0 +1,40 @@
+#epul
+{
+	list-style-type: none;
+	overflow:auto;
+	max-height:100px;
+	margin:0px;
+	padding:0px;
+}
+#desc
+{
+	width: 100%;
+}
+#ICTableEP
+{
+	padding-top: 2%;
+}
+#citydiv
+{
+	padding-left: 3%;
+}
+#interestsdiv
+{
+	overflow: scroll;
+	width: 50%;
+	display: table-cell;
+}
+#citytext
+{
+	max-width:150px;
+}
+.epcontainer 
+{
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+.epbutton
+{
+	float:right;
+	float:bottom;
+}
