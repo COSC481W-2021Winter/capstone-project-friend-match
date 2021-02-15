@@ -5,55 +5,50 @@
 
 ul.navBar {
     list-style-type: none;
-    width: 98.10%;
+    width: 100%;
     background-color:lightblue;
-    border: var(--default-border);
-    border-radius: var(--border-radius);
-    margin-top:-0.25%;
-    margin-left: 0%;
+    margin-top:-0.29%; 
 	font-family: sans-serif;
+	text-align:center;
+	font-size:200% !important;
 }
+
+ul.navBarPP {
+    list-style-type: none;
+    background-color:lightblue;
+    margin-top:-0.25%;
+	font-family: sans-serif;
+	text-align:center;
+	font-size:125%;
+}
+
 
 button.NavBar {
   text-decoration: none;
-  width:25% !important;
+  width:32% !important;
   color:#6a0dad !important;
-  font-size: 100% !important;
   background-color:lightblue !important;
   display:inline;
-  margin-left:4%;
+  /* margin-left:1%; */
+  border-style:none;
 }
 
-
-@media (max-width:1600px){
-  ul.navBar {
-      list-style-type: none;
-      width: 98.10%;
-      background-color:lightblue;
-      /*text-align: center; */
-      border: var(--default-border);
-      border-radius: var(--border-radius);
-      margin-top:-0.25%;
-      margin-left: 1%;
-  	font-family: sans-serif;
-
-  }
-
-  li.navBar {
-    display: inline;
-  }
-
-  a.navBar {
-    text-decoration: none;
-    color:#6a0dad !important;
-    margin-left:7%; 
-    font-size: 200% !important;
-  }
-
-  a.navBarH{
-    text-decoration: none;
-    color:#6a0dad !important;
-    margin-left:0%;
-    font-size: 200% !important;
-  }
+button.NavBarB {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:lightblue !important;
+  display:inline;
+  border-style:none;
+  margin-left:-2.25%; 
 }
+
+button.NavBarPP {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:lightblue !important;
+  display:inline;
+  border-style:none;
+}
+

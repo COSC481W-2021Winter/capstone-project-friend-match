@@ -10,15 +10,19 @@
 
 
 </head>
-<div style="margin-top:-7%;margin-bottom:16%;width: 99%;">
-<ul class = "navBar">
-			<button class="NavBar" onclick="Home()"> Home</button></li>
-			<button class="NavBar" onclick="Profile()"> Profile</button></li>
-			<button class="NavBar" onclick="logout()"> Logout</button></li>
-		</ul>
+<div style="margin-top:-7%; margin-bottom:16%; width:100%;" > 
+	<ul class = "navBarPP" id="navDiv">
+			<button class="NavBarPP" onclick="Home()" id="butto"> Home</button></li>
+			<button class="NavBarPP" onclick="Profile()" id="butto2"> Profile</button></li>
+			<button class="NavBarPP" onclick="logout()" id="butto3"> Logout</button></li>
+	</ul>
 </div>
 
 <script>
+	document.getElementById("butto").style.height = "50px"; 
+	document.getElementById("butto").style.fontSize = "125%"; 
+	document.getElementById("butto2").style.fontSize = "125%"; 
+	document.getElementById("butto3").style.fontSize = "125%"; 
 	function Home(){
 			var currentfile = window.location.pathname;
 			//removes current file its at and grabs just directory

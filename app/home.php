@@ -31,9 +31,9 @@
     </script>
   </head>
 
-	<div style="margin-top:.30%">
+	<div style="margin-top:.30%;">
 		<ul class = "navBar">
-			<button class="NavBar" onclick="Home()"> Home</button></li>
+			<button class="NavBarB" onclick="Home()"> Home</button></li>
 			<button class="NavBar" onclick="Profile()"> Profile</button></li>
 			<button class="NavBar" onclick="logout()"> Logout</button></li>
 		</ul>
