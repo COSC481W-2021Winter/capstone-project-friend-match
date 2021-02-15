@@ -27,20 +27,31 @@
 		</div>
 		<div class="input_div">
 			<label>Username:</label><br>
-			<input type="text" id="username" name="field" placeholder="ex. BobAllen242">
+			<input type="text" id="username" name="field" onkeyup='checkUser();' placeholder="ex. BobAllen242">
+			<span id='confirmUsername'></span>
 		</div>
 		<div class="input_div">
 			<label>Password:</label><br>
-			<input type="password" id="password" name="field" onkeyup='check();' placeholder="ex. qwerty">
+			<input type="password" id="password" name="field" onkeyup='checkPassword();' placeholder="ex. qwerty">
 		</div>
 		<div class="input_div">
 			<label>Confirm Password:</label><br>
-			<input type="password" id="confirmPassword" name="field" onkeyup='check();' placeholder="ex. qwerty">
+			<input type="password" id="confirmPassword" name="field" onkeyup='checkPassword();' placeholder="ex. qwerty">
 			<span id='confirmDifferent'></span>
 		</div>
 		</form>
 		<script>
-			var check = function(){
+			var checkUser = function() {
+				if(document.getElementById('username').value == 'JohnSmith'){
+					document.getElementById('confirmUsername').innerHTML = '*Username taken';
+					document.getElementById('confirmUsername').style.color = 'red';
+				}
+				else{
+					document.getElementById('confirmUsername').innerHTML = '';
+				}
+			}
+			
+			var checkPassword = function(){
 				if(document.getElementById('password').value == document.getElementById('confirmPassword').value){
 					document.getElementById('confirmDifferent').innerHTML = '*matching';
 					document.getElementById('confirmDifferent').style.color = 'green';
