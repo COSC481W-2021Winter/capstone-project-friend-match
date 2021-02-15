@@ -33,11 +33,39 @@
 
 	<div style="margin-top:.30%">
 		<ul class = "navBar">
-			<li class="navBar"> <a href="home.php" class="navBarH">Home</a></li>
-			<li class="navBar"> <a href="profile.html" class="navBar" >Profile</a></li>
-			<li class="navBar"> <a href="logout.php" class="navBar">Log Out</a></li>
+			<button class="NavBar" onclick="Home()"> Home</button></li>
+			<button class="NavBar" onclick="Profile()"> Profile</button></li>
+			<button class="NavBar" onclick="logout()"> Logout</button></li>
 		</ul>
 	</div>
+	<script>
+	function Home(){
+			var currentfile = window.location.pathname;
+			//removes current file its at and grabs just directory
+			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
+			window.location.pathname = directory+'/home.php';
+
+		}
+		function Profile(){
+			var currentfile = window.location.pathname;
+			//removes current file its at and grabs just directory
+			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
+			window.location.pathname = directory+'/profile.html';
+		}
+		function logout(){
+			var currentfile = window.location.pathname;
+			//removes current file its at and grabs just directory
+			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
+			window.location.pathname = directory+'/logout.php';
+			
+
+		}
+		
+	
+	</script>
+	
+	
+	
   <body>
     <!-- Cards -->
       <div class="outer-deck" id="deck">

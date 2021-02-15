@@ -7,39 +7,30 @@ ul.navBar {
     list-style-type: none;
     width: 98.10%;
     background-color:lightblue;
-    text-align: center;
     border: var(--default-border);
     border-radius: var(--border-radius);
     margin-top:-0.25%;
-    margin-left: 1%;
+    margin-left: 0%;
 	font-family: sans-serif;
-
 }
 
-li.navBar {
-  display: inline;
-}
-
-a.navBar {
+button.NavBar {
   text-decoration: none;
+  width:25% !important;
   color:#6a0dad !important;
-  margin-left:7%;
-  font-size: 400% !important;
+  font-size: 100% !important;
+  background-color:lightblue !important;
+  display:inline;
+  margin-left:4%;
 }
 
-a.navBarH{
-  text-decoration: none;
-  color:#6a0dad !important;
-  margin-left:0%;
-  font-size: 400% !important;
-}
 
 @media (max-width:1600px){
   ul.navBar {
       list-style-type: none;
       width: 98.10%;
       background-color:lightblue;
-      text-align: center;
+      /*text-align: center; */
       border: var(--default-border);
       border-radius: var(--border-radius);
       margin-top:-0.25%;
@@ -55,7 +46,7 @@ a.navBarH{
   a.navBar {
     text-decoration: none;
     color:#6a0dad !important;
-    margin-left:7%;
+    margin-left:7%; 
     font-size: 200% !important;
   }
 
