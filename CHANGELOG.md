@@ -1,0 +1,26 @@
+1.0.0 : 2/17/2021
+Prototype Features
+- Login Page
+  - Links to sign up and home pages
+  - Can input username and password
+- Sign Up Page
+  - Links to login and profile edit pages
+  - Can input first name, last name, username and password
+  - Check if password is the same
+- Profile Edit Page
+  - Links to profile page
+  - Upload image for profile picture
+  - Can input description, city and check list of interests
+  - Button to submit
+- Profile Page
+  - Links to profile edit page and has nav bar
+  - Displays profile picture, description, intrests and city
+- Home
+  - Has nav bar
+  - Button to refresh page
+  - Swipe function to dislike or like someone
+  - Displays total amount of users liked and disliked
+- Nav bar
+  - Links to home, profile and logout pages
+-Logout
+  - Links to login and home
