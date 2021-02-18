@@ -1,6 +1,6 @@
 # Friend Match
 ### Team: Friend Match
-<img src="Friend_Match_Logo.png" width="100" align="right"/>
+<img src="app/img/Friend_Match_Logo.png" width="100" align="right"/>
 
 Meeting Time: Fridays 4:00 P.M.
 
