@@ -1,6 +1,6 @@
 # Friend Match
 ### Team: Friend Match
-<img src="Friend_Match_Logo.png" width="100" align="right"/>
+<img src="app/img/Friend_Match_Logo.png" width="100" align="right"/>
 
 Meeting Time: Fridays 4:00 P.M.
 
@@ -22,7 +22,7 @@ Meeting Time: Fridays 4:00 P.M.
 ### Personas
 **Name:** Randolph “Randy” Johnson
 
-<img src="randy.png" width="100" align="left" />
+<img src="app/img/randy.png" width="100" align="left" />
 <br/>
 
 **Screening Questions:**
