@@ -19,7 +19,7 @@
 			var currentfile = window.location.pathname;
 			//removes current file its at and grabs just directory
 			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
-			window.location.pathname = directory+'/index.html';
+			window.location.pathname = directory+'/index.php';
 			
 
 		}

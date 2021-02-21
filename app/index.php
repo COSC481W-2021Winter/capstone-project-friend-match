@@ -16,7 +16,7 @@
         <button class="button" type="submit" id="login-button" value="Submit">Login</button>
       </form>
       <p>Don't have an account?</p>
-      <a href="SignUp.html" class="button">Sign Up</a>
+      <a href="SignUp.php" class="button">Sign Up</a>
     </div>
   </body>
 </html>
