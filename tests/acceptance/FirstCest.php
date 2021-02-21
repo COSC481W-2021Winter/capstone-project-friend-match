@@ -1,6 +1,6 @@
 <?php
 
-class FIrstCest
+class FirstCest
 {
   public function frontpageWorks(AcceptanceTester $I)
   {
