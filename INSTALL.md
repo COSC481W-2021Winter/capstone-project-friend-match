@@ -1,8 +1,3 @@
-# Download Source code
-- Go to your browser and navigate to https://github.com/COSC481W-2021Winter/capstone-project-friend-match
-- Under the '<>Code' tab, click on the green dropdown button named 'Code'
-- In the dropdown menu, click 'Download Zip'
-
 # Install XAMPP
 1. Download
 - Visit https://www.apachefriends.org/download.html
