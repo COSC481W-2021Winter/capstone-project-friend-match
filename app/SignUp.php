@@ -64,7 +64,7 @@
 		</script>
 		
 		<div class="row">
-			<a href="index.html" class="button">Cancel</a>
+			<a href="index.php" class="button">Cancel</a>
 			<a class="button" id="next" onClick="vaildateFilledIn()">Next</a>
 		</div>
 		

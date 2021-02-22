@@ -123,7 +123,7 @@
 			
 			<!--Done button-->
 			<div id="buttondiv">
-				<a href="profile.html">
+				<a href="profile.php">
 					<button type="button" class="epbutton">Done</button>
 				</a>
 			</div>
