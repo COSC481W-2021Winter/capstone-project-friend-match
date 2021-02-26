@@ -19,18 +19,18 @@ if(isset($_POST["submit"])) {
 		exit();
 	}
 	if(userExists($conn, $user) != false){
-		header(":location: ../app/SignUp.php?error=usertaken");
+		header("location: ../app/SignUp.php?error=usertaken");
 		exit();
 	}
 	
 	session_start();
-	$_SESSION["first"] = $first;
-	$_SESSION["last"] = $last;
-	$_SESSION["user"] = $user;
-	$_SESSION["pwd"] = $pwd;
+	$_SESSION["firstName"] = $first;
+	$_SESSION["lastName"] = $last;
+	$_SESSION["username"] = $user;
 	
 	header("location: ../app/profileedit.php");
 }
 else {
 	header("location: ../app/SignUp.php");
 }
+?>

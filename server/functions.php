@@ -22,40 +22,53 @@ function pwdMatch($pwd, $pwdRepeat){
 }
 
 function userExists($conn, $user){
-	$sql = "SELECT * FROM users WHERE usersUid = ?;";
-	$stmt = mysqli_stmt_init($conn);
-	if (mysqli_stmt_prepare($stmt, $sql)){
-		header("location: ../app/SignUp.php?error=stmtfailed");
-		exit();
-	}
+	$sql = 'SELECT * FROM id WHERE username = ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $user);
+	$stmt->execute();
 	
-	mysqli_stmt_bind_param($stmt, 's', $user);
-	mysqli_stmt_execute($stmt);
-	
-	$resultsData = mysqli_stmt_get_result($stmt);
-	if($row = mysqli_fetch_assoc($resultsData)){
+	$result = $stmt->get_result();
+	if($row = $result->fetch_assoc()){
 		return $row;
 	}
 	else{
 		return false;
 	}
 	
-	mysqli_stmt_close($stmt);
+	$stmt->close();
 }
 
-function createUser($conn, $name, $uid, $pwd){
-	$sql = "INSERT INTO users (name, uid, password) VALUES(?, ?, ?);";
-	$stmt = mysqli_stmt_init($conn);
-	if (mysqli_stmt_prepare($stmt, $sql)){
-		header("location: ../app/SignUp.php?error=stmtfailed");
-		exit();
-	}
-	
+function createUser($conn, $name, $pwd){
+	//create user
+	$sql = 'INSERT INTO id (username, password) VALUES(?, ?);';
+	$stmt = $conn->prepare($sql);
+
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 	
-	mysqli_stmt_bind_param($stmt, "sss", $name, $uid, $hashedPwd);
-	mysqli_stmt_execute($stmt);
-	mysqli_stmt_close($stmt);
-	header("location: ../signup.php?error=none");
-	exit();
+	$stmt->bind_param('ss', $name, $hashedPwd);
+	$stmt->execute();
+	
+	//return most recent users id
+	return mysqli_insert_id($conn);
+	$stmt->close();
 }
+
+function createProfile($conn, $uid, $fname, $lname, $bio, $interest){
+	//create user
+	$sql = 'INSERT INTO profile (userid, firstName, lastName, bio, interest) VALUES(?, ?, ?, ?, ?);';
+	$stmt = $conn->prepare($sql);
+	
+	$stmt->bind_param('sssss', $uid, $fname, $lname, $bio, $interest);
+	$stmt->execute();
+	$stmt->close();
+}
+
+function updateProfile($conn, $uid, $bio, $interest){
+	$sql = "UPDATE profile SET bio = ?, interest = ? WHERE userid = ?;";
+	$stmt = $conn->prepare($sql);
+	
+	$stmt->bind_param('sss', $bio, $interest, $uid);
+	$stmt->execute();
+	$stmt->close();
+}
+?>
