@@ -12,9 +12,9 @@
 </head>
 <div style="margin-top:-7%; margin-bottom:16%; width:100%;" > 
 	<ul class = "navBarPP" id="navDiv">
-			<button class="NavBarPP" onclick="Home()" id="butto"> Home</button></li>
-			<button class="NavBarPP" onclick="Profile()" id="butto2"> Profile</button></li>
-			<button class="NavBarPP" onclick="logout()" id="butto3"> Logout</button></li>
+			<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
+			<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
+			<a href="logout.php" style="text-decoration:none;"><button class="NavBarPP" id="butto3"> Logout</button></a>
 	</ul>
 </div>
 
@@ -23,30 +23,7 @@
 	document.getElementById("butto").style.fontSize = "125%"; 
 	document.getElementById("butto2").style.fontSize = "125%"; 
 	document.getElementById("butto3").style.fontSize = "125%"; 
-	function Home(){
-			var currentfile = window.location.pathname;
-			//removes current file its at and grabs just directory
-			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
-			window.location.pathname = directory+'/home.php';
-
-		}
-		function Profile(){
-			var currentfile = window.location.pathname;
-			//removes current file its at and grabs just directory
-			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
-			window.location.pathname = directory+'/profile.php';
-		}
-		function logout(){
-			var currentfile = window.location.pathname;
-			//removes current file its at and grabs just directory
-			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
-			window.location.pathname = directory+'/logout.php';
-			
-
-		}
-		
-	
-	</script>
+</script>
 
 
 

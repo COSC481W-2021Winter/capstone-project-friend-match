@@ -7,17 +7,13 @@ class loginTestCest
     }
 
     // tests
-    public function tryToTest(AcceptanceTester $I)
-    {
-    }
-
 	 public function signInSuccessfully(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/index.php');
         $I->fillField('username','davert');
         $I->fillField('password','qwerty');
+		$I->see('Login');
         $I->click('Login');
-        $I->see('Name19');
-        $I->see('Biography');
+		$I->see('Home');
     }
 }
