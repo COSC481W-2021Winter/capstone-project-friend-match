@@ -81,10 +81,9 @@ class navigationTestsCest
 		$I->see('Confirm Logout?');
 		$I->see('No');
 		$I->click('Confirm Logout?');
-		$I->seeCurrentUrlEquals('/capstone/app/index.php');	
 		
 		//checks to make sure user is loggedout
-		
+		$I->seeCurrentUrlEquals('/capstone/app/index.php');	
     }
 	
 	

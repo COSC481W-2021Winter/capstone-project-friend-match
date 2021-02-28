@@ -2,7 +2,13 @@
 <?php
 	session_start();
 	unset($_SESSION["uid"]);
+	unset($_SESSION["userName"]);
 	unset($_SESSION["password"]);
+	unset($_SESSION["firstName"]);
+	unset($_SESSION["lastName"]);
+	unset($_SESSION["city"]);
+	unset($_SESSION["description"]);
+	unset($_SESSION["intrest"]);
 ?>
 <html lang="en" dir="ltr">
   <head>
