@@ -22,7 +22,7 @@ function pwdMatch($pwd, $pwdRepeat){
 }
 
 function userExists($conn, $user){
-	$sql = 'SELECT * FROM id WHERE username = ?;';
+	$sql = 'SELECT * FROM users WHERE username = ?;';
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param('s', $user);
 	$stmt->execute();
@@ -40,7 +40,7 @@ function userExists($conn, $user){
 
 function createUser($conn, $name, $pwd){
 	//create user
-	$sql = 'INSERT INTO id (username, password) VALUES(?, ?);';
+	$sql = 'INSERT INTO users (username, password) VALUES(?, ?);';
 	$stmt = $conn->prepare($sql);
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -53,21 +53,21 @@ function createUser($conn, $name, $pwd){
 	$stmt->close();
 }
 
-function createProfile($conn, $uid, $fname, $lname, $bio, $interest){
+function createProfile($conn, $uid, $fname, $lname, $city, $bio, $interest){
 	//create user
-	$sql = 'INSERT INTO profile (userid, firstName, lastName, bio, interest) VALUES(?, ?, ?, ?, ?);';
+	$sql = 'INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES(?, ?, ?, ?, ?, ?);';
 	$stmt = $conn->prepare($sql);
 	
-	$stmt->bind_param('sssss', $uid, $fname, $lname, $bio, $interest);
+	$stmt->bind_param('isssss', $uid, $fname, $lname, $city, $bio, $interest);
 	$stmt->execute();
 	$stmt->close();
 }
 
-function updateProfile($conn, $uid, $bio, $interest){
-	$sql = "UPDATE profile SET bio = ?, interest = ? WHERE userid = ?;";
+function updateProfile($conn, $uid, $city, $bio, $interest){
+	$sql = "UPDATE profiles SET city = ?, bio = ?, interests = ? WHERE userid = ?;";
 	$stmt = $conn->prepare($sql);
 	
-	$stmt->bind_param('sss', $bio, $interest, $uid);
+	$stmt->bind_param('sssi', $city, $bio, $interest, $uid);
 	$stmt->execute();
 	$stmt->close();
 }

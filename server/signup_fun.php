@@ -27,6 +27,7 @@ if(isset($_POST["submit"])) {
 	$_SESSION["firstName"] = $first;
 	$_SESSION["lastName"] = $last;
 	$_SESSION["username"] = $user;
+	$_SESSION["uid"] = NULL;
 	
 	header("location: ../app/profileedit.php");
 }
