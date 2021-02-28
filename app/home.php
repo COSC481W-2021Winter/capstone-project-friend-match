@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,14 +31,17 @@
       })
     </script>
   </head>
-
+	
 	<div style="margin-top:.30%;">
 		<ul class = "navBar">
-			<button class="NavBarB" onclick="Home()"> Home</button></li>
-			<button class="NavBar" onclick="Profile()"> Profile</button></li>
-			<button class="NavBar" onclick="logout()"> Logout</button></li>
+			<a href="home.php" style="text-decoration:none;"><button class="NavBarB" onclick="Home()" id="Home" > Home</button></a>
+			<a href="profile.php"  style="text-decoration:none;"><button class="NavBar" onclick="Profile()" id="Profile"> Profile</button></a>
+			<a href="logout.php"  style="text-decoration:none;"><button class="NavBar" onclick="Logout()" id="Logout"> Logout</button></a>
 		</ul>
 	</div>
+	
+	
+	
 	<script>
 	function Home(){
 			var currentfile = window.location.pathname;
@@ -52,7 +56,7 @@
 			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
 			window.location.pathname = directory+'/profile.php';
 		}
-		function logout(){
+		function Logout(){
 			var currentfile = window.location.pathname;
 			//removes current file its at and grabs just directory
 			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
@@ -60,8 +64,6 @@
 			
 
 		}
-		
-	
 	</script>
 	
 	

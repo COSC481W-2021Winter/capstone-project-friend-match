@@ -11,6 +11,7 @@ ul.navBar {
 	font-family: sans-serif;
 	text-align:center;
 	font-size:200% !important;
+	text-decoration:none;
 }
 
 ul.navBarPP {
@@ -20,6 +21,7 @@ ul.navBarPP {
 	font-family: sans-serif;
 	text-align:center;
 	font-size:125%;
+	text-decoration:none;
 }
 
 
@@ -29,7 +31,6 @@ button.NavBar {
   color:#6a0dad !important;
   background-color:lightblue !important;
   display:inline;
-  /* margin-left:1%; */
   border-style:none;
 }
 
@@ -51,4 +52,3 @@ button.NavBarPP {
   display:inline;
   border-style:none;
 }
-
