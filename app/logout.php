@@ -9,7 +9,7 @@
 	button.no {font-size:200%; margin-left:47%; margin-top:4%; width:10%; }	
 	</style>
 	<head>
-	<a href="logoutRE.php"><button onclick ="areYouSure()" class="yes">Confirm Logout?</button></a>
-	<a href="home.php"><button onclick ="No()" class="no">No</button></a>
+	<a href="logoutRE.php"><button class="yes">Confirm Logout?</button></a>
+	<a href="home.php"><button class="no">No</button></a>
 	
 </html>
