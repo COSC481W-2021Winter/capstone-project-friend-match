@@ -22,8 +22,10 @@ class profileEditCest
 	public function accessProfile(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/home.php');
-        $I->click(' Profile');
-        $I->see('Edit');
+        $I->click('Profile');
+		$I->seeCurrentUrlEquals('/capstone/app/profile.php');
+        $I->click('Edit');
+		$I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
     }
 	
 	public function alterInfoDescription(AcceptanceTester $I)
@@ -52,5 +54,9 @@ class profileEditCest
         $I->amOnPage('http://localhost/capstone/app/profileedit.php');
         $I->attachFile('input[name=image]','spider.jpg');
         $I->click('submit');
+    }
+	public function storeInDatabase(AcceptanceTester $I)
+    {
+        
     }
 }
