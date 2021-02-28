@@ -8,7 +8,7 @@
 	unset($_SESSION["lastName"]);
 	unset($_SESSION["city"]);
 	unset($_SESSION["description"]);
-	unset($_SESSION["intrest"]);
+	unset($_SESSION["interest"]);
 ?>
 <html lang="en" dir="ltr">
   <head>
