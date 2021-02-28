@@ -4,12 +4,14 @@ class swipeCest
 {
   public function swipeOnProfiles(AcceptanceTester $I)
   {
+      //testing login
         $I->amOnPage('http://localhost/capstone/app/index.php');
         $I->fillField('username','davert');
         $I->fillField('password','qwerty');
         $I->click('Login');
         $I->see('Name19');
         $I->see('Biography');
+      //testing swiping / clicking, for browser-friendly experiences
         $I->click(['class' => 't_left']);
         $I->see('Name18');
         $I->see('Biography');
@@ -70,6 +72,7 @@ class swipeCest
         $I->click(['class' => 't_left']);
         $I->see('Number of Likes:');
         $I->see('Number of Dislikes:');
+      //testing refreshing page
         $I->click(['id' => 'refresher']);
         $I->see('Name19');
         $I->see('Biography');
