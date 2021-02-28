@@ -1,26 +1,20 @@
 <?php
 
-class loginPageCest
-{
+class loginPageCest {
 
-	 public function signInSuccess(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','goodUsername');
-        $I->fillField('password','goodPassword');
-        $I->click('Login');
-        $I->see('Name19');
-        $I->see('Biography');
-    }
+  public function successfulSignIn(AcceptanceTester $I) {
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+    $I->fillField('username', 'Jeff');
+    $I->fillField('password', 'password123');
+    $I->click('Login');
+    $I->amOnPage('http://localhost/capstone/app/home.php');
+  }
 
-    public function signInFail(AcceptanceTester $I)
-     {
-         $I->amOnPage('http://localhost/capstone/app/index.php');
-         $I->fillField('username','badUsername');
-         $I->fillField('password','badPassword');
-         $I->click('Login');
-         $I->see('Name19');
-         $I->see('Biography');
-     }
-
+  public function badCredentials(AcceptanceTester $I) {
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+    $I->fillField('username', 'badUsername');
+    $I->fillField('password', 'badPassword');
+    $I->click('Login');
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+  }
 }
