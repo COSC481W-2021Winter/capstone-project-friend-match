@@ -8,3 +8,5 @@ class FirstCest
       $I->see('Login');
   }
 }
+
+?>
