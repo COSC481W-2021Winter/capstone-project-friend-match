@@ -10,10 +10,10 @@ class profileTestCest
     public function logIn(AcceptanceTester $I)
     {
       $I->amOnPage('http//localhost/capstone/app/index.php');
-      $I->fillField('userName', 'davert');
-      $I->fillField('password', 'qwerty');
+      $I->fillField('userName', 'testUser');
+      $I->fillField('password', 'testPwd');
       $I->click('Login');
-      $I->see('Name19');
+      $I->see('Home');
       $I->see('Biography');
       $I->see('Profile');
       $I->click('Profile');
