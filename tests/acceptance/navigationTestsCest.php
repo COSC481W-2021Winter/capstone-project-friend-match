@@ -20,14 +20,14 @@ class navigationTestsCest
 		$I->see('Biography');
 		
 		//should be on home page
-		$I->seeCurrentUrlEquals('/capstone/app/home.php');	
+		$I->seeInCurrentUrl('home.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
 		
 		//test to go to profile page from home page
 		$I->click('Profile');
-		$I->seeCurrentUrlEquals('/capstone/app/profile.php');	
+		$I->seeInCurrentUrl('profile.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
@@ -36,7 +36,7 @@ class navigationTestsCest
 		
 		//test to go to home page from profile page
 		$I->click('Home');
-		$I->seeCurrentUrlEquals('/capstone/app/home.php');	
+		$I->seeInCurrentUrl('home.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
@@ -45,7 +45,7 @@ class navigationTestsCest
 		
 		//Test home page --> home page
 		$I->click('Home');
-		$I->seeCurrentUrlEquals('/capstone/app/home.php');	
+		$I->seeInCurrentUrl('home.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
@@ -55,7 +55,7 @@ class navigationTestsCest
 		//Test profile page --> profile page
 		$I->click('Profile');
 		$I->click('Profile');
-		$I->seeCurrentUrlEquals('/capstone/app/profile.php');	
+		$I->seeInCurrentUrl('profile.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
@@ -64,14 +64,14 @@ class navigationTestsCest
 		
 		//test profile --> logout page
 		$I->click('Logout');
-		$I->seeCurrentUrlEquals('/capstone/app/logout.php');	
+		$I->seeInCurrentUrl('logout.php');
 		$I->see('Confirm Logout?');
 		$I->see('No');
 		$I->click('No');
 		
 		//test home --> logout page
 		$I->click('Logout');
-		$I->seeCurrentUrlEquals('/capstone/app/logout.php');	
+		$I->seeInCurrentUrl('logout.php');	
 		$I->see('Confirm Logout?');
 		$I->see('No');
 		$I->click('No');
@@ -83,7 +83,7 @@ class navigationTestsCest
 		$I->click('Confirm Logout?');
 		
 		//checks to make sure user is loggedout
-		$I->seeCurrentUrlEquals('/capstone/app/index.php');	
+		$I->seeInCurrentUrl('index.php');
     }
 	
 	
