@@ -35,12 +35,6 @@
 		<!--Image div-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
-			<?php
-				if (isset($_SESSION['picture']))
-				{
-					echo "<img id='profpic' src='".$_SESSION['picture']."'>";
-				}
-			?>
 		</div>
 		
 		<div class="epcontainer">
