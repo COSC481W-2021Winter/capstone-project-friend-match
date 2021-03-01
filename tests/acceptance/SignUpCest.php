@@ -8,16 +8,6 @@ class SignUpCest
 	
 	public function enterInformationTest(AcceptanceTester $I)
 	{
-		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
-		$I->fillField('firstName','a');
-		$I->fillField('lastName','b');
-		$I->fillField('username','cjkl');
-		$I->fillField('password','d');
-		$I->fillField('passwordRepeat','e');
-	}
-	
-	public function duplicateUsernameTest(AcceptanceTester $I)
-	{
 		//new username
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','a');
@@ -32,6 +22,10 @@ class SignUpCest
 			$I->seeInCurrentUrl('signup_fun.php');
 			$I->seeInCurrentUrl('profileedit.php');
 		}
+	}
+	
+	public function duplicateUsernameTest(AcceptanceTester $I)
+	{
 		
 		//already used username
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
@@ -50,22 +44,7 @@ class SignUpCest
 	}
 	
 	public function passwordConfirmTest(AcceptanceTester $I)
-	{
-		//same password
-		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
-		$I->fillField('firstName','c');
-		$I->fillField('lastName','c');
-		$I->fillField('username','cjhkl');
-		$I->fillField('password','c');
-		$I->fillField('passwordRepeat','c');
-        $I->click('submit');
-		try{
-			$I->seeInCurrentUrl('profileedit.php');
-		} catch (Exception $e){
-			$I->seeInCurrentUrl('signup_fun.php');
-			$I->seeInCurrentUrl('profileedit.php');
-		}
-		
+	{		
 		//different password
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','c');
@@ -93,21 +72,6 @@ class SignUpCest
 		} catch (Exception $e){
 			$I->seeInCurrentUrl('signup_fun.php');
 			$I->seeInCurrentUrl('SignUp.php?error=emptyinput');
-		}
-		
-		//all information
-		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
-		$I->fillField('firstName','a');
-		$I->fillField('lastName','a');
-		$I->fillField('username','bhjkl');
-		$I->fillField('password','a');
-		$I->fillField('passwordRepeat','a');
-        $I->click('submit');
-		try{
-			$I->seeInCurrentUrl('profileedit.php');
-		} catch (Exception $e){
-			$I->seeInCurrentUrl('signup_fun.php');
-			$I->seeInCurrentUrl('profileedit.php');
 		}
 	}
 	
