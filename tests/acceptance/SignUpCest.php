@@ -26,7 +26,12 @@ class SignUpCest
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
-		$I->seeInCurrentUrl('profileedit.php');
+		try{
+			$I->seeInCurrentUrl('profileedit.php');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('profileedit.php');
+		}
 		
 		//already used username
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
@@ -36,7 +41,12 @@ class SignUpCest
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
-		$I->seeInCurrentUrl('SignUp.php?error=usertaken');
+		try{
+			$I->seeInCurrentUrl('SignUp.php?error=usertaken');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('SignUp.php?error=usertaken');
+		}
 	}
 	
 	public function passwordConfirmTest(AcceptanceTester $I)
@@ -49,7 +59,12 @@ class SignUpCest
 		$I->fillField('password','c');
 		$I->fillField('passwordRepeat','c');
         $I->click('submit');
-		$I->seeInCurrentUrl('profileedit.php');
+		try{
+			$I->seeInCurrentUrl('profileedit.php');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('profileedit.php');
+		}
 		
 		//different password
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
@@ -59,7 +74,12 @@ class SignUpCest
 		$I->fillField('password','c');
 		$I->fillField('passwordRepeat','b');
         $I->click('submit');
-		$I->seeInCurrentUrl('SignUp.php?error=pwdnotmatch');
+		try{
+			$I->seeInCurrentUrl('SignUp.php?error=pwdnotmatch');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('SignUp.php?error=pwdnotmatch');
+		}
 	}
 	
 	public function requiredInformationTest (AcceptanceTester $I)
@@ -68,7 +88,12 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','c');
         $I->click('submit');
-		$I->seeInCurrentUrl('SignUp.php?error=emptyinput');
+		try{
+			$I->seeInCurrentUrl('SignUp.php?error=emptyinput');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('SignUp.php?error=emptyinput');
+		}
 		
 		//all information
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
@@ -78,7 +103,12 @@ class SignUpCest
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
-		$I->seeInCurrentUrl('profileedit.php');
+		try{
+			$I->seeInCurrentUrl('profileedit.php');
+		} catch (Exception $e){
+			$I->seeInCurrentUrl('signup_fun.php');
+			$I->seeInCurrentUrl('profileedit.php');
+		}
 	}
 	
 	public function skipSignUpPageTest(AcceptanceTester $I){
