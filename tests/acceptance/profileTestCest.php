@@ -9,26 +9,24 @@ class profileTestCest
     //testing login
     public function logIn(AcceptanceTester $I)
     {
-      $I->amOnPage('http//localhost/capstone/app/index.php');
-      $I->fillField('userName', 'davert');
-      $I->fillField('password', 'qwerty');
+      $I->amOnPage('http://localhost/capstone/app/index.php');
+      $I->fillField('username', 'testUser');
+      $I->fillField('password', 'testPwd');
       $I->click('Login');
-      $I->see('Name19');
+      $I->see('Home');
       $I->see('Biography');
       $I->see('Profile');
       $I->click('Profile');
-      $I->seeCurrentUrlEquals('http//localhost/capstone/app/profile.php');
+      $I->seeCurrentUrlEquals('/capstone/app/profile.php');
 
     }
     //testing to see if profile can be viewed
     public function viewProfile(AcceptanceTester $I){
-      $I->amOnPage('http//localhost/capstone/app/profile.php');
-      $I->see('profilepic');
-      $I->see('bio');
-      $I->see('interests');
+      $I->amOnPage('http://localhost/capstone/app/profile.php');
+      $I->seeElement('//img[@alt="profilepic"]');
       $I->see('City');
       $I->see('Edit');
       $I->click('Edit');
-      $I->seeCurrentUrlEquals('http//localhost/capstone/app/profileedit.php');
+      $I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
     }
 }
