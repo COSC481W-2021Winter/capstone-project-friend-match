@@ -1,0 +1,54 @@
+:root {
+  --default-border: solid lightgrey 1px;
+  --border-radius: 1.25em;
+}
+
+ul.navBar {
+    list-style-type: none;
+    width: 100%;
+    background-color:lightblue;
+    margin-top:-0.29%; 
+	font-family: sans-serif;
+	text-align:center;
+	font-size:200% !important;
+	text-decoration:none;
+}
+
+ul.navBarPP {
+    list-style-type: none;
+    background-color:lightblue;
+    margin-top:-0.25%;
+	font-family: sans-serif;
+	text-align:center;
+	font-size:125%;
+	text-decoration:none;
+}
+
+
+button.NavBar {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:lightblue !important;
+  display:inline;
+  border-style:none;
+}
+
+button.NavBarB {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:lightblue !important;
+  display:inline;
+  border-style:none;
+  margin-left:-2.25%; 
+}
+
+button.NavBarPP {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:lightblue !important;
+  display:inline;
+  border-style:none;
+}
