@@ -11,7 +11,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','a');
 		$I->fillField('lastName','b');
-		$I->fillField('username','c');
+		$I->fillField('username','cjkl');
 		$I->fillField('password','d');
 		$I->fillField('passwordRepeat','e');
 	}
@@ -22,7 +22,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','a');
 		$I->fillField('lastName','a');
-		$I->fillField('username','b');
+		$I->fillField('username','bjhkl');
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
@@ -32,7 +32,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','a');
 		$I->fillField('lastName','a');
-		$I->fillField('username','a');
+		$I->fillField('username','testUser');
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
@@ -45,7 +45,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','c');
 		$I->fillField('lastName','c');
-		$I->fillField('username','c');
+		$I->fillField('username','cjhkl');
 		$I->fillField('password','c');
 		$I->fillField('passwordRepeat','c');
         $I->click('submit');
@@ -55,7 +55,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','c');
 		$I->fillField('lastName','c');
-		$I->fillField('username','c');
+		$I->fillField('username','cjhkl');
 		$I->fillField('password','c');
 		$I->fillField('passwordRepeat','b');
         $I->click('submit');
@@ -74,7 +74,7 @@ class SignUpCest
 		$I->amOnPage('http://localhost/capstone/app/SignUp.php');
 		$I->fillField('firstName','a');
 		$I->fillField('lastName','a');
-		$I->fillField('username','b');
+		$I->fillField('username','bhjkl');
 		$I->fillField('password','a');
 		$I->fillField('passwordRepeat','a');
         $I->click('submit');
