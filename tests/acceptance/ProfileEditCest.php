@@ -12,13 +12,12 @@ class profileEditCest
 	public function logIn(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','x');
-        $I->fillField('password','y');
+        $I->fillField('username','testUser');
+        $I->fillField('password','testPwd');
         $I->click('Login');
-        $I->see('Name19');
-        $I->see('Biography');
+        $I->see('Home');
     }
-	
+
 	public function accessProfile(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/home.php');
@@ -27,7 +26,7 @@ class profileEditCest
         $I->click('Edit');
 		$I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
     }
-	
+
 	public function alterInfoDescription(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/profileedit.php');
