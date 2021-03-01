@@ -6,10 +6,10 @@ class swipeCest
   {
       //testing login
         $I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','davert');
-        $I->fillField('password','qwerty');
+        $I->fillField('username','testUser');
+        $I->fillField('password','testPwd');
         $I->click('Login');
-        $I->see('Name19');
+        $I->see('Home');
         $I->see('Biography');
       //testing swiping / clicking, for browser-friendly experiences
         $I->click(['class' => 't_left']);
