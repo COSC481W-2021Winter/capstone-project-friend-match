@@ -8,7 +8,7 @@ actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://localhost
+            url: http://localhost/capstone/app/index.php
         - Db:
             dsn: 'mysql:host=localhost;dbname=friendMatch'
             user: 'root'
