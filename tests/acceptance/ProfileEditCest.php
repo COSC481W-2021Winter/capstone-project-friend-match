@@ -58,11 +58,7 @@ class profileEditCest
 	public function storeInDatabase(AcceptanceTester $I)
     {
         $I->amOnPage('http://localhost/capstone/app/profileedit.php');
-		$I->attachFile('input[name=image]','spider.jpg');
-		$I->click('submit');
-		$I->seeInDatabase('profiles',['photo'=>'spider.jpg']);
-		$I->fillField('desc','x');
-		$I->click('submit1');
-		$I->seeInDatabase('profiles',['bio'=>'x']);
+		$I->click('Done');
+		$I->amOnPage('http://localhost/capstone/app/profile.php');
     }
 }

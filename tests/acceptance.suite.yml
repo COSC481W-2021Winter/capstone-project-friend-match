@@ -8,10 +8,10 @@ actor: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://localhost/capstone/app/index.php
+            url: http://localhost
         - Db:
             dsn: 'mysql:host=localhost;dbname=friendMatch'
             user: 'root'
             password: 'Dollar25'
         - \Helper\Acceptance
-step_decorators: ~ 
+step_decorators: ~
