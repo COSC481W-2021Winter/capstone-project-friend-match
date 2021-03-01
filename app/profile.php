@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,7 @@
 
 
 </head>
-<div style="margin-top:-7%; margin-bottom:16%; width:100%;" > 
+<div style="margin-top:-7%; margin-bottom:16%; width:100%;" >
 	<ul class = "navBarPP" id="navDiv">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
 			<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
@@ -19,17 +20,17 @@
 </div>
 
 <script>
-	document.getElementById("butto").style.height = "50px"; 
-	document.getElementById("butto").style.fontSize = "125%"; 
-	document.getElementById("butto2").style.fontSize = "125%"; 
-	document.getElementById("butto3").style.fontSize = "125%"; 
+	document.getElementById("butto").style.height = "50px";
+	document.getElementById("butto").style.fontSize = "125%";
+	document.getElementById("butto2").style.fontSize = "125%";
+	document.getElementById("butto3").style.fontSize = "125%";
 </script>
 
 
 
 <body>
   <div class="container">
-    <img style="border-style: solid;" id="pfp" src="\capstone-project-friend-match\randy.png" alt="profilepic"></img>
+    <img style="border-style: solid;" id="pfp" src="img/randy.png" alt="profilepic"></img>
   <div class="bio">
     <pre>
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
@@ -40,7 +41,7 @@
   </div>
   <div style="display: table;">
   <div style="display: table-cell;">
-    <form name="hobbies" method="" action="">
+    <form name="interests" method="" action="">
       <select name="hlist" size="7">
         <option disabled>Walking</option>
         <option disabled>Knitting</option>
