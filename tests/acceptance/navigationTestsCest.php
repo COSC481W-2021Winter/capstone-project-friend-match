@@ -12,8 +12,8 @@ class navigationTestsCest
     public function SignInTest(AcceptanceTester $I)
     {
 		$I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','davert');
-        $I->fillField('password','qwerty');
+        $I->fillField('username','testUser');
+        $I->fillField('password','testPwd');
 		$I->see('Login');
         $I->click('Login');
 		$I->see('Name19');
