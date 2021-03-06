@@ -71,4 +71,21 @@ function updateProfile($conn, $uid, $city, $bio, $interest){
 	$stmt->execute();
 	$stmt->close();
 }
+function getUserId($conn,$user) {
+	$inbetween = userExists($conn, $user);
+	return $inbetween['userid'];
+	
+}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+

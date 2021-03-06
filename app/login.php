@@ -1,9 +1,11 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "friend-match";
 
+require_once __DIR__ . "/../server/functions.php";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -21,7 +23,7 @@ $result = mysqli_query($conn, $query);
 if(!$result || mysqli_num_rows($result) != 1) {
   header("Location: index.php?error=invalid");
 } else {
-  //TODO Create Session?
+  $_SESSION["uid"] = getUserId($conn,$username);
   header("Location: home.php");
 }
 ?>
