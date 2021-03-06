@@ -79,13 +79,3 @@ function getUserId($conn,$user) {
 ?>
 
 
-
-
-
-
-
-
-
-
-
-

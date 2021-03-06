@@ -27,3 +27,4 @@ if(!$result || mysqli_num_rows($result) != 1) {
   header("Location: home.php");
 }
 ?>
+
