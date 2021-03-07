@@ -63,8 +63,14 @@ INSERT INTO users (username, password) VALUES ("w3schools", "IsAGodSend");
 INSERT INTO profiles VALUES (4, "W3", "Schools", "specifically not the test city", "Help me", "testInterest");
 INSERT INTO users (username, password) VALUES ("rjohn100", "randolph");
 INSERT INTO profiles VALUES (5, "Randolph", "Johnson", "testCity", "Just moved here, hoping to make some new friends", "testInterest");
-
-
+INSERT INTO users (username, password) VALUES ("LineMean", "Password");
+INSERT INTO profiles VALUES (6, "Emmaline", "Taylor", "City A", "Healing through Harmony", "Knitting_Reading_Hiking");
+INSERT INTO users (username, password) VALUES ("JJameson", "1234");
+INSERT INTO profiles VALUES (7, "Josiah", "Jameson", "testCity", "Not interested in pictures of Spiderman", "Knitting");
+INSERT INTO users (username, password) VALUES ("TheBaker", "4321");
+INSERT INTO profiles VALUES (8, "Ester", "Baker", "testCity", "Down to Clown", "Walking_Reading_Eating_Movies_Art");
+INSERT INTO users (username, password) VALUES ("SeeMoreMe", "UnS3cur3P455w0rd");
+INSERT INTO profiles VALUES (1, "Seymour", "Richards", "testCity", "Life is too short not to learn new things.", "Walking_Knitting_Reading_Eating_Snowboarding_Hiking_Boxing_Movies_Art");
 ';
 
 if(mysqli_multi_query($conn, $sql)) {
