@@ -1,11 +1,11 @@
 <?php
 
 if(isset($_POST["submit"])) {
-	$first = $_POST["firstName"];
-	$last = $_POST["lastName"];
-	$user = $_POST["username"];
-	$pwd = $_POST["password"];
-	$pwdRepeat = $_POST["passwordRepeat"];
+	$first = $_POST['firstName'];
+	$last = $_POST['lastName'];
+	$user = $_POST['username'];
+	$pwd = $_POST['password'];
+	$pwdRepeat = $_POST['passwordRepeat'];
 	
 	require_once 'friend_sql.php';
 	require_once 'functions.php';
@@ -27,6 +27,7 @@ if(isset($_POST["submit"])) {
 	$_SESSION["firstName"] = $first;
 	$_SESSION["lastName"] = $last;
 	$_SESSION["username"] = $user;
+	$_SESSION["password"] = $pwd;
 	$_SESSION["uid"] = NULL;
 	
 	header("location: ../app/profileedit.php");
