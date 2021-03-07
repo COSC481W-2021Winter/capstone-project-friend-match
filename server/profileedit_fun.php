@@ -46,10 +46,11 @@ if(isset($_SESSION["username"]) && $hasid){
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
 	header("location: ../app/home.php?error=none");
 }
-elseif($hasid) {
+elseif(!$hasid) {
 	$uid = $_SESSION["uid"];
 	$bio = $_SESSION["description"];
-	$intrest = "";
+	$intrest = $_SESSION["interests"];
+	$city = $_SESSION["city"];
 	
 	if(emptyInputSignup($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
