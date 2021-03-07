@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-
+<?php
+	session_start();
+?>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,8 +76,6 @@
 			//removes current file its at and grabs just directory
 			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
 			window.location.pathname = directory+'/logout.php';
-
-
 		}
 	</script>
 
@@ -111,3 +111,4 @@
   </body>
 
 </html>
+
