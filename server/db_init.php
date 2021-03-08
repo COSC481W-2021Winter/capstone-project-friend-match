@@ -78,7 +78,15 @@ INSERT INTO profiles VALUES (11, "Joe", "Murphey", "Seattle", "My name is Joe an
 INSERT INTO users (username, password) VALUES ("Dadbod", "beerAndfries");
 INSERT INTO profiles VALUES (12, "Jesse", "Briet", "Richmond", "I enjoy drinking with friends and playing video games. Specifically I enjoy playing Europa Universalis 4 and Hearts of iron, and if we have enough people I enjoy Valorant.", "Games_Drinking_Running");
 INSERT INTO users (username, password) VALUES ("babyshark", "dodododododo");
-INSERT INTO profiles VALUES (13, "Kim", "Min", "Los Angeles", "I love traveling, sharing stories and going hiking. I enjoy exercising and encouraging my friends and I am looking for new people interested in that stuff!", "Hiking_");
+INSERT INTO profiles VALUES (13, "Kim", "Min", "Los Angeles", "I love traveling, sharing stories and going hiking. I enjoy exercising and encouraging my friends and I am looking for new people interested in that stuff!", "Hiking_running_storytelling");
+INSERT INTO users (username, password) VALUES("JeffJeff", "Jefferson");
+INSERT INTO profiles VALUES (14, "Jeffery", "Jefferson", "Detroit", "My name is Jeff.", "gaming,lifting,water-polo");
+INSERT INTO users (username, password) VALUES("BepisMan", "CokeSucks420");
+INSERT INTO profiles VALUES (15, "Cherry", "Pepsi", "Fresno", "I am a can of soda. I dont get out very often.", "drinking,chilling");
+INSERT INTO users (username, password) VALUES("Spin2Win", "YouSpinMeRightRoundBaby");
+INSERT INTO profiles VALUES (16, "Hard", "Drive", "San Jose", "I am a Hard Drive. Look, data!", "reading,writing,improv-comedy");
+INSERT INTO users (username, password) VALUES("LargeAndInCharge", "burritoMaster123");
+INSERT INTO profiles VALUES (17, "Hue", "Mongous", "Juneau", "I am Hue Mongous. I am very large. I enjoy movies and boardgames.", "board-games,eating,movies");
 
 
 
