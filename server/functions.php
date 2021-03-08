@@ -40,7 +40,7 @@ function userExists($conn, $user){
 
 function createUser($conn, $name, $pwd){
 	//create user
-	$sql = 'INSERT INTO users (username, password) VALUES(?, ?);';
+	$sql = "INSERT INTO users (username, password) VALUES(?, ?);";
 	$stmt = $conn->prepare($sql);
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);

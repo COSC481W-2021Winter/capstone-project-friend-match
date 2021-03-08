@@ -10,7 +10,7 @@
   <body>
     <img id="logo" src="img/Friend_Match_Logo.svg" alt="logo">
     <div class="container">
-      <form action="../server/login_fun.php" method="post">
+      <form action="login.php" method="post">
         <input type="text" id="username" name="username" placeholder="Username">
         <input type="password" id="password" name="password" placeholder="Password">
         <button class="button" type="submit" name="submit" id="login-button" value="Submit">Login</button>

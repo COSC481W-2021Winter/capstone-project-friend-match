@@ -6,7 +6,7 @@ if(isset($_POST["submit"])) {
 	
 	
 	$username = $_POST['username'];
-	$pwd = $_POST['password'];
+	$password = $_POST['password'];
 	
 	/*
 	if(emptyInputSignup($username, $password) != false){
@@ -16,11 +16,11 @@ if(isset($_POST["submit"])) {
 	*/
 	$row = userExists($conn, $username);
 	if($row == false){
-		header("Location: ../app/index.php?error=nouserexsits");
+		header("Location: ../app/index.php?error=invalidu");
 		exit();
 	}
-	if(password_verify($pwd, $row['password']) == false){
-		header("Location: ../app/index.php?error={$pwd}{$row['password']}");
+	if(password_verify($password, $row['password']) == false){
+		header("Location: ../app/index.php?error=invalidp");
 		exit();
 	}
 	

@@ -24,11 +24,11 @@ if(isset($_POST["submit"])) {
 	}
 	
 	session_start();
-	$_SESSION["firstName"] = $first;
-	$_SESSION["lastName"] = $last;
-	$_SESSION["username"] = $user;
-	$_SESSION["password"] = $pwd;
-	$_SESSION["uid"] = NULL;
+	$_SESSION['firstName'] = $first;
+	$_SESSION['lastName'] = $last;
+	$_SESSION['username'] = $user;
+	$_SESSION['password'] = $pwd;
+	$_SESSION['uid'] = NULL;
 	
 	header("location: ../app/profileedit.php");
 }
