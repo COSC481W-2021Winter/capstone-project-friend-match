@@ -106,6 +106,7 @@ INSERT INTO profiles VALUES (25, "Michael", "Corleone", "Italy", "just when i th
 
 
 
+
 ';
 
 
