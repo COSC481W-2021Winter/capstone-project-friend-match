@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php
+require_once __DIR__ . '/../server/profile_fun.php';
+ ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,6 +35,14 @@
     <img style="border-style: solid;" id="pfp" src="img/randy.png" alt="profilepic"></img>
   <div class="bio">
     <pre>
+      <?php
+      $sql = "SELECT $bio FROM profiles;";
+      $result = mysqli_query($conn, $sql);
+      $resultCheck = mysqli_num_rows($result);
+
+      if($resultCheck > 0){
+
+      } ?>
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
         BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
@@ -41,8 +51,12 @@
   </div>
   <div style="display: table;">
   <div style="display: table-cell;">
-    <form name="interests" method="" action="">
+    <form name="interests" method="POST" action="">
       <select name="hlist" size="7">
+        <?php
+        $sql = "SELECT $interest FROM profiles;";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result); ?>
         <option disabled>Walking</option>
         <option disabled>Knitting</option>
         <option disabled>Reading</option>
@@ -61,8 +75,12 @@
     </form>
   </div>
     <div style="display: table-cell;">
-    <p1 class="bio">
+    <p1>
       City: Evergreen
+      <?php
+      $sql = "SELECT $city FROM profiles;";
+      $result = mysqli_query($conn, $sql);
+      $resultCheck = mysqli_num_rows($result); ?>
     </p1>
   </div>
   <div style="display: table-cell;">
