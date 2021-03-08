@@ -72,13 +72,13 @@ INSERT INTO profiles VALUES (8, "Ester", "Baker", "testCity", "Down to Clown", "
 INSERT INTO users (username, password) VALUES ("SeeMoreMe", "UnS3cur3P455w0rd");
 INSERT INTO profiles VALUES (9, "Seymour", "Richards", "testCity", "Life is too short not to learn new things.", "Walking_Knitting_Reading_Eating_Snowboarding_Hiking_Boxing_Movies_Art");
 INSERT INTO users (username, password) VALUES ("DaddyJoe", "sloppyJoe");
-INSERT INTO profiles VALUES (10, "Joe", "Dadinstein", "testCity", "Joe, father to 3 kids and looking for someone to talk about with them and meet other dads.", "testInterest");
+INSERT INTO profiles VALUES (10, "Joe", "Dadinstein", "Detroit", "Joe, father to 3 kids and looking for someone to talk about with them and meet other dads.", "Cooking_Cleaning_Shooting");
 INSERT INTO users (username, password) VALUES ("Joemama", "supersloppyJoe");
-INSERT INTO profiles VALUES (11, "Joe", "Murphey", "testCity", "My name is Joe and I like cooking pizza. Im looking for people who share my interest, or are willing to have me teach them cooking, I love helping people learn new things.", "testInterest");
+INSERT INTO profiles VALUES (11, "Joe", "Murphey", "Seattle", "My name is Joe and I like cooking pizza. Im looking for people who share my interest, or are willing to have me teach them cooking, I love helping people learn new things.", "Cooking_Teaching");
 INSERT INTO users (username, password) VALUES ("Dadbod", "beerAndfries");
-INSERT INTO profiles VALUES (12, "Jesse", "Briet", "testCity", "I enjoy drinking with friends and playing video games. Specifically I enjoy playing Europa Universalis 4 and Hearts of iron, and if we have enough people I enjoy Valorant.", "testInterest");
+INSERT INTO profiles VALUES (12, "Jesse", "Briet", "Richmond", "I enjoy drinking with friends and playing video games. Specifically I enjoy playing Europa Universalis 4 and Hearts of iron, and if we have enough people I enjoy Valorant.", "Games_Drinking_Running");
 INSERT INTO users (username, password) VALUES ("babyshark", "dodododododo");
-INSERT INTO profiles VALUES (13, "Kim", "Min", "testCity", "I love traveling, sharing stories and going hiking. I enjoy exercising and encouraging my friends and I am looking for new people interested in that stuff!", "testInterest");
+INSERT INTO profiles VALUES (13, "Kim", "Min", "Los Angeles", "I love traveling, sharing stories and going hiking. I enjoy exercising and encouraging my friends and I am looking for new people interested in that stuff!", "Hiking_running_storytelling");
 INSERT INTO users (username, password) VALUES("JeffJeff", "Jefferson");
 INSERT INTO profiles VALUES (14, "Jeffery", "Jefferson", "Detroit", "My name is Jeff.", "gaming,lifting,water-polo");
 INSERT INTO users (username, password) VALUES("BepisMan", "CokeSucks420");
@@ -87,6 +87,7 @@ INSERT INTO users (username, password) VALUES("Spin2Win", "YouSpinMeRightRoundBa
 INSERT INTO profiles VALUES (16, "Hard", "Drive", "San Jose", "I am a Hard Drive. Look, data!", "reading,writing,improv-comedy");
 INSERT INTO users (username, password) VALUES("LargeAndInCharge", "burritoMaster123");
 INSERT INTO profiles VALUES (17, "Hue", "Mongous", "Juneau", "I am Hue Mongous. I am very large. I enjoy movies and boardgames.", "board-games,eating,movies");
+
 
 
 
