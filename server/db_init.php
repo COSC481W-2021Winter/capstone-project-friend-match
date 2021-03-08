@@ -95,6 +95,15 @@ INSERT INTO users (username, password) VALUES ("uwubean", "god");
 INSERT INTO profiles VALUES (20, "Thoth", "UwU", "Hell", "Ra Ra Rasputin Russias smollest uwu bean", "Chaos");
 INSERT INTO users (username, password) VALUES ("tomato", "tomatoSauce");
 INSERT INTO profiles VALUES (21, "Meatbally", "spagettis", "Italy", "Angry Pasta nosies", "Germany");
+INSERT INTO users (username, password) VALUES ("peterpan", "imalwaysyoung2");
+INSERT INTO profiles VALUES (22, "Peter", "Pan", "Neverland", "Captain crunch is very scary i dont like that guy", "tinkerbell");
+INSERT INTO users (username, password) VALUES ("sgtBearjew", "hanslandasmells1942");
+INSERT INTO profiles VALUES (23, "Donny", "Donowitz", "Berlin", "he went yardo on that one, fenway on its feet", "baseball");
+INSERT INTO users (username, password) VALUES ("nmeade", "sgvelocity");
+INSERT INTO profiles VALUES (24, "Nicholas", "Meade", "Maple Meadeway", "nnnyeah", "racing");
+INSERT INTO users (username, password) VALUES ("MgodC", "pastaisnice1972");
+INSERT INTO profiles VALUES (25, "Michael", "Corleone", "Italy", "just when i thought i was out, they pull me BACK in", "whacking");
+
 
 
 
