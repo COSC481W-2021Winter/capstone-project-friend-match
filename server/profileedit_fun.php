@@ -27,15 +27,19 @@ if (isset($_POST['interests']))
 }
 
 
-$hasid = !isset($_SESSION["uid"]) || empty($_SESSION["uid"]);
+$hasid = !isset($_SESSION['uid']) || empty($_SESSION['uid']);
 
-if(isset($_SESSION["username"]) && $hasid){
-	$uid = createUser($conn, $_SESSION["username"], $_SESSION["password"]);
-	$_SESSION["uid"] = $uid;
-	$first = $_SESSION["firstName"];
-	$last = $_SESSION["lastName"];
-	$city = $_SESSION["city"];
-	$bio = $_SESSION["description"];
+//creates user profile
+if(isset($_SESSION['username']) && $hasid){
+	$username = $_SESSION['username'];
+	$password = $_SESSION['password'];
+	$uid = createUser($conn, $username, $password);
+	$_SESSION['uid'] = $uid;
+	
+	$first = $_SESSION['firstName'];
+	$last = $_SESSION['lastName'];
+	$city = $_SESSION['city'];
+	$bio = $_SESSION['description'];
 	$intrest = $_SESSION['interests'];
 	
 	if(emptyInputSignup($first, $last, $city) != false){
@@ -46,11 +50,13 @@ if(isset($_SESSION["username"]) && $hasid){
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
 	header("location: ../app/home.php?error=none");
 }
+
+//updates user profile
 elseif(!$hasid) {
-	$uid = $_SESSION["uid"];
-	$bio = $_SESSION["description"];
-	$intrest = $_SESSION["interests"];
-	$city = $_SESSION["city"];
+	$uid = $_SESSION['uid'];
+	$bio = $_SESSION['description'];
+	$intrest = $_SESSION['interests'];
+	$city = $_SESSION['city'];
 	
 	if(emptyInputSignup($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");

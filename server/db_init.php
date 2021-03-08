@@ -87,8 +87,14 @@ INSERT INTO users (username, password) VALUES("Spin2Win", "YouSpinMeRightRoundBa
 INSERT INTO profiles VALUES (16, "Hard", "Drive", "San Jose", "I am a Hard Drive. Look, data!", "reading,writing,improv-comedy");
 INSERT INTO users (username, password) VALUES("LargeAndInCharge", "burritoMaster123");
 INSERT INTO profiles VALUES (17, "Hue", "Mongous", "Juneau", "I am Hue Mongous. I am very large. I enjoy movies and boardgames.", "board-games,eating,movies");
-
-
+INSERT INTO users (username, password) VALUES ("z", "z");
+INSERT INTO profiles VALUES (18, "z", "z", "z", "zzzz", "z");
+INSERT INTO users (username, password) VALUES ("Davvv", "qwerty");
+INSERT INTO profiles VALUES (19, "Davey", "Daverson", "Davidland", "Davy\'s the name dav tha game", "daves");
+INSERT INTO users (username, password) VALUES ("uwubean", "god");
+INSERT INTO profiles VALUES (20, "Thoth", "UwU", "Hell", "Ra Ra Rasputin Russias smollest uwu bean", "Chaos");
+INSERT INTO users (username, password) VALUES ("tomato", "tomatoSauce");
+INSERT INTO profiles VALUES (21, "Meatbally", "spagettis", "Italy", "Angry Pasta nosies", "Germany");
 
 
 
