@@ -1,6 +1,6 @@
 <?php
 
-function emptyInputSignup(...$params){
+function emptyInput(...$params){
 	$rtn = false;
 	foreach ($params as $param){
 		if(empty($param)){

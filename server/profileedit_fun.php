@@ -42,7 +42,7 @@ if(isset($_SESSION['username']) && $hasid){
 	$bio = $_SESSION['description'];
 	$intrest = $_SESSION['interests'];
 	
-	if(emptyInputSignup($first, $last, $city) != false){
+	if(emptyInput($first, $last, $city) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
@@ -58,7 +58,7 @@ elseif(!$hasid) {
 	$intrest = $_SESSION['interests'];
 	$city = $_SESSION['city'];
 	
-	if(emptyInputSignup($uid, $bio) != false){
+	if(emptyInput($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
