@@ -77,15 +77,16 @@
 							</div>
 						</div>
 					</div>
-					<input type="submit" name="submit2" value="Done" id="ICsubmit" class="epbutton">
+					<input type="submit" name="submit2" value="Confirm" id="ICsubmit" class="epbutton">
 				</form>
 			</div>
-			<!--Done button
+			<!--Done button-->
 			<div id="buttondiv">
-				<a href="../server/profileedit_fun.php">
-					<button type="button" class="epbutton">Done</button>
+				<a href="profile.php">
+					<!--The php in here is for checking if the description and city have been input before letting the done button be used-->
+					<button type="button" class="epbutton" <?php if(empty($_SESSION['description'])||empty($_SESSION['city'])) echo "title='Confirm a City and Description' disabled"; ?>>To Profile</button>
 				</a>
-			</div>-->
+			</div>
 		</div>
 		<script>
 			//This is actually for putting in the description and city and probably the interests
