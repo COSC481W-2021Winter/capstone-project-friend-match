@@ -67,7 +67,11 @@
 							<!--Interests-->
 							<div id="interestsdiv">
 								<p>Please enter your interests:</p>
-								<textarea id="interests" name="interests" rows="5" cols=""></textarea>
+								<input type="text" id="addinterest" name="addinterests" style="width:100%"/>
+								<input type="button" id="add" value="add interest"/>
+								<ul id="epul">
+									
+								</ul>
 							</div>
 							<!--City-->
 							<div id="citydiv" style="width: 50%; display: table-cell;">
@@ -94,9 +98,22 @@
 			{
 				document.getElementById("desc").innerHTML= '<?php echo $description;?>';
 				document.getElementById("citytext").value= '<?php echo $city;?>';
-				document.getElementById("interests").innerHTML= '<?php echo $interests;?>';
+				var interests = '<?php echo $interests;?>';
+				var interestsplit = interests.split("_");
+				for (var i = 0; i<interestsplit.length; i++)
+				{
+					var node = document.createElement('li');
+					node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+interestsplit[i]+'" name="interests[]" value="'+interestsplit[i]+'" checked><label for="'+interestsplit[i]+'">'+interestsplit[i]+'</label><br>';
+					document.getElementById('epul').appendChild(node);
+				}
 			}
-			
+			document.getElementById("add").onclick = function()
+			{
+				var label = document.getElementById("addinterest").value;
+				var node = document.createElement('li');
+				node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
+				document.getElementById('epul').appendChild(node);
+			}
 		</script>
 	</body>
 </html>
