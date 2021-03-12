@@ -21,9 +21,9 @@ if (isset($_POST['citytext']))
 //store interests in session
 if (isset($_POST['interests']))
 {
-	//$temp = $_POST['interests'];
-	//$inters = implode(",",$temp);
-	$_SESSION['interests'] = $_POST['interests'];//$inters;
+	$temp = $_POST['interests'];
+	$inters = implode("_",$temp);
+	$_SESSION['interests'] = $inters;
 }
 
 
