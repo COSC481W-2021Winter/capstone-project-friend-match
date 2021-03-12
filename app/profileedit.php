@@ -48,8 +48,8 @@
 			<div id="epPformdiv">
 				<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 					<p>Select your image:</p>
-					<input type="file" name="image" id="image">
-					<input type="submit" value="Upload Image" name="submit" accept="image/*">
+					<input type="file" name="image" id="image" accept="image/*">
+					<input type="submit" value="Upload Image" name="submit">
 				</form>
 			<div>
 
