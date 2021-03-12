@@ -12,11 +12,11 @@ if(isset($_SESSION["username"]) && $hasid){
   $bio = $_SESSION["description"];
   $interest = $_SESSION["interests"];
 
-  if(emptyInputSignup($first, $last, $user, $pwd, $pwdRepeat) != false){
+  if(emptyInput($first, $last, $user, $pwd, $pwdRepeat) != false){
 		header("location: ../app/profile.php?error=emptyinput");
 		exit();
 	}
 
-  getUserId($conn, $uid);
 }
+$id = $_SESSION["uid"];
  ?>
