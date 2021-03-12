@@ -21,9 +21,9 @@ if (isset($_POST['citytext']))
 //store interests in session
 if (isset($_POST['interests']))
 {
-	$temp = $_POST['interests'];
-	$inters = implode("_",$temp);
-	$_SESSION['interests'] = $inters;
+	//$temp = $_POST['interests'];
+	//$inters = implode(",",$temp);
+	$_SESSION['interests'] = $_POST['interests'];//$inters;
 }
 
 
@@ -48,7 +48,7 @@ if(isset($_SESSION['username']) && $hasid){
 	}
 	
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
-	header("location: ../app/home.php?error=none");
+	header("location: ../app/profileedit.php?error=none");
 }
 
 //updates user profile
@@ -63,7 +63,7 @@ elseif(!$hasid) {
 		exit();
 	}
 	
-	header("location: ../app/home.php?error=none");
+	header("location: ../app/profileedit.php?error=none");
 	updateProfile($conn, $uid, $city, $bio, $intrest);
 }
 else {
