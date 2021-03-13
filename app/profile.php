@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 require_once __DIR__ . '/../server/profile_fun.php';
  ?>
 <html lang="en">
@@ -36,29 +37,49 @@ require_once __DIR__ . '/../server/profile_fun.php';
   <div class="bio">
     <pre>
       <?php
-      $sql = "SELECT $bio FROM profiles;";
+
+      $sql = "SELECT * FROM profiles WHERE userid='$id';";
       $result = mysqli_query($conn, $sql);
       $resultCheck = mysqli_num_rows($result);
 
       if($resultCheck > 0){
+        while($row = mysqli_fetch_array($result)){
+          echo $row['bio'] . "<br>";
+
+        }
 
       } ?>
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
-        BLURB ABOUT THE PERSON BLURB ABOUT THE PERSON
     </pre>
   </div>
   <div style="display: table;">
   <div style="display: table-cell;">
     <form name="interests" method="POST" action="">
       <select name="hlist" size="7">
-        <?php
-        $sql = "SELECT $interest FROM profiles;";
+        <!--<?php
+        $sql = "SELECT * FROM profiles WHERE userid = '27';";
         $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result); ?>
-        <option disabled>Walking</option>
-        <option disabled>Knitting</option>
+        $resultCheck = mysqli_num_rows($result);
+
+        if($resultCheck > 0){
+          while($row = mysqli_fetch_array($result)){
+            echo $row['interests'] . "<br>";
+
+          }
+
+        } ?>-->
+        <option disabled><?php
+        $sql = "SELECT * FROM profiles WHERE userid = '$id';";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+
+        if($resultCheck > 0){
+          while($row = mysqli_fetch_array($result)){
+            echo $row['interests'] . "<br>";
+
+          }
+
+        } ?></option>
+        <!--<option disabled>Knitting</option>
         <option disabled>Reading</option>
         <option disabled>Floating</option>
         <option disabled>Talking</option>
@@ -70,17 +91,24 @@ require_once __DIR__ . '/../server/profile_fun.php';
         <option disabled>Hammocking</option>
         <option disabled>Boxing</option>
         <option disabled>Contemporary Painting</option>
-        <option disabled>Rock Climbing</option>
+        <option disabled>Rock Climbing</option>-->
       </select>
     </form>
   </div>
     <div style="display: table-cell;">
     <p1>
-      City: Evergreen
       <?php
-      $sql = "SELECT $city FROM profiles;";
+      $sql = "SELECT * FROM profiles WHERE userid = '$id';";
       $result = mysqli_query($conn, $sql);
-      $resultCheck = mysqli_num_rows($result); ?>
+      $resultCheck = mysqli_num_rows($result);
+
+      if($resultCheck > 0){
+        while($row = mysqli_fetch_array($result)){
+          echo $row['city'] . "<br>";
+
+        }
+
+      } ?>
     </p1>
   </div>
   <div style="display: table-cell;">

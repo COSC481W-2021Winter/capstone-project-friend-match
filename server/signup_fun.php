@@ -10,8 +10,9 @@ if(isset($_POST["submit"])) {
 	require_once 'friend_sql.php';
 	require_once 'functions.php';
 	
-	if(emptyInputSignup($first, $last, $user, $pwd, $pwdRepeat) != false){
-		header("location: ../app/SignUp.php?error=emptyinput");
+	
+	if(emptyInput($first, $last, $user, $pwd, $pwdRepeat) != false){
+		header("location: ../app/SignUp.php?error=emptyinput{$first}");
 		exit();
 	}
 	if(pwdMatch($pwd, $pwdRepeat) != false){

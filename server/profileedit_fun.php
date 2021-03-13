@@ -42,13 +42,13 @@ if(isset($_SESSION['username']) && $hasid){
 	$bio = $_SESSION['description'];
 	$intrest = $_SESSION['interests'];
 	
-	if(emptyInputSignup($first, $last, $city) != false){
+	if(emptyInput($first, $last, $city) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
 	
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
-	header("location: ../app/home.php?error=none");
+	header("location: ../app/profileedit.php?error=none");
 }
 
 //updates user profile
@@ -58,12 +58,12 @@ elseif(!$hasid) {
 	$intrest = $_SESSION['interests'];
 	$city = $_SESSION['city'];
 	
-	if(emptyInputSignup($uid, $bio) != false){
+	if(emptyInput($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
 	
-	header("location: ../app/home.php?error=none");
+	header("location: ../app/profileedit.php?error=none");
 	updateProfile($conn, $uid, $city, $bio, $intrest);
 }
 else {

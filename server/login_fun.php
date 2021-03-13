@@ -9,7 +9,7 @@ if(isset($_POST["submit"])) {
 	$password = $_POST['password'];
 	
 	/*
-	if(emptyInputSignup($username, $password) != false){
+	if(emptyInput($username, $password) != false){
 		header("Location: ../app/index.php?error=emptyinput");
 		exit();
 	}
