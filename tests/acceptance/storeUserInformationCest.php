@@ -21,26 +21,27 @@ class storeUserInformationCest
 		$I->seeInCurrentUrl('profileedit.php');
 		$I->fillField('desc','testFieldDescription Is used here');
 		$I->fillField('#citytext','New Donk City');
-		//fails to add
 		$I->fillField('#addinterest','Knitting');
-		$I->click('#add');
+		//$I->click('#add');
 		$I->click('Confirm');
 		$I->click('To Profile');
 		
 		$I->see('testFieldDescription Is used here');
 		$I->see('New Donk City');
-		//$I->see('Knitting');
+		$I->see('Knitting');
 		$I->click('Edit');
 		
 		$I->fillField('desc','testBio');
 		//remove interest Knitting
 		//$I->uncheckOption('#notify');
 		//^ doesn't work, bring up issue with JS
+		$I->fillField('#addinterest','testInterest');
 		$I->fillField('citytext','testCity');
 		$I->click('Confirm');
 		$I->click('To Profile');
 		$I->see('testBio');
 		$I->see('testCity');
+		$I->see('testInterest');
 		
     }
 }
