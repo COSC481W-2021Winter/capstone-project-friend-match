@@ -27,7 +27,7 @@ if(password_verify($password, $row['password']) == false){
 }
 
 session_start();
-$_SESSION["uid"] = row['userid'];
+$_SESSION["uid"] = $row['userid'];
 header("Location: ../app/home.php")
 ?>
 
