@@ -1,5 +1,5 @@
 <?php
-session_start();
+//dont need session start here cause its required on profile page already.
 require_once 'friend_sql.php';
 require_once 'functions.php';
 
