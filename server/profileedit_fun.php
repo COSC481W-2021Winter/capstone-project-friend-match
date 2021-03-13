@@ -23,9 +23,14 @@ if (isset($_POST['interests']))
 {
 	$temp = $_POST['interests'];
 	$inters = implode("_",$temp);
+	$holdArray = $inters;
 	$_SESSION['interests'] = $inters;
 }
-
+//store post from input line. allows tests to work.
+if (isset($_POST['addinterests']))
+{
+	$Rinterests = $_POST['addinterests'];
+}
 
 $hasid = !isset($_SESSION['uid']) || empty($_SESSION['uid']);
 
@@ -55,7 +60,9 @@ if(isset($_SESSION['username']) && $hasid){
 elseif(!$hasid) {
 	$uid = $_SESSION['uid'];
 	$bio = $_SESSION['description'];
-	$intrest = $_SESSION['interests'];
+	//original is one below, changed, should all still work normally.
+	//$intrest = $_SESSION['interests'];
+	$intrest = $holdArray."_".$Rinterests;
 	$city = $_SESSION['city'];
 	
 	if(emptyInput($uid, $bio) != false){
