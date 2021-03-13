@@ -12,6 +12,10 @@ class displayProfileTestCest
 		
 		$I->see('Profile');
         $I->click('Profile');
+		$I->see('testBio');
+		$I->see('testCity');
+		$I->see('testInterest');
+		$I->dontSee('profilepic'); //means some img loaded and not alt img
 		
     }
 }
