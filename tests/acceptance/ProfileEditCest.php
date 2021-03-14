@@ -61,6 +61,8 @@ class profileEditCest
     //Returns value to normal
     $I->click('Edit');
     $I->fillField('desc', 'testBio');
+	$I->fillField('#addinterest','testInterest');
+	$I->fillField('citytext','testCity');
     $I->click('submit2');
     $I->amOnPage('http://localhost/capstone/app/profile.php');
   }
