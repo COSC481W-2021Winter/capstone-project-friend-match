@@ -1,98 +1,75 @@
-<?php 
+<?php
 
 class navigationTestsCest
 {
-    public function _before(AcceptanceTester $I)
-    {
-    }
+  public function _before(AcceptanceTester $I)
+  {}
+  // tests
 
-    // tests
-	
-	//tests that user can signin
-    public function SignInTest(AcceptanceTester $I)
-    {
-		$I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','testUser');
-        $I->fillField('password','testPwd');
-		$I->see('Login');
-        $I->click('Login');
-		$I->see('Name19');
-		$I->see('Biography');
-		
-		//should be on home page
+  //tests that user can signin
+  public function navigationTest(AcceptanceTester $I)
+  {
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+    $I->fillField('username','testUser');
+    $I->fillField('password','testPwd');
+    $I->click('Login');
+
+		//Start at home page
 		$I->seeInCurrentUrl('home.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
-		
-		//test to go to profile page from home page
+
+    //Home -> Home
+    $I->click('Home');
+    $I->seeInCurrentUrl('home.php');
+    $I->see('Home');
+    $I->see('Profile');
+    $I->see('Logout');
+    $I->seeInCurrentUrl('home.php');
+
+    //Home -> Logout
+    $I->click('Logout');
+    $I->seeInCurrentUrl('logout.php');
+    $I->see('Confirm Logout?');
+    $I->see('No');
+    $I->click('No');
+
+		//Home -> Profile
 		$I->click('Profile');
 		$I->seeInCurrentUrl('profile.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
-		$I->see('BLURB ABOUT THE PERSON');
-		$I->see('Edit');
-		
-		//test to go to home page from profile page
+
+    //Profile -> Profile
+    $I->click('Profile');
+    $I->seeInCurrentUrl('profile.php');
+    $I->see('Home');
+    $I->see('Profile');
+    $I->see('Logout');
+
+		//Profile -> Home
 		$I->click('Home');
 		$I->seeInCurrentUrl('home.php');
 		$I->see('Home');
 		$I->see('Profile');
 		$I->see('Logout');
-		$I->see('Name19');
-		$I->see('Biography');
-		
-		//Test home page --> home page
-		$I->click('Home');
-		$I->seeInCurrentUrl('home.php');
-		$I->see('Home');
-		$I->see('Profile');
-		$I->see('Logout');
-		$I->see('Name19');
-		$I->see('Biography');
-		
-		//Test profile page --> profile page
-		$I->click('Profile');
-		$I->click('Profile');
-		$I->seeInCurrentUrl('profile.php');
-		$I->see('Home');
-		$I->see('Profile');
-		$I->see('Logout');
-		$I->see('BLURB ABOUT THE PERSON');
-		$I->see('Edit');
-		
-		//test profile --> logout page
+
+    //Profile -> Logout
+    $I->click('Profile');
 		$I->click('Logout');
 		$I->seeInCurrentUrl('logout.php');
 		$I->see('Confirm Logout?');
 		$I->see('No');
 		$I->click('No');
-		
-		//test home --> logout page
-		$I->click('Logout');
-		$I->seeInCurrentUrl('logout.php');	
-		$I->see('Confirm Logout?');
-		$I->see('No');
-		$I->click('No');
-		
-		//tests logout
+
+		//Logout
 		$I->click('Logout');
 		$I->see('Confirm Logout?');
 		$I->see('No');
 		$I->click('Confirm Logout?');
-		
-		//checks to make sure user is loggedout
 		$I->seeInCurrentUrl('index.php');
     }
-	
-	
 
 }
-
-
-
-
-
-
-
