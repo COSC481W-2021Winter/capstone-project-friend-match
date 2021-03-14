@@ -2,62 +2,66 @@
 
 class profileEditCest
 {
-    public function _before(AcceptanceTester $I)
-    {}
+  public function _before(AcceptanceTester $I)
+  {}
 
-    // tests
-    public function tryToTest(AcceptanceTester $I)
-    {}
+  // tests
+  public function tryToTest(AcceptanceTester $I)
+  {}
 
 	public function logIn(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','testUser');
-        $I->fillField('password','testPwd');
-        $I->click('Login');
-        $I->see('Home');
-    }
+  {
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+    $I->fillField('username','testUser');
+    $I->fillField('password','testPwd');
+    $I->click('Login');
+    $I->see('Home');
+  }
 
 	public function accessProfile(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/home.php');
-        $I->click('Profile');
+  {
+    $I->amOnPage('http://localhost/capstone/app/home.php');
+    $I->click('Profile');
 		$I->seeCurrentUrlEquals('/capstone/app/profile.php');
-        $I->click('Edit');
+    $I->click('Edit');
 		$I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
-    }
+  }
 
-	public function alterInfoDescription(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/profileedit.php');
-        $I->fillField('desc','x');
-        $I->click('submit1');
-    }
-	public function alterInfoInterestsLocation(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/profileedit.php');
-		$I->checkOption('form input[name=inter1]');
-		$I->checkOption('form input[name=inter2]');
-		$I->checkOption('form input[name=inter3]');
-		$I->checkOption('form input[name=inter4]');
-		$I->checkOption('form input[name=inter5]');
-		$I->checkOption('form input[name=inter6]');
-		$I->checkOption('form input[name=inter7]');
-		$I->checkOption('form input[name=inter8]');
-		$I->checkOption('form input[name=inter9]');
-		$I->fillField('citytext','x');
-		$I->click('submit2');
-    }
-	public function uploadImage(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/profileedit.php');
-        $I->attachFile('input[name=image]','spider.jpg');
-        $I->click('submit');
-    }
+	public function changeInfo(AcceptanceTester $I)
+  {
+    $I->amOnPage('http://localhost/capstone/app/profileedit.php');
+    $I->fillField('desc','x');
+    $I->fillField('addinterests','x');
+    $I->fillField('citytext','x');
+    $I->click('Confirm');
+  }
+
+  public function uploadImage(AcceptanceTester $I)
+  {
+    $I->amOnPage('http://localhost/capstone/app/profileedit.php');
+    $I->attachFile('input[name=image]','spider.jpg');
+    $I->click('submit');
+  }
+
 	public function storeInDatabase(AcceptanceTester $I)
-    {
-        $I->amOnPage('http://localhost/capstone/app/profileedit.php');
-		$I->click('Done');
-		$I->amOnPage('http://localhost/capstone/app/profile.php');
-    }
+  {
+    //Logs in as testUser
+    $I->amOnPage('http://localhost/capstone/app/index.php');
+    $I->fillField('username','testUser');
+    $I->fillField('password','testPwd');
+    $I->click('Login');
+    $I->click('Profile');
+    $I->see('testBio');
+    //Edits text and checks profile page
+    $I->click('Edit');
+    $I->fillField('desc', 'testingProfileUpdate');
+    $I->click('submit2');
+    $I->amOnPage('http://localhost/capstone/app/profile.php');
+    $I->see("testingProfileUpdate");
+    //Returns value to normal
+    $I->click('Edit');
+    $I->fillField('desc', 'testBio');
+    $I->click('submit2');
+    $I->amOnPage('http://localhost/capstone/app/profile.php');
+  }
 }
