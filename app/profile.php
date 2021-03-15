@@ -14,7 +14,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 
 
 </head>
-<div style="margin-top:-4%;margin-bottom:2%; width:100%;" >
+<div style="margin-top:-0%;margin-bottom:2%; width:100%;" >
 	<ul class = "navBarPP" id="navDiv">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
 			<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
