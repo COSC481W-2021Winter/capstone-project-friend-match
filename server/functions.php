@@ -94,9 +94,8 @@ function getUserId($conn,$user) {
 }
 
 //~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~~~~~~~~
-
+//create mathc with user's id and other's id
 function createMatch($conn, $uid, $likeid){
-	//create user
 	$sql = "INSERT INTO matches (userid, likeid) VALUES(?, ?);";
 	$stmt = $conn->prepare($sql);	
 	$stmt->bind_param('ii', $uid, $likeid);
@@ -104,6 +103,7 @@ function createMatch($conn, $uid, $likeid){
 	$stmt->close();
 }
 
+//return list of liked ids if user liked other and other liked user
 function getMatches($conn, $uid){
 	$sql = 'SELECT M1.likeid FROM matches M1, mathces M2 WHERE M1.userid = ? && M1.likeid = M2.userid && M2.likeid = ?;';
 	$stmt = $conn->prepare($sql);
