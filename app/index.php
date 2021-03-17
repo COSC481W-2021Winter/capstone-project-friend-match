@@ -7,12 +7,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/main.css">
 </head>
-  <body>
+  <body >
     <img id="logo" src="img/Friend_Match_Logo.svg" alt="logo">
-    <div class="container">
-      <form action="login.php" method="post">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="password" id="password" name="password" placeholder="Password">
+    <div class="container" style="background-color: #ffde17;">
+      <form action="login.php" method="post" >
+        <input type="text" id="username" name="username" placeholder="Username" style="border-color: #E9F1F7">
+        <input type="password" id="password" name="password" placeholder="Password" style="border-color: #E9F1F7">
         <button class="button" type="submit" name="submit" id="login-button" value="Submit">Login</button>
       </form>
       <p>Don't have an account?</p>
