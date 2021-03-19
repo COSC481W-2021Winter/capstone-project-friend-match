@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	require_once __DIR__ . '/../server/friend_sql.php';
+	require_once __DIR__ . '/../server/functions.php';
 ?>
 <html>
   <head>
@@ -111,4 +113,3 @@
   </body>
 
 </html>
-
