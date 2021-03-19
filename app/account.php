@@ -1,3 +1,11 @@
+<?php
+if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
+{
+	header("Location: ../app/index.php?error=noyouhavetologin");
+	exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
