@@ -3,7 +3,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>logout</title>
+    <title>Log Out</title>
+	<link rel="icon" href="img/Friend_Match_Logo.svg">
 	<style>
 	button.yes {font-size:200%; margin-left:45%; margin-top:5%; }
 	button.no {font-size:200%; margin-left:47%; margin-top:4%; width:10%; }	

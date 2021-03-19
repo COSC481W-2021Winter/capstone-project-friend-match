@@ -34,6 +34,7 @@
 		<title>Editing Profile</title>
 		<!--<link rel="stylesheet" href="css/main.css">-->
 		<link rel="stylesheet" href="css/profed.css">
+		<link rel="icon" href="img/Friend_Match_Logo.svg">
 	</head>
 	<body onload="changeDescription()">
 		

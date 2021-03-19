@@ -13,7 +13,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/jquery.ui.touch-punch.min.js"></script>
-
+	<title>Home</title>
+    <link rel="icon" href="img/Friend_Match_Logo.svg">
     <script>
       $(document).ready(function(){
         var swipe_left = 0;

@@ -11,7 +11,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
     <title>Profile</title>
     <link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
-
+    <link rel="icon" href="img/Friend_Match_Logo.svg">
 </head>
 <div style="margin-top:-0%;margin-bottom:2%; width:100%;" >
 	<ul class = "navBarPP" id="navDiv">
