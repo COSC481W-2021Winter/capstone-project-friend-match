@@ -44,7 +44,7 @@ CREATE TABLE profiles (
 );
 
 CREATE TABLE matches (
-    matchid int(11) NOT NULL,
+    matchid int(11) NOT NULL AUTO_INCREMENT,
     userid int(11) NOT NULL,
     likeid int(11) NOT NULL,
     PRIMARY KEY(matchid),
