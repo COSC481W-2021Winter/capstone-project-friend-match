@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
 	session_start();
 	//if the session containing the user id is set and not empty make some variables for the user's information and match them to the database
 	if(isset($_SESSION['uid']) && !empty($_SESSION['uid']))
@@ -36,26 +36,23 @@
 		<link rel="stylesheet" href="css/profed.css">
 	</head>
 	<body onload="changeDescription()">
-		
-		
+
+
 		<!--Image div-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
 		</div>
-		
+
 		<div class="epcontainer">
 			<!--Upload Picture Form-->
+			<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 			<div id="epPformdiv">
-				<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 					<p>Select your image:</p>
 					<input type="file" name="image" id="image">
-					<input type="submit" value="Upload Image" name="submit">
-				</form>
 			<div>
 
 			<div id="epDIformdiv">
 				<!--Description&Interests Forms-->
-				<form method="post" action="../server/profileedit_fun.php">
 					<!--Description-->
 					<div class="eptextarea">
 						<p>Enter Your Self Description:</p>
@@ -70,20 +67,20 @@
 								<input type="text" id="addinterest" name="addinterests" style="width:100%"/>
 								<input type="button" id="add" value="add interest"/>
 								<ul id="epul">
-									
+
 								</ul>
 							</div>
 							<!--City-->
 							<div id="citydiv" style="width: 50%; display: table-cell;">
 								<label for="city">City:</label>
 								<input type="text" id="citytext" name="citytext" style="width:100%"><br><br>
-								
+
 							</div>
 						</div>
 					</div>
 					<input type="submit" name="submit2" value="Confirm" id="ICsubmit" class="epbutton">
-				</form>
 			</div>
+			</form>
 			<!--Done button-->
 			<div id="buttondiv">
 				<a href="profile.php">
