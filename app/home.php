@@ -6,7 +6,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css"/>
-	<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+	<link rel="stylesheet" href="css/nav.css"/>
     <link rel="stylesheet" href="css/swipes.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -46,25 +46,21 @@
 
       })
     </script>
-  </head>
-
-	<div style="margin-top:.30%;">
+	
+	<div>
+		
 		<ul class = "navBar">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarB" onclick="Home()" id="Home" > Home</button></a>
 			<a href="profile.php"  style="text-decoration:none;"><button class="NavBar" onclick="Profile()" id="Profile"> Profile</button></a>
 			<a href="logout.php"  style="text-decoration:none;"><button class="NavBar" onclick="Logout()" id="Logout"> Logout</button></a>
 		</ul>
 	</div>
-
-
-
 	<script>
 	function Home(){
 			var currentfile = window.location.pathname;
 			//removes current file its at and grabs just directory
 			var directory = currentfile.substring(0, currentfile.lastIndexOf('/'));
 			window.location.pathname = directory+'/home.php';
-
 		}
 		function Profile(){
 			var currentfile = window.location.pathname;
@@ -79,8 +75,8 @@
 			window.location.pathname = directory+'/logout.php';
 		}
 	</script>
-
-
+	<a href="home.php"><img id="logo" src="img/Friend_Match_Logo.svg" alt="logo" height="80" class="navImg"></a> 	
+  </head>
 
   <body>
     <!-- Cards -->
