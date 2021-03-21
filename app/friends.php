@@ -22,5 +22,36 @@
 
 <?php
   session_start();
-  require_once __DIR__ . '/../server/profile_fun.php';
+  //require_once __DIR__ . '/../server/profile_fun.php';
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbName = "friend-match";
+  $conn = new mysqli($servername, $username, $password, $dbName);
+
+  if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+  }
+
+  //Grabs user matches
+  $stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ?");
+  $stmt->bind_param("s", $_SESSION["uid"]);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if($result->num_rows == 0) {
+    echo "No Matches! Sad :(";
+  } else {
+    foreach ($result as $row) {
+      $qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
+      $qry->bind_param("s", $row["likeid"]);
+      $qry->execute();
+      $match = $qry->get_result()->fetch_assoc();
+      echo "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
+      $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
+      $rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
+      $rtn->execute();
+      echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
+    }
+  }
  ?>
