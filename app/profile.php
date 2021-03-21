@@ -2,6 +2,12 @@
 <?php
 session_start();
 require_once __DIR__ . '/../server/profile_fun.php';
+
+if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
+{
+	header("Location: ../app/index.php?error=noyouhavetologin");
+	exit();
+}
  ?>
 <html lang="en">
 <head>
@@ -12,9 +18,8 @@ require_once __DIR__ . '/../server/profile_fun.php';
     <link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 
-
 </head>
-<div style="margin-top:-0%;margin-bottom:2%; width:100%;" >
+<div style="margin-top:-4%;margin-bottom:2%; width:100%;" >
 	<ul class = "navBarPP" id="navDiv">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
 			<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
@@ -24,9 +29,11 @@ require_once __DIR__ . '/../server/profile_fun.php';
 
 <script>
 	document.getElementById("butto").style.height = "50px";
+	document.getElementById("butto2").style.height = "50px";
+	document.getElementById("butto3").style.height = "50px";
 	document.getElementById("butto").style.fontSize = "125%";
 	document.getElementById("butto2").style.fontSize = "125%";
-	document.getElementById("butto3").style.fontSize = "125%";
+	document.getElementById("butto3").style.fontSize = "125%"; 
 </script>
 
 

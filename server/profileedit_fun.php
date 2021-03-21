@@ -103,6 +103,7 @@ elseif(!$hasid) {
 	//$intrest = $_SESSION['interests'];
 	$intrest = $holdArray."_".$Rinterests;
 	$city = $_SESSION['city'];
+	$pic = $_SESSION['picture'];
 
 	if(emptyInput($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
@@ -110,7 +111,7 @@ elseif(!$hasid) {
 	}
 
 	header("location: ../app/profileedit.php?error=none");
-	updateProfile($conn, $uid, $city, $bio, $intrest);
+	updateProfile($conn, $uid, $city, $bio, $intrest, $pic);
 }
 else {
 	header("location: ../app/SignUp.php?error=nosession");

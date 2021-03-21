@@ -63,18 +63,47 @@ function createProfile($conn, $uid, $fname, $lname, $city, $bio, $interest){
 	$stmt->close();
 }
 
-function updateProfile($conn, $uid, $city, $bio, $interest){
-	$sql = "UPDATE profiles SET city = ?, bio = ?, interests = ? WHERE userid = ?;";
-	$stmt = $conn->prepare($sql);
-
-	$stmt->bind_param('sssi', $city, $bio, $interest, $uid);
-	$stmt->execute();
-	$stmt->close();
+function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
+	$sql = 'UPDATE profiles SET city="' . $city . '", bio="' . $bio . '", interests="' . $interest . '", photo="' . $photo . '" WHERE userid=' . $uid . ';';
+	if(mysqli_query($conn, $sql)) {
+		echo "all good";
+	} else {
+		echo mysqli_error($conn);
+	}
 }
 
 function getUserId($conn,$user) {
 	$inbetween = userExists($conn, $user);
 	return $inbetween['userid'];
 
+}
+
+function getUserProfiles($conn, $uid, $firstName, $lastName, $city, $bio, $interest) {
+	$sql = 'SELECT * FROM profiles VALUES(?, ?, ?, ?, ?, ?);';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('isssss', $uid, $firstName, $lastName, $city, $bio, $interest);
+	$stmt->execute();
+	$stmt->close();
+
+}
+
+function getEligibleUsers($conn, $uid) {
+	$sql = 'SELECT city FROM profiles WHERE userid="' . $uid . '";';
+	$res = mysqli_query($conn, $sql);
+
+	if(mysqli_num_rows($res) == 1) {
+		$resRows = mysqli_fetch_assoc($res);
+		$userCity = $resRows["city"];
+		$sql = 'SELECT * FROM profiles WHERE city="' . $userCity . '" AND userid !=' . $uid . ';';
+		$result = mysqli_query($conn, $sql);
+
+		if(mysqli_num_rows($result) > 0) {
+			while($row = mysqli_fetch_assoc($result)) {
+				echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
+			}
+		} else {
+			echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
+		}
+	}
 }
 ?>
