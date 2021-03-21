@@ -63,13 +63,13 @@ function createProfile($conn, $uid, $fname, $lname, $city, $bio, $interest){
 	$stmt->close();
 }
 
-function updateProfile($conn, $uid, $city, $bio, $interest){
-	$sql = "UPDATE profiles SET city = ?, bio = ?, interests = ? WHERE userid = ?;";
-	$stmt = $conn->prepare($sql);
-
-	$stmt->bind_param('sssi', $city, $bio, $interest, $uid);
-	$stmt->execute();
-	$stmt->close();
+function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
+	$sql = 'UPDATE profiles SET city="' . $city . '", bio="' . $bio . '", interests="' . $interest . '", photo="' . $photo . '" WHERE userid=' . $uid . ';';
+	if(mysqli_query($conn, $sql)) {
+		echo "all good";
+	} else {
+		echo mysqli_error($conn);
+	}
 }
 
 function getUserId($conn,$user) {
