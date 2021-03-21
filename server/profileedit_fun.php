@@ -40,18 +40,18 @@ if(isset($_SESSION['username']) && $hasid){
 	$password = $_SESSION['password'];
 	$uid = createUser($conn, $username, $password);
 	$_SESSION['uid'] = $uid;
-	
+
 	$first = $_SESSION['firstName'];
 	$last = $_SESSION['lastName'];
 	$city = $_SESSION['city'];
 	$bio = $_SESSION['description'];
 	$intrest = $_SESSION['interests'];
-	
+
 	if(emptyInput($first, $last, $city) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
-	
+
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
 	header("location: ../app/profileedit.php?error=none");
 }
@@ -64,14 +64,15 @@ elseif(!$hasid) {
 	//$intrest = $_SESSION['interests'];
 	$intrest = $holdArray."_".$Rinterests;
 	$city = $_SESSION['city'];
-	
+	$pic = $_SESSION['picture'];
+
 	if(emptyInput($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
-	
+
 	header("location: ../app/profileedit.php?error=none");
-	updateProfile($conn, $uid, $city, $bio, $intrest);
+	updateProfile($conn, $uid, $city, $bio, $intrest, $pic);
 }
 else {
 	header("location: ../app/SignUp.php?error=nosession");
