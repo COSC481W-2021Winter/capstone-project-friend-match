@@ -42,7 +42,6 @@
 	</head>
 	<body onload="changeDescription()">
 
-		
 		<!--Image div-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
@@ -50,17 +49,14 @@
 
 		<div class="epcontainer">
 			<!--Upload Picture Form-->
+			<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 			<div id="epPformdiv">
-				<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 					<p>Select your image:</p>
 					<input type="file" name="image" id="image">
-					<input type="submit" value="Upload Image" name="submit">
-				</form>
 			<div>
 
 			<div id="epDIformdiv">
 				<!--Description&Interests Forms-->
-				<form method="post" action="../server/profileedit_fun.php">
 					<!--Description-->
 					<div class="eptextarea">
 						<p>Enter Your Self Description:</p>
@@ -87,8 +83,8 @@
 						</div>
 					</div>
 					<input type="submit" name="submit2" value="Confirm" id="ICsubmit" class="epbutton">
-				</form>
 			</div>
+			</form>
 			<!--Done button-->
 			<div id="buttondiv">
 				<a href="profile.php">

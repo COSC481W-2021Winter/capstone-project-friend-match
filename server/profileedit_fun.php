@@ -3,6 +3,45 @@ session_start();
 require_once 'friend_sql.php';
 require_once 'functions.php';
 
+//This builds the image path: (directory, name, then extension).
+$image_directory = __DIR__ . "/../app/img/profilePictures/";
+$filepath = $image_directory . basename($_SESSION["uid"]);
+$imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+$filepath = $filepath . "." . $imageFileType;
+
+$uploadOk = 1;
+
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
+
+if ($_FILES["image"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
+echo $filepath . " " . $imageFileType;
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+  echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+  $uploadOk = 0;
+}
+
+if ($uploadOk == 0) {
+  echo "Sorry, your file was not uploaded.";
+} else {
+  if (move_uploaded_file($_FILES["image"]["tmp_name"], $filepath)) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
+}
+
 //store description in session
 if (isset($_POST['desc']))
 {
