@@ -14,7 +14,7 @@ class profileTestCest
       $I->fillField('password', 'testPwd');
       $I->click('Login');
       $I->see('Home');
-      $I->see('Biography');
+      $I->see('Seymour');
       $I->see('Profile');
       $I->click('Profile');
       $I->seeInCurrentUrl('profile.php');
