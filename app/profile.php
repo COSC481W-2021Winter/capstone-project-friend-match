@@ -9,7 +9,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
     <link rel="icon" href="img/Friend_Match_Logo.svg">
 	<div style="margin-bottom:2%; width:100%;" >
@@ -37,7 +37,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 
 <body>
   <div class="container">
-    <img style="border-style: solid;" id="pfp" src="img/randy.png" alt="profilepic" width="400" height="500"></img>
+    <img style="border-style: solid;" id="pfp" src="img/randy.png" alt="profilepic"></img>
   <div class="bio">
     <pre>
       <?php
@@ -56,7 +56,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
     </pre>
   </div>
   <div style="display: table;">
-  <div style="display: table-cell;">
+  <div style="display: table-row;">
     <form name="interests" method="POST" action="">
       <select name="hlist" size="7">
         <!--<?php
@@ -99,7 +99,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
       </select>
     </form>
   </div>
-    <div style="display: table-cell;">
+    <div style="display: table-row;">
     <p1>
       <?php
       $sql = "SELECT * FROM profiles WHERE userid = '$id';";
@@ -115,7 +115,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
       } ?>
     </p1>
   </div>
-  <div style="display: table-cell;">
+  <div style="display: table-row;">
     <a href="profileedit.php">
       <button class="button">Edit</button>
     </a>

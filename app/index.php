@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/general.css">
   <title>Sign in</title>
   <link rel="icon" href="img/Friend_Match_Logo.svg">
 </head>
-  <body>
-    <img id="logo" src="img/Friend_Match_Logo.svg" alt="logo">
+  <body class="login">
+    
     <div class="container" style="background-color: #ffde17;">
+	  <img id="logo" src="img/Friend_Match_Logo.svg" alt="logo">
       <form action="login.php" method="post" >
         <input type="text" id="username" name="username" placeholder="Username" style="border-color: #E9F1F7">
         <input type="password" id="password" name="password" placeholder="Password" style="border-color: #E9F1F7">

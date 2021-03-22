@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sign up</title>
   <link rel="icon" href="img/Friend_Match_Logo.svg">
-  <link rel="stylesheet" href="css/signUp.css">
+  <link rel="stylesheet" href="css/general.css">
 </head>
   <body>
     <div class="container">
