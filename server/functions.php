@@ -106,4 +106,25 @@ function getEligibleUsers($conn, $uid) {
 		}
 	}
 }
+
+//~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~~~~~~~~
+//create mathc with user's id and other's id
+function createMatch($conn, $uid, $likeid){
+	$sql = "INSERT INTO matches (userid, likeid) VALUES(?, ?);";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('ii', $uid, $likeid);
+	$stmt->execute();
+	$stmt->close();
+}
+
+//return list of liked ids if user liked other and other liked user
+function getMatches($conn, $uid){
+	$sql = 'SELECT M1.likeid FROM matches M1, matches M2 WHERE M1.userid = ? && M1.likeid = M2.userid && M2.likeid = ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('ii', $uid, $uid);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	return $result;
+	$stmt->close();
+}
 ?>
