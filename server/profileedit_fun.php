@@ -5,9 +5,10 @@ require_once 'functions.php';
 
 //This builds the image path: (directory, name, then extension).
 $image_directory = __DIR__ . "/../app/img/profilePictures/";
-$filepath = $image_directory . basename($_SESSION["uid"]);
+$fileName = basename($_SESSION["uid"]);
 $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
-$filepath = $filepath . "." . $imageFileType;
+$fileName = $fileName . "." . $imageFileType;
+$filepath = $image_directory . $fileName;
 
 $uploadOk = 1;
 
@@ -36,7 +37,7 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 } else {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $filepath)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+    $_SESSION['picture'] = $fileName;
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
@@ -48,10 +49,10 @@ if (isset($_POST['desc']))
 	$_SESSION['description'] = $_POST['desc'];
 }
 //store image in session
-if (isset($_POST['image']))
-{
-	$_SESSION['picture'] = $_POST['image'];
-}
+// if (isset($_POST['image']))
+// {
+// 	$_SESSION['picture']
+// }
 //store city in session
 if (isset($_POST['citytext']))
 {
@@ -105,13 +106,14 @@ elseif(!$hasid) {
 	$city = $_SESSION['city'];
 	$pic = $_SESSION['picture'];
 
+
 	if(emptyInput($uid, $bio) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
 
-	header("location: ../app/profileedit.php?error=none");
 	updateProfile($conn, $uid, $city, $bio, $intrest, $pic);
+  header("location: ../app/profileedit.php?error=none" . $pic . "steve");
 }
 else {
 	header("location: ../app/SignUp.php?error=nosession");
