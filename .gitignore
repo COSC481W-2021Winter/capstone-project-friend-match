@@ -2,3 +2,4 @@ vendor/
 codeception.yml
 composer.json
 composer.lock
+app/img/profilePictures/
