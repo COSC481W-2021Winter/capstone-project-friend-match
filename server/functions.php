@@ -1,5 +1,10 @@
 <?php
 
+if (isset($_POST['createMatch'])){
+	$args = $_POST['createMatch'];
+	createMatch($args[0], $args[1]);
+}
+
 // Return true if any of the parameters are empty
 function emptyInput(...$params){
 	$rtn = false;
@@ -117,7 +122,8 @@ function getEligibleUsers($conn, $uid) {
 //~~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~
 
 // Create match with user's id and other's id
-function createMatch($conn, $uid, $likeid){
+function createMatch($uid, $likeid){
+	require_once 'friend_sql.php';
 	$sql = "INSERT INTO matches (userid, likeid) VALUES(?, ?);";
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param('ii', $uid, $likeid);
