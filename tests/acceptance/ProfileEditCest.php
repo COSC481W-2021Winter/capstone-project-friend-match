@@ -66,4 +66,10 @@ class profileEditCest
     $I->click('submit2');
     $I->amOnPage('http://localhost/capstone/app/profile.php');
   }
+  
+  public function testForceLogin(AcceptanceTester $I)
+  {
+	$I->amOnPage('http://localhost/capstone/app/profileedit.php');
+	$I->seeInCurrentUrl('index.php');
+  }
 }
