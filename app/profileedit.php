@@ -37,8 +37,9 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Editing Profile</title>
-		<!--<link rel="stylesheet" href="css/main.css">-->
-		<link rel="stylesheet" href="css/profed.css">
+		<link rel="stylesheet" href="css/general.css">
+		<!--<link rel="stylesheet" href="css/profed.css">-->
+		<link rel="icon" href="img/Friend_Match_Logo.svg">
 	</head>
 	<body onload="changeDescription()">
 
@@ -46,13 +47,15 @@
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
 		</div>
-
-		<div class="epcontainer">
+		<div class="container">
 			<!--Upload Picture Form-->
 			<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 			<div id="epPformdiv">
 					<p>Select your image:</p>
-					<input type="file" name="image" id="image">
+          <label for="image" class="button">
+						Pick Image
+					</label>
+					<input type="file" name="image" id="image" class="file-upload" style="display:none">
 			<div>
 
 			<div id="epDIformdiv">
@@ -69,7 +72,7 @@
 							<div id="interestsdiv">
 								<p>Please enter your interests:</p>
 								<input type="text" id="addinterest" name="addinterests" style="width:100%"/>
-								<input type="button" id="add" value="add interest"/>
+								<input type="button" id="add" value="Add Interest" class="button"/>
 								<ul id="epul">
 
 								</ul>
@@ -82,14 +85,14 @@
 							</div>
 						</div>
 					</div>
-					<input type="submit" name="submit2" value="Confirm" id="ICsubmit" class="epbutton">
+					<input type="submit" name="submit2" value="Confirm" id="ICsubmit" class="button">
 			</div>
 			</form>
 			<!--Done button-->
 			<div id="buttondiv">
 				<a href="profile.php">
 					<!--The php in here is for checking if the description and city have been input before letting the done button be used-->
-					<button type="button" class="epbutton" <?php if(empty($_SESSION['description'])||empty($_SESSION['city'])) echo "title='Confirm a City and Description' disabled"; ?>>To Profile</button>
+					<button type="button" class="button" <?php if(empty($_SESSION['description'])||empty($_SESSION['city'])) echo "title='Confirm a City and Description' disabled"; ?>>To Profile</button>
 				</a>
 			</div>
 		</div>
