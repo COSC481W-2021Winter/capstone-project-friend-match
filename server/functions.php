@@ -58,7 +58,6 @@ function createUser($conn, $name, $pwd){
 function getUserId($conn,$user) {
 	$inbetween = userExists($conn, $user);
 	return $inbetween['userid'];
-
 }
 
 //~~~~~~~~~~~~Profile Table~~~~~~~~~~~~
@@ -86,12 +85,12 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
 	$stmt = $conn->prepare($sql);
+	
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-
+	
 	$result = $stmt->get_result();
 	return $result;
-
 	$stmt->close();
 }
 

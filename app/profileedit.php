@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-
 	//if the session containing the user id is set and not empty make some variables for the user's information and match them to the database
 	if(isset($_SESSION['uid']) && !empty($_SESSION['uid']))
 	{
@@ -27,7 +26,8 @@
 			$interests="";
 		}
 	}
-	else{
+	else if(!isset($_SESSION['username']))
+	{
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}

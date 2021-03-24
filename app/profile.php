@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require_once __DIR__ . '/../server/profile_fun.php';
 
 if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 {
 	header("Location: ../app/index.php?error=noyouhavetologin");
 	exit();
 }
+require_once __DIR__ . '/../server/profile_fun.php';
  ?>
 <html lang="en">
 <head>

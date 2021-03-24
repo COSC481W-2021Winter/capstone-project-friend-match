@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-  require_once '../server/friend_sql.php';
-	require_once '../server/functions.php';
 
 	if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 	{
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
+	require_once '../server/friend_sql.php';
+	require_once '../server/functions.php';
 ?>
 <html>
   <head>

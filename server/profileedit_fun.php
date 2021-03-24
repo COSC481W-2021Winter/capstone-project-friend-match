@@ -78,8 +78,6 @@ $hasid = !isset($_SESSION['uid']) || empty($_SESSION['uid']);
 if(isset($_SESSION['username']) && $hasid){
 	$username = $_SESSION['username'];
 	$password = $_SESSION['password'];
-	$uid = createUser($conn, $username, $password);
-	$_SESSION['uid'] = $uid;
 
 	$first = $_SESSION['firstName'];
 	$last = $_SESSION['lastName'];
@@ -92,7 +90,9 @@ if(isset($_SESSION['username']) && $hasid){
 		exit();
 	}
 
+	$uid = createUser($conn, $username, $password);
 	createProfile($conn, $uid, $first, $last, $city, $bio, $intrest);
+	$_SESSION['uid'] = $uid;
 	header("location: ../app/profileedit.php?error=none");
 }
 
