@@ -1,5 +1,6 @@
 <?php
 
+// Return true if any of the parameters are empty
 function emptyInput(...$params){
 	$rtn = false;
 	foreach ($params as $param){
@@ -10,17 +11,17 @@ function emptyInput(...$params){
 	return $rtn;
 }
 
+// Returns true if parameters don't match
 function pwdMatch($pwd, $pwdRepeat){
-	$rtn;
-	if($pwd != $pwdRepeat){
-		$rtn = true;
-	}
-	else{
-		$rtn = false;
-	}
-	return $rtn;
+	return $pwd != $pwdRepeat;
 }
 
+//~~~~~~~~~~~~User Table~~~~~~~~~~~~
+
+/*
+* Return false if user does not exists
+* Return user if user exsits
+*/
 function userExists($conn, $user){
 	$sql = 'SELECT * FROM users WHERE username = ?;';
 	$stmt = $conn->prepare($sql);
@@ -38,8 +39,8 @@ function userExists($conn, $user){
 	$stmt->close();
 }
 
+// Add user to table and return its id
 function createUser($conn, $name, $pwd){
-	//create user
 	$sql = "INSERT INTO users (username, password) VALUES(?, ?);";
 	$stmt = $conn->prepare($sql);
 
@@ -48,13 +49,22 @@ function createUser($conn, $name, $pwd){
 	$stmt->bind_param('ss', $name, $hashedPwd);
 	$stmt->execute();
 
-	//return most recent users id
 	return mysqli_insert_id($conn);
 	$stmt->close();
 }
 
+
+// Get a users Id
+function getUserId($conn,$user) {
+	$inbetween = userExists($conn, $user);
+	return $inbetween['userid'];
+
+}
+
+//~~~~~~~~~~~~Profile Table~~~~~~~~~~~~
+
+// Add profile to table
 function createProfile($conn, $uid, $fname, $lname, $city, $bio, $interest){
-	//create user
 	$sql = 'INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES(?, ?, ?, ?, ?, ?);';
 	$stmt = $conn->prepare($sql);
 
@@ -72,19 +82,17 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 	}
 }
 
-function getUserId($conn,$user) {
-	$inbetween = userExists($conn, $user);
-	return $inbetween['userid'];
-
-}
-
-function getUserProfiles($conn, $uid, $firstName, $lastName, $city, $bio, $interest) {
-	$sql = 'SELECT * FROM profiles VALUES(?, ?, ?, ?, ?, ?);';
+// Returns user's profile
+function getProfile($conn, $uid){
+	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('isssss', $uid, $firstName, $lastName, $city, $bio, $interest);
+	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-	$stmt->close();
 
+	$result = $stmt->get_result();
+	return $result;
+
+	$stmt->close();
 }
 
 function getEligibleUsers($conn, $uid) {
@@ -107,8 +115,9 @@ function getEligibleUsers($conn, $uid) {
 	}
 }
 
-//~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~~~~~~~~
-//create mathc with user's id and other's id
+//~~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~
+
+// Create match with user's id and other's id
 function createMatch($conn, $uid, $likeid){
 	$sql = "INSERT INTO matches (userid, likeid) VALUES(?, ?);";
 	$stmt = $conn->prepare($sql);
@@ -117,7 +126,8 @@ function createMatch($conn, $uid, $likeid){
 	$stmt->close();
 }
 
-//return list of liked ids if user liked other and other liked user
+// Return list of mutually liked users
+// Mutually = user liked other and other liked user
 function getMatches($conn, $uid){
 	$sql = 'SELECT M1.likeid FROM matches M1, matches M2 WHERE M1.userid = ? && M1.likeid = M2.userid && M2.likeid = ?;';
 	$stmt = $conn->prepare($sql);
