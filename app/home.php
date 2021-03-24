@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-  require_once '../server/friend_sql.php';
-	require_once '../server/functions.php';
 
 	if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 	{
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
+	require_once '../server/friend_sql.php';
+	require_once '../server/functions.php';
+	echo "<script> const uid = {$_SESSION['uid']}; </script>";
 ?>
 <html>
   <head>
@@ -38,6 +39,7 @@
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).hide();
+		  SwipeRight();
         });
 
         $(".t_left").click(function(){
@@ -50,6 +52,7 @@
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).parent().parent().hide();
+		  SwipeRight();
         })
 
       })
@@ -97,5 +100,17 @@
 			</div>
       <button id="refresher" onClick="window.location.reload();">Refresh Page</button>
   </body>
-
+	
+	<script>
+	function SwipeRight(){
+		$.ajax({
+			url: '../server/functions.php',
+			type: 'POST',
+			data: {'createMatch': [uid, 2]},
+			success: function(data) {
+				console.log(data);
+			}
+		});
+	}
+	</script>
 </html>
