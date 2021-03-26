@@ -22,6 +22,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 		<ul class = "navBarPP" id="navDiv">
 				<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
 				<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
+				<a href="friends.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto4"> Friends</button></a>
 				<a href="logout.php" style="text-decoration:none;"><button class="NavBarPP" id="butto3"> Logout</button></a>
 		</ul>
 	</div>
@@ -29,9 +30,11 @@ require_once __DIR__ . '/../server/profile_fun.php';
 		document.getElementById("butto").style.height = "50px";
 		document.getElementById("butto2").style.height = "50px";
 		document.getElementById("butto3").style.height = "50px";
+		document.getElementById("butto4").style.height = "50px";
 		document.getElementById("butto").style.fontSize = "125%";
 		document.getElementById("butto2").style.fontSize = "125%";
 		document.getElementById("butto3").style.fontSize = "125%"; 
+		document.getElementById("butto4").style.fontSize = "125%"; 
 	</script>
 
 </head>
