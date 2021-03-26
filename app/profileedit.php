@@ -43,7 +43,7 @@
 	</head>
 	<body onload="changeDescription()">
 
-		<!--Image div-->
+		<!--Image div that seems like it might be useful later-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
 		</div>
@@ -111,6 +111,7 @@
 					document.getElementById('epul').appendChild(node);
 				}
 			}
+			//this is for adding interests
 			document.getElementById("add").onclick = function()
 			{
 				var label = document.getElementById("addinterest").value;
