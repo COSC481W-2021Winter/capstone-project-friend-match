@@ -37,6 +37,32 @@ ul.navBarPP {
 	width:100%;
 }
 
+ul.navBarFF {
+    list-style-type: none;
+    width: 100%;
+    background-color:#95ccfc;
+	font-family: sans-serif;
+	text-align:center;
+	text-decoration:none;
+	margin-top:-23%;
+	position:fixed;
+	z-index:2;
+	padding:5px;
+}
+button.NavBarFF {
+  text-decoration: none;
+  width:32% !important;
+  color:#6a0dad !important;
+  background-color:#f0f8ff !important;
+  display:inline;
+  border: 4px solid #FFFFFF !important;
+  text-shadow: 1px 0px white;
+  font-weight: bold;
+  border-radius:6px;
+  font-size:125%;
+  padding: 5px;
+}
+
 button.NavBar {
   text-decoration: none;
   width:30% !important;
