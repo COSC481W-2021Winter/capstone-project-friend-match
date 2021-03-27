@@ -101,7 +101,7 @@ elseif(!$hasid) {
 	$bio = $_SESSION['description'];
 	//original is one below, changed, should all still work normally.
 	//$intrest = $_SESSION['interests'];
-	//$intrest = $holdArray."_".$Rinterests;
+	$intrest = $holdArray."_".$Rinterests;
 	$city = $_SESSION['city'];
 	$pic = $_SESSION['picture'];
 
