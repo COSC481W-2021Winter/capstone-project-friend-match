@@ -86,12 +86,6 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 	}
 }
 
-//grabs just the userID and returns it
-function getUserId($conn,$user) {
-	$inbetween = userExists($conn, $user);
-	return $inbetween['userid'];
-}
-
 // Returns user's profile
 function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';

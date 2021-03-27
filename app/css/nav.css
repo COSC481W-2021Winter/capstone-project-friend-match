@@ -49,9 +49,10 @@ ul.navBarFF {
 	z-index:2;
 	padding:5px;
 }
+
 button.NavBarFF {
   text-decoration: none;
-  width:32% !important;
+  width:23% !important;
   color:#6a0dad !important;
   background-color:#f0f8ff !important;
   display:inline;
