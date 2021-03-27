@@ -71,7 +71,7 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 		echo mysqli_error($conn);
 	}
 }
-
+//grabs just the userID and returns it
 function getUserId($conn,$user) {
 	$inbetween = userExists($conn, $user);
 	return $inbetween['userid'];
