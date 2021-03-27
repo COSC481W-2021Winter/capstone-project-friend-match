@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 session_start();
-require_once __DIR__ . '/../server/profile_fun.php';
 
 if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 {
 	header("Location: ../app/index.php?error=noyouhavetologin");
 	exit();
 }
+require_once __DIR__ . '/../server/profile_fun.php';
  ?>
 <html lang="en">
 <head>
@@ -22,6 +22,7 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 		<ul class = "navBarPP" id="navDiv">
 				<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
 				<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
+				<a href="friends.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto4"> Friends</button></a>
 				<a href="logout.php" style="text-decoration:none;"><button class="NavBarPP" id="butto3"> Logout</button></a>
 		</ul>
 	</div>
@@ -29,9 +30,11 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 		document.getElementById("butto").style.height = "50px";
 		document.getElementById("butto2").style.height = "50px";
 		document.getElementById("butto3").style.height = "50px";
+		document.getElementById("butto4").style.height = "50px";
 		document.getElementById("butto").style.fontSize = "125%";
 		document.getElementById("butto2").style.fontSize = "125%";
 		document.getElementById("butto3").style.fontSize = "125%"; 
+		document.getElementById("butto4").style.fontSize = "125%"; 
 	</script>
 
 </head>

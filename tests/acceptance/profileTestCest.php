@@ -14,7 +14,6 @@ class profileTestCest
       $I->fillField('password', 'testPwd');
       $I->click('Login');
       $I->see('Home');
-      $I->see('Biography');
       $I->see('Profile');
       $I->click('Profile');
       $I->seeInCurrentUrl('profile.php');
@@ -25,4 +24,11 @@ class profileTestCest
       $I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
 
     }
+	
+	
+	public function testForceLogin(AcceptanceTester $I)
+	{
+		$I->amOnPage('http://localhost/capstone/app/profile.php');
+		$I->seeInCurrentUrl('index.php');
+	}
 }

@@ -8,10 +8,11 @@
 	<link rel="icon" href="img/Friend_Match_Logo.svg">
   </head>
   <body>
-     <div style="width:100%;" >
+    <div style="width:100%;" >
     	<ul class = "navBarFF" id="navDiv">
     			<a href="home.php" style="text-decoration:none;"><button class="NavBarFF" id="butto"> Home</button></a>
     			<a href="profile.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto2"> Profile</button></a>
+				  <a href="friends.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto4"> Friends</button></a>
     			<a href="logout.php" style="text-decoration:none;"><button class="NavBarFF" id="butto3"> Logout</button></a>
     	</ul>
     </div>

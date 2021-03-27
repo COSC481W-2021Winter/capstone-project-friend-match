@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-
 	//if the session containing the user id is set and not empty make some variables for the user's information and match them to the database
 	if(isset($_SESSION['uid']) && !empty($_SESSION['uid']))
 	{
@@ -27,7 +26,8 @@
 			$interests="";
 		}
 	}
-	else{
+	else if(!isset($_SESSION['username']))
+	{
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
@@ -43,7 +43,7 @@
 	</head>
 	<body onload="changeDescription()">
 
-		<!--Image div-->
+		<!--Image div that seems like it might be useful later-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
 		</div>
@@ -113,6 +113,7 @@
 					}
 				}
 			}
+			//this is for adding interests
 			document.getElementById("add").onclick = function()
 			{
 				var label = document.getElementById("addinterest").value;
