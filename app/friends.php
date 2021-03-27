@@ -5,14 +5,15 @@
     <title>Friends</title>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/nav.css"/>
+	<link rel="icon" href="img/Friend_Match_Logo.svg">
   </head>
   <body>
-    <div style="margin-top:-0%;margin-bottom:2%; width:100%;" >
-    	<ul class = "navBarPP" id="navDiv">
-    			<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
-    			<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
-				<a href="friends.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto4"> Friends</button></a>
-    			<a href="logout.php" style="text-decoration:none;"><button class="NavBarPP" id="butto3"> Logout</button></a>
+    <div style="width:100%;" >
+    	<ul class = "navBarFF" id="navDiv">
+    			<a href="home.php" style="text-decoration:none;"><button class="NavBarFF" id="butto"> Home</button></a>
+    			<a href="profile.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto2"> Profile</button></a>
+				  <a href="friends.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto4"> Friends</button></a>
+    			<a href="logout.php" style="text-decoration:none;"><button class="NavBarFF" id="butto3"> Logout</button></a>
     	</ul>
     </div>
     <h1>Friendos</h1>

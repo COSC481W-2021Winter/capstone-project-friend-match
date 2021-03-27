@@ -106,9 +106,11 @@
 				var interestsplit = interests.split("_");
 				for (var i = 0; i<interestsplit.length; i++)
 				{
-					var node = document.createElement('li');
-					node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+interestsplit[i]+'" name="interests[]" value="'+interestsplit[i]+'" checked><label for="'+interestsplit[i]+'">'+interestsplit[i]+'</label><br>';
-					document.getElementById('epul').appendChild(node);
+					if (interestsplit[i] != ""){
+						var node = document.createElement('li');
+						node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+interestsplit[i]+'" name="interests[]" value="'+interestsplit[i]+'" checked><label for="'+interestsplit[i]+'">'+interestsplit[i]+'</label><br>';
+						document.getElementById('epul').appendChild(node);
+					}
 				}
 			}
 			//this is for adding interests
@@ -116,8 +118,11 @@
 			{
 				var label = document.getElementById("addinterest").value;
 				var node = document.createElement('li');
-				node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
-				document.getElementById('epul').appendChild(node);
+				if (label.length > 1) { //if the string user inputted is greater than one, add it as an interest.
+					node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
+					document.getElementById('epul').appendChild(node);
+				}
+
 			}
 		</script>
 	</body>
