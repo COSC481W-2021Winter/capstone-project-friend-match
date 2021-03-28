@@ -89,6 +89,7 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 // Returns user's profile
 function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
+
 	$stmt = $conn->prepare($sql);
 	
 	$stmt->bind_param('i', $uid);

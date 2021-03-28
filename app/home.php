@@ -63,6 +63,7 @@
 		<ul class = "navBar">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarB" onclick="Home()" id="Home" > Home</button></a>
 			<a href="profile.php"  style="text-decoration:none;"><button class="NavBar" onclick="Profile()" id="Profile"> Profile</button></a>
+			<a href="friends.php" style="text-decoration:none;"><button class="NavBar" onclick="Friends()" id="Friends"> Friends</button></a>
 			<a href="logout.php"  style="text-decoration:none;"><button class="NavBar" onclick="Logout()" id="Logout"> Logout</button></a>
 		</ul>
 	</div>
