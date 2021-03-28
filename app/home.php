@@ -36,10 +36,10 @@
         });
 
         $(".inner-card").on("swiperight", function(){
+		  SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).hide();
-		  SwipeRight();
         });
 
         $(".t_left").click(function(){
@@ -49,10 +49,10 @@
         });
 
         $(".t_right").click(function(){
+		  SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).parent().parent().hide();
-		  SwipeRight();
         })
 
       })
@@ -103,11 +103,11 @@
   </body>
 	
 	<script>
-	function SwipeRight(){
+	function SwipeRight(currentId){
 		$.ajax({
 			url: '../server/functions.php',
 			type: 'POST',
-			data: {'createMatch': [uid, 2]},
+			data: {'createMatch': [uid, rows[currentId]]},
 			success: function(data) {
 				console.log(data);
 			}
