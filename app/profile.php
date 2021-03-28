@@ -36,8 +36,8 @@ require_once __DIR__ . '/../server/profile_fun.php';
 
 		document.getElementById("butto3").style.fontSize = "125%";
 
-		document.getElementById("butto3").style.fontSize = "125%"; 
-		document.getElementById("butto4").style.fontSize = "125%"; 
+		document.getElementById("butto3").style.fontSize = "125%";
+		document.getElementById("butto4").style.fontSize = "125%";
 
 	</script>
 
