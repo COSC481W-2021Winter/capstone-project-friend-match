@@ -39,7 +39,7 @@
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).hide();
-		  SwipeRight();
+		  SwipeRight(swipe_left + swipe_right);
         });
 
         $(".t_left").click(function(){
@@ -52,7 +52,7 @@
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).parent().parent().hide();
-		  SwipeRight();
+		  SwipeRight(swipe_left + swipe_right);
         })
 
       })
@@ -103,11 +103,11 @@
   </body>
 	
 	<script>
-	function SwipeRight(){
+	function SwipeRight(currentId){
 		$.ajax({
 			url: '../server/functions.php',
 			type: 'POST',
-			data: {'createMatch': [uid, 2]},
+			data: {'createMatch': [uid, rows[currentId]]},
 			success: function(data) {
 				console.log(data);
 			}

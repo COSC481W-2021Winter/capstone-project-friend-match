@@ -111,8 +111,10 @@ function getEligibleUsers($conn, $uid) {
 		$result = mysqli_query($conn, $sql);
 
 		if(mysqli_num_rows($result) > 0) {
+			echo "<script> const rows = []; </script>";
 			while($row = mysqli_fetch_assoc($result)) {
 				echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
+				echo '<script>rows.push(' . $row['userid']  . ')</script>';
 			}
 		} else {
 			echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
