@@ -91,32 +91,46 @@ function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
 
 	$stmt = $conn->prepare($sql);
-	
+
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-	
+
 	$result = $stmt->get_result();
 	return $result;
 	$stmt->close();
 }
 
 function getEligibleUsers($conn, $uid) {
-	$sql = 'SELECT city FROM profiles WHERE userid="' . $uid . '";';
-	$res = mysqli_query($conn, $sql);
+	//Grab the city of the active user
+	$sql = 'SELECT city FROM profiles WHERE userid= ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('i', $uid);
+	$stmt->execute();
+	$cityRes = $stmt->get_result();
+	$userCity = $cityRes->fetch_assoc();
 
-	if(mysqli_num_rows($res) == 1) {
-		$resRows = mysqli_fetch_assoc($res);
-		$userCity = $resRows["city"];
-		$sql = 'SELECT * FROM profiles WHERE city="' . $userCity . '" AND userid !=' . $uid . ';';
-		$result = mysqli_query($conn, $sql);
+	//If there is a valid user city, find all potential users in the same city and
+	//	generate cards for them.
+	if($userCity) {
+		$new_sql = 'SELECT * FROM profiles WHERE city=? AND userid !=?;';
+		$new_stmt = $conn->prepare($new_sql);
 
-		if(mysqli_num_rows($result) > 0) {
-			while($row = mysqli_fetch_assoc($result)) {
+		$new_stmt->bind_param('si', $userCity["city"], $uid);
+		$new_stmt->execute();
+
+		$result = $new_stmt->get_result();
+
+		if($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
 				echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
 			}
 		} else {
+			//If there's no users, provide an error indicator
 			echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
 		}
+	} else {
+		//If the city is an invalid one, provide an error indicator
+		echo '<div class="inner-card"><p style="color: #000;">Are you sure you entered a city?</p></div>';
 	}
 }
 

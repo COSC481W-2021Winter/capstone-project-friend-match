@@ -4,11 +4,12 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 
+//Creates a connection to the server
 $conn = new mysqli($servername, $username, $password);
 if(!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-
+//Creates the database, and then closes the connection
 $sql = 'CREATE DATABASE `friend-match`;';
 
 if(mysqli_query($conn, $sql)) {
@@ -20,6 +21,8 @@ mysqli_close($conn);
 
 $dbname = "friend-match";
 
+//Creates a *new* connection, this time targeting the friend-match database, so
+//  we can create tables and populate them properly
 $conn = new mysqli($servername, $username, $password, $dbname);
 if(!$conn) {
   die("Connection failed: " . mysqli_connect_error());
