@@ -36,10 +36,10 @@
         });
 
         $(".inner-card").on("swiperight", function(){
+		  SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).hide();
-		  SwipeRight(swipe_left + swipe_right);
         });
 
         $(".t_left").click(function(){
@@ -49,10 +49,10 @@
         });
 
         $(".t_right").click(function(){
+		  SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).parent().parent().hide();
-		  SwipeRight(swipe_left + swipe_right);
         })
 
       })

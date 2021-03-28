@@ -88,24 +88,23 @@ INSERT INTO users (username, password) VALUES("Spin2Win", "' . password_hash("Yo
 INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (16, "Hard", "Drive", "San Jose", "I am a Hard Drive. Look, data!", "reading,writing,improv-comedy");
 INSERT INTO users (username, password) VALUES("LargeAndInCharge", "' . password_hash("burritoMaster123", PASSWORD_DEFAULT) . '");
 INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (17, "Hue", "Mongous", "Juneau", "I am Hue Mongous. I am very large. I enjoy movies and boardgames.", "board-games,eating,movies");
-INSERT INTO users (username, password) VALUES ("Davvv", "' . password_hash("qwerty", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (18, "Davey", "Daverson", "Davidland", "Davy\'s the name dav tha game", "daves");
-INSERT INTO users (username, password) VALUES ("uwubean", "' . password_hash("god", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (19, "Thoth", "UwU", "Hell", "Ra Ra Rasputin Russias smollest uwu bean", "Chaos");
-INSERT INTO users (username, password) VALUES ("tomato", "' . password_hash("tomatoSauce", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (20, "Meatbally", "spagettis", "Italy", "Angry Pasta nosies", "Germany");
-INSERT INTO users (username, password) VALUES ("peterpan", "' . password_hash("imalwaysyoung2", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (21, "Peter", "Pan", "Neverland", "Captain crunch is very scary i dont like that guy", "tinkerbell");
-INSERT INTO users (username, password) VALUES ("sgtBearjew", "' . password_hash("hanslandasmells1942", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (22, "Donny", "Donowitz", "Berlin", "he went yardo on that one, fenway on its feet", "baseball");
-INSERT INTO users (username, password) VALUES ("nmeade", "' . password_hash("sgvelocity", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (23, "Nicholas", "Meade", "Maple Meadeway", "nnnyeah", "racing");
-INSERT INTO users (username, password) VALUES ("MgodC", "' . password_hash("pastaisnice1972", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (24, "Michael", "Corleone", "Italy", "just when i thought i was out, they pull me BACK in", "whacking");
-
--- This has to be the last user
 INSERT INTO users (username, password) VALUES ("z", "' . password_hash("z", PASSWORD_DEFAULT) . '");
-INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (25, "z", "z", "testCity", "zzzz", "z");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (18, "z", "z", "z", "zzzz", "z");
+INSERT INTO users (username, password) VALUES ("Davvv", "' . password_hash("qwerty", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (19, "Davey", "Daverson", "Davidland", "Davy\'s the name dav tha game", "daves");
+INSERT INTO users (username, password) VALUES ("uwubean", "' . password_hash("god", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (20, "Thoth", "UwU", "Hell", "Ra Ra Rasputin Russias smollest uwu bean", "Chaos");
+INSERT INTO users (username, password) VALUES ("tomato", "' . password_hash("tomatoSauce", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (21, "Meatbally", "spagettis", "Italy", "Angry Pasta nosies", "Germany");
+INSERT INTO users (username, password) VALUES ("peterpan", "' . password_hash("imalwaysyoung2", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (22, "Peter", "Pan", "Neverland", "Captain crunch is very scary i dont like that guy", "tinkerbell");
+INSERT INTO users (username, password) VALUES ("sgtBearjew", "' . password_hash("hanslandasmells1942", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (23, "Donny", "Donowitz", "Berlin", "he went yardo on that one, fenway on its feet", "baseball");
+INSERT INTO users (username, password) VALUES ("nmeade", "' . password_hash("sgvelocity", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (24, "Nicholas", "Meade", "Maple Meadeway", "nnnyeah", "racing");
+INSERT INTO users (username, password) VALUES ("MgodC", "' . password_hash("pastaisnice1972", PASSWORD_DEFAULT) . '");
+INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (25, "Michael", "Corleone", "Italy", "just when i thought i was out, they pull me BACK in", "whacking");
+
 
 INSERT INTO matches (userid, likeid) VALUES(1, 2);
 INSERT INTO matches (userid, likeid) VALUES(2, 1);

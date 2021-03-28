@@ -16,14 +16,4 @@ class homeCest
 		$I->amOnPage('http://localhost/capstone/app/home.php');
 		$I->seeInCurrentUrl('index.php');
 	}
-	
-	public function testDisplayCard(AcceptanceTester $I)
-	{
-		$I->amOnPage('http://localhost/capstone/app/index.php');
-        $I->fillField('username','testUser');
-        $I->fillField('password','testPwd');
-		$I->see('Login');
-        $I->click('Login');
-		$I->see('zzzz');
-	}
 }
