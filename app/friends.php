@@ -49,11 +49,14 @@
       $qry->bind_param("s", $row["likeid"]);
       $qry->execute();
       $match = $qry->get_result()->fetch_assoc();
-      echo "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
+
       $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
       $rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
       $rtn->execute();
+      echo "<div class=\"friendsCard\">";
+      echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
       echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
+      echo "</div>";
     }
   }
  ?>
