@@ -25,4 +25,11 @@ class profileTestCest
       $I->seeCurrentUrlEquals('/capstone/app/profileedit.php');
 
     }
+
+
+	public function testForceLogin(AcceptanceTester $I)
+	{
+		$I->amOnPage('http://localhost/capstone/app/profile.php');
+		$I->seeInCurrentUrl('index.php');
+	}
 }

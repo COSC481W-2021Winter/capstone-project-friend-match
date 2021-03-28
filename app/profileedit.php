@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-
 	//if the session containing the user id is set and not empty make some variables for the user's information and match them to the database
 	if(isset($_SESSION['uid']) && !empty($_SESSION['uid']))
 	{
@@ -27,7 +26,8 @@
 			$interests="";
 		}
 	}
-	else{
+	else if(!isset($_SESSION['username']))
+	{
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
@@ -43,7 +43,7 @@
 	</head>
 	<body onload="changeDescription()">
 
-		<!--Image div-->
+		<!--Image div that seems like it might be useful later-->
 		<div>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
 		</div>
@@ -106,17 +106,23 @@
 				var interestsplit = interests.split("_");
 				for (var i = 0; i<interestsplit.length; i++)
 				{
-					var node = document.createElement('li');
-					node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+interestsplit[i]+'" name="interests[]" value="'+interestsplit[i]+'" checked><label for="'+interestsplit[i]+'">'+interestsplit[i]+'</label><br>';
-					document.getElementById('epul').appendChild(node);
+					if (interestsplit[i] != ""){
+						var node = document.createElement('li');
+						node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+interestsplit[i]+'" name="interests[]" value="'+interestsplit[i]+'" checked><label for="'+interestsplit[i]+'">'+interestsplit[i]+'</label><br>';
+						document.getElementById('epul').appendChild(node);
+					}
 				}
 			}
+			//this is for adding interests
 			document.getElementById("add").onclick = function()
 			{
 				var label = document.getElementById("addinterest").value;
 				var node = document.createElement('li');
-				node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
-				document.getElementById('epul').appendChild(node);
+				if (label.length > 1) { //if the string user inputted is greater than one, add it as an interest.
+					node.innerHTML='<input class="epcheckbox" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
+					document.getElementById('epul').appendChild(node);
+				}
+
 			}
 		</script>
 	</body>
