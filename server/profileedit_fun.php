@@ -7,7 +7,6 @@ require_once 'functions.php';
 $image_directory = __DIR__ . "/../app/img/profilePictures/";
 $fileName = basename($_SESSION["uid"]);
 $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
-$fileName = $fileName . "." . $imageFileType;
 $filepath = $image_directory . $fileName;
 
 $uploadOk = 1;
@@ -23,10 +22,11 @@ if(isset($_POST["submit"])) {
   }
 }
 
-if ($_FILES["image"]["size"] > 500000) {
+if ($_FILES["image"]["size"] > 1000000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
+
 echo $filepath . " " . $imageFileType;
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
   echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
@@ -72,10 +72,10 @@ if (isset($_POST['addinterests']))
 	$Rinterests = $_POST['addinterests'];
 }
 
-$hasid = !isset($_SESSION['uid']) || empty($_SESSION['uid']);
+$noid = !isset($_SESSION['uid']) || empty($_SESSION['uid']);
 
 //creates user profile
-if(isset($_SESSION['username']) && $hasid){
+if(isset($_SESSION['username']) && $noid){
 	$username = $_SESSION['username'];
 	$password = $_SESSION['password'];
 
@@ -97,7 +97,7 @@ if(isset($_SESSION['username']) && $hasid){
 }
 
 //updates user profile
-elseif(!$hasid) {
+elseif(!$noid) {
 	$uid = $_SESSION['uid'];
 	$bio = $_SESSION['description'];
 	//original is one below, changed, should all still work normally.
@@ -113,7 +113,7 @@ elseif(!$hasid) {
 	}
 
 	updateProfile($conn, $uid, $city, $bio, $intrest, $pic);
-  header("location: ../app/profileedit.php?error=none" . $pic . "steve");
+  header("location: ../app/profileedit.php?error=none");
 }
 else {
 	header("location: ../app/SignUp.php?error=nosession");

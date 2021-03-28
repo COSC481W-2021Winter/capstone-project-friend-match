@@ -32,6 +32,7 @@
 		exit();
 	}
 ?>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -56,6 +57,14 @@
 						Pick Image
 					</label>
 					<input type="file" name="image" id="image" class="file-upload" style="display:none">
+					<?php
+						$query = $_SERVER['QUERY_STRING'];
+						if($query != "") {
+							if($_GET["error"] == "invalidphoto") {
+								echo "<p style=\"color:red;\">Invalid Image Upload</p>";
+							}
+						}
+					 ?>
 			<div>
 
 			<div id="epDIformdiv">
