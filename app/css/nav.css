@@ -26,7 +26,6 @@ ul.navBar {
 ul.navBarPP {
     list-style-type: none;
     background-color: #95ccfc;
-    margin-top:-2%; 
 	font-family: sans-serif;
 	text-align:center;
 	font-size:125%;
@@ -35,6 +34,7 @@ ul.navBarPP {
 	position:fixed;
 	z-index:2;
 	width:100%;
+	top:-2%;
 }
 
 ul.navBarFF {
@@ -44,10 +44,11 @@ ul.navBarFF {
 	font-family: sans-serif;
 	text-align:center;
 	text-decoration:none;
-	margin-top:-23%;
+	left:0;
+	top:-13px;
 	position:fixed;
 	z-index:2;
-	padding:5px;
+	padding:6px;
 }
 
 button.NavBarFF {
@@ -61,7 +62,7 @@ button.NavBarFF {
   font-weight: bold;
   border-radius:6px;
   font-size:125%;
-  padding: 5px;
+  padding: 10px;
 }
 
 button.NavBar {
