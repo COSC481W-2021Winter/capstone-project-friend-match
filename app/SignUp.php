@@ -90,7 +90,7 @@
 		else{
 			pwdMatchSpan.innerHTML = '*not matching';
 			pwdMatchSpan.style.color = 'red';
-			return fasle;
+			return false;
 		}
 	}
   </script>

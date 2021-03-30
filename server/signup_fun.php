@@ -30,6 +30,7 @@ if(isset($_POST["submit"])) {
 	$_SESSION['username'] = $user;
 	$_SESSION['password'] = $pwd;
 	$_SESSION['uid'] = NULL;
+	$_SESSION['bigTest'] = "doIt";
 	
 	header("location: ../app/profileedit.php");
 }
