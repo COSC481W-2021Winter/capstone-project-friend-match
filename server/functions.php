@@ -91,10 +91,10 @@ function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
 
 	$stmt = $conn->prepare($sql);
-	
+
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-	
+
 	$result = $stmt->get_result();
 	return $result;
 	$stmt->close();
@@ -107,14 +107,24 @@ function getEligibleUsers($conn, $uid) {
 	if(mysqli_num_rows($res) == 1) {
 		$resRows = mysqli_fetch_assoc($res);
 		$userCity = $resRows["city"];
-		$sql = 'SELECT * FROM profiles WHERE city="' . $userCity . '" AND userid !=' . $uid . ';';
-		$result = mysqli_query($conn, $sql);
 
-		if(mysqli_num_rows($result) > 0) {
-			echo "<script> const rows = []; </script>";
-			while($row = mysqli_fetch_assoc($result)) {
-				echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
-				echo '<script>rows.unshift(' . $row['userid']  . ')</script>';
+		$sql = 'SELECT likeid FROM matches WHERE userid = ' . $uid . ';';
+		$filterOut = mysqli_query($conn, $sql);
+
+		if(mysqli_num_rows($filterOut) > 0) {
+			$sql = 'SELECT * FROM profiles WHERE city="' . $userCity . '" AND userid NOT IN (' . $uid;
+			while($row = mysqli_fetch_assoc($filterOut)) {
+				$sql = $sql . ', ' . $row["likeid"];
+			}
+			$sql = $sql . ');';
+			echo $sql;
+			$eligibleMatches = mysqli_query($conn, $sql);
+			if(mysqli_num_rows($eligibleMatches) > 0) {
+				echo "<script> const rows = []; </script>";
+				while($row = mysqli_fetch_assoc($eligibleMatches)) {
+					echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
+					echo '<script>rows.unshift(' . $row['userid']  . ')</script>';
+				}
 			}
 		} else {
 			echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
