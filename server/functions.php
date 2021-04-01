@@ -101,7 +101,7 @@ function getProfile($conn, $uid){
 }
 
 function getEligibleUsers($conn, $uid) {
-	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT likeid FROM matches WHERE userid="' . $uid . '") AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
+	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT likeid FROM matches WHERE userid="' . $uid . '") AND NOT userid="' . $uid . '" AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
 	echo $sql;
 	$result = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($result) > 0) {
