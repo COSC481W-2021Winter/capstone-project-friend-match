@@ -2,7 +2,7 @@
 
 if (isset($_POST['createMatch'])){
 	$args = $_POST['createMatch'];
-	createMatch($args[0], $args[1]);
+	createMatch($args[0], $args[1], $args[2]);
 }
 
 // Return true if any of the parameters are empty
@@ -91,45 +91,38 @@ function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
 
 	$stmt = $conn->prepare($sql);
-	
+
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-	
+
 	$result = $stmt->get_result();
 	return $result;
 	$stmt->close();
 }
 
 function getEligibleUsers($conn, $uid) {
-	$sql = 'SELECT city FROM profiles WHERE userid="' . $uid . '";';
-	$res = mysqli_query($conn, $sql);
-
-	if(mysqli_num_rows($res) == 1) {
-		$resRows = mysqli_fetch_assoc($res);
-		$userCity = $resRows["city"];
-		$sql = 'SELECT * FROM profiles WHERE city="' . $userCity . '" AND userid !=' . $uid . ';';
-		$result = mysqli_query($conn, $sql);
-
-		if(mysqli_num_rows($result) > 0) {
-			echo "<script> const rows = []; </script>";
-			while($row = mysqli_fetch_assoc($result)) {
-				echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
-				echo '<script>rows.unshift(' . $row['userid']  . ')</script>';
-			}
-		} else {
-			echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
+	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT likeid FROM matches WHERE userid="' . $uid . '") AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
+	echo $sql;
+	$result = mysqli_query($conn, $sql);
+	if(mysqli_num_rows($result) > 0) {
+		echo "<script> const rows = []; </script>";
+		while($row = mysqli_fetch_assoc($result)) {
+			echo '<div class="inner-card"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="t_right">Like</button><button class="t_left">Dislike</button></div></div>';
+			echo '<script>rows.unshift(' . $row['userid']  . ')</script>';
 		}
+	} else {
+		echo '<div class="inner-card"><p style="color: #000;">There are currently no users in your area, sorry :(</p></div>';
 	}
 }
 
 //~~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~
 
-// Create match with user's id and other's id
-function createMatch($uid, $likeid){
+// Create match with user's id and other's id and if they like them.
+function createMatch($uid, $likeid, $likeStatus) {
 	require_once 'friend_sql.php';
-	$sql = "INSERT INTO matches (userid, likeid) VALUES(?, ?);";
+	$sql = "INSERT INTO matches (userid, likeid, likeStatus) VALUES(?, ?, ?);";
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('ii', $uid, $likeid);
+	$stmt->bind_param('iii', $uid, $likeid, $likeStatus);
 	$stmt->execute();
 	$stmt->close();
 }

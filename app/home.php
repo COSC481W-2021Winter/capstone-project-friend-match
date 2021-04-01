@@ -15,7 +15,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/general.css"/>
-	  <link rel="stylesheet" href="css/nav.css"/>  
+	  <link rel="stylesheet" href="css/nav.css"/>
     <link rel="stylesheet" href="css/swipes.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -30,26 +30,28 @@
         var swipe_right = 0;
 
         $(".inner-card").on("swipeleft", function(){
+					SwipeLeft(swipe_left + swipe_right);
           swipe_left = swipe_left + 1;
           document.getElementById("left_swipes").innerHTML = swipe_left;
           $(this).hide();
         });
 
         $(".inner-card").on("swiperight", function(){
-		  SwipeRight(swipe_left + swipe_right);
+		  		SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).hide();
         });
 
         $(".t_left").click(function(){
+					SwipeLeft(swipe_left + swipe_right);
           swipe_left = swipe_left + 1;
           document.getElementById("left_swipes").innerHTML = swipe_left;
           $(this).parent().parent().hide();
         });
 
         $(".t_right").click(function(){
-		  SwipeRight(swipe_left + swipe_right);
+		  		SwipeRight(swipe_left + swipe_right);
           swipe_right = swipe_right + 1;
           document.getElementById("right_swipes").innerHTML = swipe_right;
           $(this).parent().parent().hide();
@@ -57,9 +59,9 @@
 
       })
     </script>
-	
+
 	<div>
-		
+
 		<ul class = "navBar">
 			<a href="home.php" style="text-decoration:none;"><button class="NavBarB" onclick="Home()" id="Home" > Home</button></a>
 			<a href="profile.php"  style="text-decoration:none;"><button class="NavBar" onclick="Profile()" id="Profile"> Profile</button></a>
@@ -93,7 +95,7 @@
 			window.location.pathname = directory+'/friends.php';
 		}
 	</script>
-	<a href="home.php"><img id="logo" src="img/Friend_Match_Logo.svg" alt="logo" height="80" class="navImg"></a> 	
+	<a href="home.php"><img id="logo" src="img/Friend_Match_Logo.svg" alt="logo" height="80" class="navImg"></a>
   </head>
 
   <body>
@@ -107,13 +109,24 @@
 			</div>
       <button id="refresher" onClick="window.location.reload();">Refresh Page</button>
   </body>
-	
+
 	<script>
 	function SwipeRight(currentId){
 		$.ajax({
 			url: '../server/functions.php',
 			type: 'POST',
-			data: {'createMatch': [uid, rows[currentId]]},
+			data: {'createMatch': [uid, rows[currentId], 1]},
+			success: function(data) {
+				console.log(data);
+			}
+		});
+	}
+
+	function SwipeLeft(currentId){
+		$.ajax({
+			url: '../server/functions.php',
+			type: 'POST',
+			data: {'createMatch': [uid, rows[currentId], 0]},
 			success: function(data) {
 				console.log(data);
 			}

@@ -48,6 +48,7 @@ CREATE TABLE matches (
     matchid int(11) NOT NULL AUTO_INCREMENT,
     userid int(11) NOT NULL,
     likeid int(11) NOT NULL,
+    likeStatus boolean NOT NULL,
     PRIMARY KEY(matchid),
     FOREIGN KEY(userid) REFERENCES users(userid)
 );
