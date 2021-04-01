@@ -36,7 +36,7 @@
   }
 
   //Grabs user matches
-  $stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ?");
+  $stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeStatus = 1");
   $stmt->bind_param("s", $_SESSION["uid"]);
   $stmt->execute();
   $result = $stmt->get_result();
