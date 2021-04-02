@@ -47,8 +47,8 @@
 	const urlParams = new URLSearchParams(queryString);
 	
 	const requiredFields = document.getElementsByClassName('required');
-	const pwdMatchSpan = document.getElementById('pwdConfirm')
-	const requiredSpan = document.getElementById('fieldsNotFilled')
+	const pwdMatchSpan = document.getElementById('pwdConfirm');
+	const requiredSpan = document.getElementById('fieldsNotFilled');
 	
 	if(urlParams.has('error')){
 	

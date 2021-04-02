@@ -58,6 +58,40 @@ function createUser($conn, $name, $pwd){
 	$stmt->close();
 }
 
+//update user table
+function updateUsername($conn, $uid, $name, $pwd){
+	$sql = "UPDATE users SET username = ?, password = ? WHERE userid = ?;";
+	$stmt = $conn->prepare($sql);
+
+	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+	$stmt->bind_param('ssi', $name, $hashedPwd, $uid);
+	$stmt->execute();
+	$stmt->close();
+}
+
+//returns true if user id has password
+function verify_password($conn, $uid, $pwd){
+	$sql = "SELECT password FROM users WHERE userid = ?;";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('i', $uid);
+	$stmt->execute();
+	$stmt->bind_result($getpass);
+	$stmt->fetch();
+	return password_verify($pwd, $getpass);
+}
+
+//returns true if user id has username
+function verify_username($conn, $uid, $user){
+	$sql = "SELECT * FROM users WHERE userid = ? and username = ?;";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('is', $uid, $user);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	return $result->num_rows == 1;
+	$stmt->close();
+}
+
 
 // Get a users Id
 function getUserId($conn,$user) {
@@ -84,6 +118,16 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 	} else {
 		echo mysqli_error($conn);
 	}
+}
+
+//update user's profile name
+function updateProfileName($conn, $uid, $firstName, $lastName){
+	$sql = 'UPDATE profiles SET firstName = ?, lastName = ? WHERE userid = ?;';
+	$stmt = $conn->prepare($sql);
+
+	$stmt->bind_param('ssi', $firstName, $lastName, $uid);
+	$stmt->execute();
+	$stmt->close();
 }
 
 // Returns user's profile

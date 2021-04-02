@@ -12,7 +12,7 @@ if(isset($_POST["submit"])) {
 	
 	
 	if(emptyInput($first, $last, $user, $pwd, $pwdRepeat) != false){
-		header("location: ../app/SignUp.php?error=emptyinput{$first}");
+		header("location: ../app/SignUp.php?error=emptyinput");
 		exit();
 	}
 	if(pwdMatch($pwd, $pwdRepeat) != false){
