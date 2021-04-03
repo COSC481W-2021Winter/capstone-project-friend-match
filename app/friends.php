@@ -53,10 +53,12 @@
       $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
       $rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
       $rtn->execute();
+      echo "<a href='user.php?id={$row["likeid"]}'>";
       echo "<div class=\"friendsCard\">";
       echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
       echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
       echo "</div>";
+      echo "</a><br>";
     }
   }
  ?>
