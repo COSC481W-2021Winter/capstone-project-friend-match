@@ -66,8 +66,8 @@ require_once __DIR__ . '/../server/profile_fun.php';
     </p1>
   </div>
   <div style="display: table-row;">
-    <a href="profileedit.php">
-      <button class="button">Edit</button>
+    <a href="account.php">
+      <button class="button">Account</button>
     </a>
   </div>
   </div>

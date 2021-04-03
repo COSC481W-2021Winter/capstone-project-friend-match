@@ -44,6 +44,9 @@ echo "
 		<p id="lastNameTag">Barker</p>
 		<button onclick="ShowModalNames()">Edit</button>
 	</div>
+	<div class="friendsCard">
+		<a href="profileedit.php">Back</a>
+	</div>
 	
 	<!--Modal-->
 	<div id="modal" class="modal">
