@@ -138,4 +138,19 @@ function getMatches($conn, $uid){
 	return $result;
 	$stmt->close();
 }
+function checkPublicId($conn, $publicid){
+	$sql = "SELECT * FROM matches where likeid='$publicid';";
+	$result = mysqli_query($conn, $sql);
+	$resultCheck = mysqli_num_rows($result);
+	if($resultCheck > 0){
+		while($row = mysqli_fetch_array($result)){
+			if($row['likeStatus'] == 0){
+				header("Location: ../app/friends.php");
+			}
+		}
+	}else{
+		header("Location: ../app/friends.php");
+	}
+
+}
 ?>
