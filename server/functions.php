@@ -44,6 +44,17 @@ function userExists($conn, $user){
 	$stmt->close();
 }
 
+function getUser($conn, $uid){
+	$sql = 'SELECT * FROM users WHERE userid = ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $uid);
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+	return $row = $result->fetch_assoc();
+	$stmt->close();
+}
+
 // Add user to table and return its id
 function createUser($conn, $name, $pwd){
 	$sql = "INSERT INTO users (username, password) VALUES(?, ?);";
@@ -55,6 +66,29 @@ function createUser($conn, $name, $pwd){
 	$stmt->execute();
 
 	return mysqli_insert_id($conn);
+	$stmt->close();
+}
+
+//update user table
+function updateUsername($conn, $uid, $name, $pwd){
+	$sql = "UPDATE users SET username = ?, password = ? WHERE userid = ?;";
+	$stmt = $conn->prepare($sql);
+
+	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+	$stmt->bind_param('ssi', $name, $hashedPwd, $uid);
+	$stmt->execute();
+	$stmt->close();
+}
+
+//returns true if user id has username
+function verifyUsername($conn, $uid, $user){
+	$sql = "SELECT * FROM users WHERE userid = ? and username = ?;";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('is', $uid, $user);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	return $result->num_rows == 1;
 	$stmt->close();
 }
 
@@ -86,17 +120,24 @@ function updateProfile($conn, $uid, $city, $bio, $interest, $photo){
 	}
 }
 
+//update user's profile name
+function updateProfileName($conn, $uid, $firstName, $lastName){
+	$sql = 'UPDATE profiles SET firstName = ?, lastName = ? WHERE userid = ?;';
+	$stmt = $conn->prepare($sql);
+
+	$stmt->bind_param('ssi', $firstName, $lastName, $uid);
+	$stmt->execute();
+	$stmt->close();
+}
+
 // Returns user's profile
 function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
-
 	$stmt = $conn->prepare($sql);
-
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-
 	$result = $stmt->get_result();
-	return $result;
+	return $row = $result->fetch_assoc();
 	$stmt->close();
 }
 
