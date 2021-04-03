@@ -2,9 +2,19 @@
 session_start();
 if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 {
-	header("Location: ../app/index.php?error=noyouhavetologin");
+	header("Location: index.php?error=noyouhavetologin");
 	exit();
 }
+
+require_once '..\server\friend_sql.php';
+require_once '..\server\functions.php';
+$uid = $_SESSION['uid'];
+$profileRow = getProfile($conn, $uid);
+echo "
+	<script>
+		const fn = '{$profileRow['firstName']}';
+		const ln = '{$profileRow['lastName']}';
+	</script>";
 ?>
 
 <!DOCTYPE html>
@@ -20,129 +30,179 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 </head>
 <body>
 	<div class="friendsCard">
-		<span>Username:</span>
-		<p id="username">Test User</p>
-		<button onclick="ShowModalUsername()">Edit</button>
-	</div>
-	<div class="friendsCard">
-		<span>First Name:</span>
-		<p id="firstName">Bob</p>
-		<span>Last Name:</span>
-		<p id="lastName">Barker</p>
-		<button onclick="ShowModalName()">Edit</button>
+		<!--<span>Username:</span>
+		<p id="usernameTag">Test User</p>-->
+		<button onclick="ShowModalUsername()">Change Username</button>
 	</div>
 	<div class="friendsCard">
 		<button onclick="ShowModalPassword()">Change Password</button>
 	</div>
-	
-	<!--Usename Modal-->
-	<div id="modalUsername" class="modal">
-		<div class="modal-content">
-			<span id='fieldsNotFilled1'></span>
-			<form action="../server/account_fun.php" method="post" onsubmit="return NotEmpty('1')">
-			<div class="input_div">
-				<input type="text" class="required1" name="username" placeholder="New Username...">
-				<span id='confirmUsername1'></span>
-			</div>
-			<div class="input_div">
-				<input type="password" class="required1" name="password" placeholder="Password...">
-			</div>
-			<div class="row">
-				<a onclick="CloseModals('1')" class="button">Cancel</a>
-				<button type="submit" name="submit-username">Confirm</button>
-			</div>
-			</form>
-		</div>
-	</div>	
-	
-	<!--Password Modal-->
-	<div id="modalPassword" class="modal">
-		<div class="modal-content">
-			<span id='fieldsNotFilled2'></span>
-			<form action="../server/account_fun.php" method="post" onsubmit="return NotEmpty('2') && MatchingPwd()">
-			<div class="input_div">
-				<input type="password" class="required2" name="password" placeholder="New Password..." onkeyup="MatchingPwd()">
-			</div>
-			<div class="input_div">
-				<input type="password" class="required2" name="passwordRepeat" placeholder="Repeat password..." onkeyup="MatchingPwd()">
-				<span id='pwdConfirm2'></span>
-			</div>
-			<div class="input_div">
-				<input type="text" class="required2" name="username" placeholder="Username...">
-			</div>
-			<div class="row">
-				<a onclick="CloseModals('2')" class="button">Cancel</a>
-				<button type="submit" name="submit-password">Confirm</button>
-			</div>
-			</form>
-		</div>
+	<div class="friendsCard">
+		<span>First Name:</span>
+		<p id="firstNameTag">Bob</p>
+		<span>Last Name:</span>
+		<p id="lastNameTag">Barker</p>
+		<button onclick="ShowModalNames()">Edit</button>
 	</div>
 	
-	<!--Name Modal-->
-	<div id="modalName" class="modal">
+	<!--Modal-->
+	<div id="modal" class="modal">
 		<div class="modal-content">
-			<span id='fieldsNotFilled3'></span>
-			<form action="../server/account_fun.php" method="post" onsubmit="return NotEmpty('3')">
+			<span id='fieldsNotFilled'></span>
+			<form action="../server/account_fun.php" method="post" onsubmit="return formCheck()">
+			
 			<div class="input_div">
-				<input type="text" class="required3" name="firstName" placeholder="New First Name...">
+				<input class='input'>
+				<span id='confirmUsername'></span>
 			</div>
+			
 			<div class="input_div">
-				<input type="text" class="required3" name="lastName" placeholder="New Last Name...">
+				<input class='input'>
+				<span id='pwdConfirm'></span>
 			</div>
+			
 			<div class="input_div">
-				<input type="password" class="required3" name="password" placeholder="Password...">
+				<input class='input'>
 			</div>
+			
 			<div class="row">
-				<a onclick="CloseModals('3')" class="button">Cancel</a>
-				<button type="submit" name="submit-names">Confirm</button>
+				<a onclick="HideModal()" class="button">Cancel</a>
+				<button type="submit" id="submit">Confirm</button>
 			</div>
 			</form>
 		</div>
 	</div>
 </body>
 <script>
-	const modalUsername = document.getElementById("modalUsername");
-	const modalPassword = document.getElementById("modalPassword");
-	const modalName = document.getElementById("modalName");
+	const urlParams = new URLSearchParams(window.location.search);
+	const modal = document.getElementById('modal');
+	const inputs = document.getElementsByClassName('input');
+	var requiredInputs = [];
 	
-	const pwds = document.getElementsByClassName('required2');
-	const pwdMatchSpan = document.getElementById('pwdConfirm2');
-	const baseColor = document.getElementsByClassName('required1')[0].style.borderColor;
+	const pwdMatchSpan = document.getElementById('pwdConfirm');
+	const requiredSpan = document.getElementById('fieldsNotFilled');
+	const userSpan = document.getElementById('confirmUsername');
 	
-	function ShowModalUsername() {
-		modalUsername.style.display = "block";
+	const submitButton = document.getElementById('submit');
+	const baseColor = inputs[0].style.borderColor;
+	
+	var confirmPwd = false;
+	
+	document.getElementById('firstNameTag').innerHTML = fn;
+	document.getElementById('lastNameTag').innerHTML = ln;
+	
+	if(urlParams.has('error')){
+		switch(urlParams.get('error')) {
+			case 'usertaken':
+				ShowModalUsername();
+				userSpan.innerHTML = '*Username taken';
+				userSpan.style.color = 'red';
+				break;
+			case 'incorrectpwduser':
+				ShowModalUsername();
+				requiredSpan.innerHTML = '*Incorrect Password';
+				requiredSpan.style.color = 'red';
+				break;
+			case 'incorrectusername':
+				ShowModalPassword();
+				requiredSpan.innerHTML = '*Incorrect Username';
+				requiredSpan.style.color = 'red';
+				break;
+			case 'incorrectpwdnames':
+				ShowModalNames();
+				requiredSpan.innerHTML = '*Incorrect Password';
+				requiredSpan.style.color = 'red';
+				break;
+		}
 	}
 	
-	function ShowModalName() {
-		modalName.style.display = "block";
+	function ShowModalUsername() {
+		inputs[0].type = 'text';
+		inputs[0].name = 'username';
+		inputs[0].placeholder = 'New Username...';
+		requiredInputs.push(inputs[0]);
+		
+		inputs[1].type = 'password';
+		inputs[1].name = 'password';
+		inputs[1].placeholder = 'Password...';
+		requiredInputs.push(inputs[1]);
+		
+		
+		inputs[2].type = 'password';
+		inputs[2].name = 'none';
+		inputs[2].placeholder = 'Username...';
+		inputs[2].style.display = 'none';
+		
+		submitButton.name = 'submit-username';
+		modal.style.display = "block";
 	}
 	
 	function ShowModalPassword() {
-		modalPassword.style.display = "block";
+		inputs[0].type = 'password';
+		inputs[0].name = 'password';
+		inputs[0].placeholder = 'New Password...';
+		inputs[0].onkeyup = function(){checkPwd()};
+		requiredInputs.push(inputs[0]);
+		
+		inputs[1].type = 'password';
+		inputs[1].name = 'passwordConfirm';
+		inputs[1].placeholder = 'Confirm Password...';
+		inputs[1].onkeyup = function(){checkPwd()};
+		requiredInputs.push(inputs[1]);
+		
+		inputs[2].type = 'password';
+		inputs[2].name = 'username';
+		inputs[2].placeholder = 'Username...';
+		requiredInputs.push(inputs[2]);
+		
+		submitButton.name = 'submit-password';
+		confirmPwd = true;
+		modal.style.display = "block";
 	}
 	
-	function CloseModals(num) {
-		modalUsername.style.display = "none";
-		modalName.style.display = "none";
-		modalPassword.style.display = "none";
+	function ShowModalNames() {
+		inputs[0].type = 'test';
+		inputs[0].name = 'firstName';
+		inputs[0].placeholder = 'New First Name...';
+		requiredInputs.push(inputs[0]);
 		
-		requiredFields = document.getElementsByClassName('required' + num);
-		requiredSpan = document.getElementById('fieldsNotFilled' + num);
-		for (var i = 0; i < requiredFields.length; i++){
-			requiredFields[i].style.borderColor = baseColor;
-		}
-		requiredSpan.innerHTML = '';
+		inputs[1].type = 'test';
+		inputs[1].name = 'lastName';
+		inputs[1].placeholder = 'Confirm lastName...';
+		requiredInputs.push(inputs[1]);
+		
+		inputs[2].type = 'password';
+		inputs[2].name = 'password';
+		inputs[2].placeholder = 'Password...';
+		requiredInputs.push(inputs[2]);
+		
+		submitButton.name = 'submit-names';
+		modal.style.display = "block";
+	}
+	
+	function HideModal() {
+		requiredInputs = [];
+		confirmPwd = false;
+		inputs[2].style.display = 'block';
+		modal.style.display = "none";
+		
 		pwdMatchSpan.innerHTML = '';
+		requiredSpan.innerHTML = '';
+		userSpan.innerHTML = '';
+		
+		for(var i = 0; i < inputs.length; i++){
+			inputs[i].style.borderColor = baseColor;
+		}
 	}
 	
-	function NotEmpty(num){
-		var noError = true;
-		requiredFields = document.getElementsByClassName('required' + num);
-		requiredSpan = document.getElementById('fieldsNotFilled' + num);
+	function formCheck(){
+		//check password confirmed
+		var noError = checkPwd();
 		
-		for( var i = 0; i < requiredFields.length; i++){
-			if(requiredFields[i].value == ""){
-				requiredFields[i].style.borderColor = 'red';
+		//check for empty fields
+		for( var i = 0; i < requiredInputs.length; i++){
+			if(requiredInputs[i].value == ""){
+				requiredInputs[i].style.borderColor = 'red';
 				noError = false;
 			}
 		}
@@ -153,8 +213,11 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 		return noError;
 	}
 	
-	function MatchingPwd(){
-		if(pwds[0].value == pwds[1].value){
+	function checkPwd(){
+		if(!confirmPwd){
+			return true;
+		}
+		if(inputs[0].value == inputs[1].value && inputs[0].value != ''){
 			pwdMatchSpan.innerHTML = '*matching';
 			pwdMatchSpan.style.color = 'green';
 			return true;
@@ -164,6 +227,17 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 			pwdMatchSpan.style.color = 'red';
 			return false;
 		}
+	}
+	
+	function getSession(){
+		$.ajax({
+			url: '../server/functions.php',
+			type: 'POST',
+			data: {'getSession': [0]},
+			success: function(data) {
+				userData = data;
+			}
+		});
 	}
 </script>
 </html>

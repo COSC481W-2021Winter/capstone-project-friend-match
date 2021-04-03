@@ -44,6 +44,17 @@ function userExists($conn, $user){
 	$stmt->close();
 }
 
+function getUser($conn, $uid){
+	$sql = 'SELECT * FROM users WHERE userid = ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $uid);
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+	return $row = $result->fetch_assoc();
+	$stmt->close();
+}
+
 // Add user to table and return its id
 function createUser($conn, $name, $pwd){
 	$sql = "INSERT INTO users (username, password) VALUES(?, ?);";
@@ -70,19 +81,8 @@ function updateUsername($conn, $uid, $name, $pwd){
 	$stmt->close();
 }
 
-//returns true if user id has password
-function verify_password($conn, $uid, $pwd){
-	$sql = "SELECT password FROM users WHERE userid = ?;";
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('i', $uid);
-	$stmt->execute();
-	$stmt->bind_result($getpass);
-	$stmt->fetch();
-	return password_verify($pwd, $getpass);
-}
-
 //returns true if user id has username
-function verify_username($conn, $uid, $user){
+function verifyUsername($conn, $uid, $user){
 	$sql = "SELECT * FROM users WHERE userid = ? and username = ?;";
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param('is', $uid, $user);
@@ -133,14 +133,11 @@ function updateProfileName($conn, $uid, $firstName, $lastName){
 // Returns user's profile
 function getProfile($conn, $uid){
 	$sql = 'SELECT * FROM profiles WHERE userid = ?;';
-
 	$stmt = $conn->prepare($sql);
-
 	$stmt->bind_param('i', $uid);
 	$stmt->execute();
-
 	$result = $stmt->get_result();
-	return $result;
+	return $row = $result->fetch_assoc();
 	$stmt->close();
 }
 
