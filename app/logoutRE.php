@@ -9,6 +9,8 @@
 	unset($_SESSION["city"]);
 	unset($_SESSION["description"]);
 	unset($_SESSION["interest"]);
+	unset($_SESSION["bigTest"]);
+	session_destroy();
 ?>
 <html lang="en" dir="ltr">
   <head>

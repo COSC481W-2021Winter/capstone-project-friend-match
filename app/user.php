@@ -7,7 +7,15 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 	header("Location: ../app/index.php?error=noyouhavetologin");
 	exit();
 }
+if (isset($_GET['id'])){
+  $publicid = $_GET['id'];
+}else{
+  header("Location: ../app/friends.php");
+}
+
 require_once __DIR__ . '/../server/profile_fun.php';
+
+checkPublicId($conn, $publicid);
  ?>
 <html lang="en">
 <head>
@@ -45,30 +53,25 @@ require_once __DIR__ . '/../server/profile_fun.php';
 <body>
   <div class="container">
 		<?php
-		echo "<img src='img/profilePictures/".$id."' alt='profilepic'></img>";
+		echo "<img src='img/profilePictures/".$publicid."' alt='profilepic'></img>";
 		 ?>
   <div class="bio">
     <pre>
-      <?php getBio($conn, $id); ?>
+      <?php getBio($conn, $publicid); ?>
     </pre>
   </div>
   <div style="display: table;">
   <div style="display: table-row;">
     <form name="interests" method="POST" action="">
       <select name="hlist" size="7">
-        <?php getInterests($conn, $id); ?>
+        <?php getInterests($conn, $publicid); ?>
       </select>
     </form>
   </div>
     <div style="display: table-row;">
     <p1>
-      <?php getCity($conn, $id); ?>
+      <?php getCity($conn, $publicid); ?>
     </p1>
-  </div>
-  <div style="display: table-row;">
-    <a href="account.php">
-      <button class="button">Account</button>
-    </a>
   </div>
   </div>
 </body>

@@ -31,9 +31,15 @@
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
+	// Turn off all error reporting
+		error_reporting(0);
 ?>
 
 <html lang="en">
+	 <?php
+		if ($_SESSION['bigTest'] == "doIt"){
+		echo "<p id='ghost' style='visibility: hidden'> deadly</p>"; }
+	?>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +71,7 @@
 							}
 						}
 					 ?>
-			<div>
+			</div>
 
 			<div id="epDIformdiv">
 				<!--Description&Interests Forms-->
@@ -106,6 +112,13 @@
 			</div>
 		</div>
 		<script>
+			var x = document.getElementById("ghost").innerHTML;
+			if (x.length > 0){
+				document.getElementById("interestsdiv").setAttribute("hidden", true);
+				document.getElementById("epPformdiv").setAttribute("hidden", true);
+			}
+		</script>
+		<script>
 			//This is actually for putting in the description and city and probably the interests
 			function changeDescription()
 			{
@@ -135,4 +148,7 @@
 			}
 		</script>
 	</body>
+	<?php
+		unset($_SESSION['bigTest'])
+	?>
 </html>
