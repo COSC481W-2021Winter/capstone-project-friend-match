@@ -163,11 +163,11 @@ function getEligibleUsers($conn, $uid) {
 //~~~~~~~~~~~~Matches Stuff~~~~~~~~~~~~
 
 // Create match with user's id and other's id and if they like them.
-function createMatch($uid, $likeid, $likeStatus) {
+function createMatch($uid, $peerid, $likeStatus) {
 	require_once 'friend_sql.php';
-	$sql = "INSERT INTO matches (userid, likeid, likeStatus) VALUES(?, ?, ?);";
+	$sql = "INSERT INTO matches (userid, peerid, likeStatus) VALUES(?, ?, ?);";
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('iii', $uid, $likeid, $likeStatus);
+	$stmt->bind_param('iii', $uid, $peerid, $likeStatus);
 	$stmt->execute();
 	$stmt->close();
 }
@@ -187,7 +187,7 @@ function uncreateMatch($matchid) {
 // Return list of mutually liked users
 // Mutually = user liked other and other liked user
 function getMatches($conn, $uid){
-	$sql = 'SELECT M1.likeid FROM matches M1, matches M2 WHERE M1.userid = ? && M1.likeid = M2.userid && M2.likeid = ?;';
+	$sql = 'SELECT M1.peerid FROM matches M1, matches M2 WHERE M1.userid = ? && M1.peerid = M2.userid && M2.peerid = ?;';
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param('ii', $uid, $uid);
 	$stmt->execute();
@@ -196,7 +196,7 @@ function getMatches($conn, $uid){
 	$stmt->close();
 }
 function checkPublicId($conn, $publicid){
-	$sql = "SELECT * FROM matches where likeid='$publicid';";
+	$sql = "SELECT * FROM matches where peerid='$publicid';";
 	$result = mysqli_query($conn, $sql);
 	$resultCheck = mysqli_num_rows($result);
 	if($resultCheck > 0){
