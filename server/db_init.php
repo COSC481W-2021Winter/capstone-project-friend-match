@@ -47,12 +47,8 @@ CREATE TABLE profiles (
 CREATE TABLE matches (
     matchid int(11) NOT NULL AUTO_INCREMENT,
     userid int(11) NOT NULL,
-    likeid int(11) NOT NULL,
-<<<<<<< HEAD
-    isLiked boolean NOT NULL,
-=======
+    peerid int(11) NOT NULL,
     likeStatus boolean NOT NULL,
->>>>>>> main
     PRIMARY KEY(matchid),
     FOREIGN KEY(userid) REFERENCES users(userid)
 );
@@ -111,8 +107,8 @@ INSERT INTO users (username, password) VALUES ("MgodC", "' . password_hash("past
 INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (25, "Michael", "Corleone", "Italy", "just when i thought i was out, they pull me BACK in", "whacking_");
 
 
-INSERT INTO matches (userid, likeid, isLiked) VALUES(1, 2, TRUE);
-INSERT INTO matches (userid, likeid, isLiked) VALUES(2, 1, TRUE);
+INSERT INTO matches (userid, peerid, isLiked) VALUES(1, 2, TRUE);
+INSERT INTO matches (userid, peerid, isLiked) VALUES(2, 1, TRUE);
 
 
 ';

@@ -84,15 +84,15 @@
 		echo "<div id='default' >"; 
     foreach ($result as $row) {
       $qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
-      $qry->bind_param("s", $row["likeid"]);
+      $qry->bind_param("s", $row["peerid"]);
       $qry->execute();
       $match = $qry->get_result()->fetch_assoc();
 
-      $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ? AND matchid = ?");
-      $rtn->bind_param("sss", $row["likeid"], $_SESSION["uid"], $row["matchid"]);
+      $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND peerid = ? AND matchid = ?");
+      $rtn->bind_param("sss", $row["peerid"], $_SESSION["uid"], $row["matchid"]);
       $rtn->execute();
       echo "<div class=\"friendsCard\">";
-	  echo "<a href='user.php?id={$row["likeid"]}'>";
+	  echo "<a href='user.php?id={$row["peerid"]}'>";
       echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
       echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
       echo "</a><br>";
@@ -113,21 +113,21 @@
 		echo "No matches here! Sad :(";
 	} else {
 		echo "<div id='likeEach' >";
-		$stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeStatus = 1 OR likeid = ? AND likeStatus = 1");
+		$stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeStatus = 1 OR peerid = ? AND likeStatus = 1");
 		$stmt->bind_param("ss", $_SESSION["uid"],$_SESSION["uid"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		foreach ($result as $row) {
-			$qry = $conn->prepare("SELECT * FROM matches WHERE ((userid = ? OR likeid = ?) and (userid = ? OR likeid = ?))and likeStatus = 1");
-			$qry->bind_param("ssss", $_SESSION["uid"],$_SESSION["uid"],$row["likeid"],$row["likeid"]);
+			$qry = $conn->prepare("SELECT * FROM matches WHERE ((userid = ? OR peerid = ?) and (userid = ? OR peerid = ?))and likeStatus = 1");
+			$qry->bind_param("ssss", $_SESSION["uid"],$_SESSION["uid"],$row["peerid"],$row["peerid"]);
 			$qry->execute();
 			$match = $qry->get_result();
 
 			if ($match->num_rows == 2  ){
 				//might not need? leave for now, delete later if not needed.
-				if (!($row["likeid"] == $_SESSION["uid"])) {
+				if (!($row["peerid"] == $_SESSION["uid"])) {
 					$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
-					$qry->bind_param("s", $row["likeid"]);
+					$qry->bind_param("s", $row["peerid"]);
 					$qry->execute();
 					$temp = $qry->get_result()->fetch_assoc();
 					echo "<div class=\"friendsCard\">";
@@ -165,16 +165,16 @@
 		echo "<div id='sharedInt' >"; 
 		foreach ($result as $row) {
 			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
-			$qry->bind_param("s", $row["likeid"]);
+			$qry->bind_param("s", $row["peerid"]);
 			$qry->execute();
 			$match = $qry->get_result()->fetch_assoc();
 			
 			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
-			$qry->bind_param("s",$row["likeid"]);
+			$qry->bind_param("s",$row["peerid"]);
 			$qry->execute();
-			$likeidProf = $qry->get_result()->fetch_assoc();
+			$peeridProf = $qry->get_result()->fetch_assoc();
 			$friendInterests = array();
-			$friendInterests = explode("_",$likeidProf["interests"]);
+			$friendInterests = explode("_",$peeridProf["interests"]);
 			$friendInterests = array_map('strtolower',$friendInterests);
 			$holdingArray = array();
 			foreach($uidinterests as $interests){	
@@ -184,8 +184,8 @@
 				}
 			}
 			if (count($holdingArray) >= 1){
-				$rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
-				$rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
+				$rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND peerid = ?");
+				$rtn->bind_param("ss", $row["peerid"], $_SESSION["uid"]);
 				$rtn->execute();
 				echo "<div class=\"friendsCard\">";
 				echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
@@ -226,12 +226,12 @@
 		echo "<div id='currentCity'>"; 
 		foreach ($result as $row) {
 		$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ? AND city = ?");
-		$qry->bind_param("ss", $row["likeid"],$uidprofile["city"]);
+		$qry->bind_param("ss", $row["peerid"],$uidprofile["city"]);
 		$qry->execute();
 		$match = $qry->get_result()->fetch_assoc();
 		//add uid city 
-		$rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
-		$rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
+		$rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND peerid = ?");
+		$rtn->bind_param("ss", $row["peerid"], $_SESSION["uid"]);
 		$rtn->execute();
 		echo "<div class=\"friendsCard\">";
 		echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
