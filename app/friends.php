@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Friends</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/nav.css"/>
 	<link rel="stylesheet" href="css/general.css"/>
@@ -60,6 +61,7 @@
 <?php
   session_start();
   //require_once __DIR__ . '/../server/profile_fun.php';
+  require_once '../server/functions.php';
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -86,15 +88,16 @@
       $qry->execute();
       $match = $qry->get_result()->fetch_assoc();
 
-      $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ?");
-      $rtn->bind_param("ss", $row["likeid"], $_SESSION["uid"]);
+      $rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeid = ? AND matchid = ?");
+      $rtn->bind_param("sss", $row["likeid"], $_SESSION["uid"], $row["matchid"]);
       $rtn->execute();
-      echo "<a href='user.php?id={$row["likeid"]}'>";
       echo "<div class=\"friendsCard\">";
+	  echo "<a href='user.php?id={$row["likeid"]}'>";
       echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
       echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
-      echo "</div>";
       echo "</a><br>";
+	  echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
+	  echo "</div>";
     }
 	echo "</div>";
   }
@@ -130,6 +133,7 @@
 					echo "<div class=\"friendsCard\">";
 					echo "<p> You matched with </p>";
 					echo "<p>" . "Name: " . $temp["firstName"] . " " . $temp["lastName"] . "<br>".$temp["city"]."<br>";
+					echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 					echo "</div>";
 				}
 			}
@@ -196,6 +200,7 @@
 							echo "<br>";
 					}
 				}
+				echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 			echo "</div>";
 			}
 		}
@@ -232,6 +237,7 @@
 		echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
 		echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
 		echo $uidprofile["city"];
+		echo "<br><button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 		echo "</div>";
 		}
 		echo "</div>";
@@ -243,4 +249,20 @@
 	document.getElementById("sharedInt").style.display = "none"; 
 	document.getElementById("likeEach").style.display = "none"; 
 	document.getElementById("default").style.display = "inline";
+</script>
+
+<script>
+	//to a function for unliking other users
+	function unlikeUser(matchid)
+	{
+		$.ajax({
+			url: '../server/functions.php',
+			type: 'POST',
+			data: {'uncreateMatch': [matchid]},
+			success: function(data) {
+				console.log(data);
+			}
+		});
+		window.location.reload();
+	}
 </script>

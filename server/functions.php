@@ -5,6 +5,11 @@ if (isset($_POST['createMatch'])){
 	createMatch($args[0], $args[1], $args[2]);
 }
 
+if (isset($_POST['uncreateMatch'])){
+	$arg = $_POST['uncreateMatch'];
+	uncreateMatch($arg[0]);
+}
+
 // Return true if any of the parameters are empty
 function emptyInput(...$params){
 	$rtn = false;
@@ -166,6 +171,18 @@ function createMatch($uid, $likeid, $likeStatus) {
 	$stmt->bind_param('iii', $uid, $likeid, $likeStatus);
 	$stmt->execute();
 	$stmt->close();
+}
+
+// Remove match with user's id and other's id and if they don't like them anymore.
+function uncreateMatch($matchid) {
+	require_once 'friend_sql.php';
+	$matchid=$_POST['uncreateMatch'][0];
+	$sql = "UPDATE matches SET likeStatus='0' WHERE matchid=" . $matchid . ";";
+	if(mysqli_query($conn, $sql)) {
+		echo "all good";
+	} else {
+		echo mysqli_error($conn);
+	}
 }
 
 // Return list of mutually liked users
