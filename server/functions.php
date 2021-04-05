@@ -147,7 +147,7 @@ function getProfile($conn, $uid){
 }
 
 function getEligibleUsers($conn, $uid) {
-	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT likeid FROM matches WHERE userid="' . $uid . '") AND NOT userid="' . $uid . '" AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
+	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT peerid FROM matches WHERE userid="' . $uid . '") AND NOT userid="' . $uid . '" AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
 	$result = mysqli_query($conn, $sql);
 	if($result && mysqli_num_rows($result) > 0) {
 		echo "<script> const rows = []; </script>";
