@@ -1,7 +1,6 @@
 <?php
-  require_once '../server/functions.php';
   
-function defaultFilter(){
+ function defaultFilter(){
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -80,7 +79,7 @@ function likeEachother(){
 	$stmt->bind_param("s", $_SESSION["uid"]);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	echo "<div id='likeEach'>";
+	echo "<div id='likeEach' style='display:none;'>";
 	if ($result->num_rows == 0) {
 		echo "No matches here! Sad :(";
 	} else {
@@ -109,13 +108,11 @@ function likeEachother(){
 				}
 			}
 			
-
 		}
 		echo "If you want more, expand your interests!";
 	}
 	echo "</div>";
 }
-
 
 function interests(){
 	$servername = "localhost";
