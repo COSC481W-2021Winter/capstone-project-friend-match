@@ -152,7 +152,7 @@ function getEligibleUsers($conn, $uid) {
 	if(mysqli_num_rows($result) > 0) {
 		echo "<script> const rows = []; </script>";
 		while($row = mysqli_fetch_assoc($result)) {
-			echo '<div class="inner-card"><img src="img/profilePictures/' . $row["photo"] . '" width="200" height="240"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="swipe-button t_right">Like</button><button class="swipe-button t_left">Dislike</button></div></div>';
+			echo '<div class="inner-card"><img src="img/profilePictures/randy_derogatory.png" width="200" height="240"><p style="color: #000;"><b>' . $row["firstName"] . '</b><br>' . $row["bio"] . '</p><div><button class="swipe-button t_right">Like</button><button class="swipe-button t_left">Dislike</button></div></div>';
 			echo '<script>rows.unshift(' . $row['userid']  . ')</script>';
 		}
 	} else {
