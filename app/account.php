@@ -45,7 +45,7 @@ echo "
 		<button onclick="ShowModalNames()">Edit</button>
 	</div>
 	<div class="friendsCard">
-		<a href="profileedit.php">Back</a>
+		<a href="profile.php">Back</a>
 	</div>
 	
 	<!--Modal-->
