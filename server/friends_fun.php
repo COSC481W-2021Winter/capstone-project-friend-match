@@ -12,21 +12,18 @@ function defaultFilter(){
   $stmt->bind_param("s", $_SESSION["uid"]);
   $stmt->execute();
   $result = $stmt->get_result();
-
+  echo "<div id='default'>";
   if($result->num_rows == 0) {
     echo "No Matches! Sad :(";
-  } else {
-	  $stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeStatus = 1 OR peerid = ? AND likeStatus = 1");
-		$stmt->bind_param("ss", $_SESSION["uid"],$_SESSION["uid"]);
-		$stmt->execute();
-		$result = $stmt->get_result();
+  } 
+  else {
 		foreach ($result as $row) {
 			$qry = $conn->prepare("SELECT * FROM matches WHERE ((userid = ? OR peerid = ?) and (userid = ? OR peerid = ?))and likeStatus = 1");
 			$qry->bind_param("ssss", $_SESSION["uid"],$_SESSION["uid"],$row["peerid"],$row["peerid"]);
 			$qry->execute();
 			$match = $qry->get_result();
-
-			if ($match->num_rows == 2  ){
+			
+			if ($match->num_rows == 2){
 				//might not need? leave for now, delete later if not needed.
 				if (!($row["peerid"] == $_SESSION["uid"])) {
 					$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
@@ -41,32 +38,37 @@ function defaultFilter(){
 					echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 					echo "</div>";
 				}
+			} else if ($match->num_rows == 1){
+					$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
+					if ($row["peerid"] == $_SESSION["uid"])
+						$qry->bind_param("s", $row["userid"]);
+					else
+						$qry->bind_param("s", $row["peerid"]);
+					$qry->execute();
+					$temp = $qry->get_result()->fetch_assoc();
+					if ($row["peerid"] == $_SESSION["uid"]){
+						echo "<div class=\"friendsCard\">";
+						echo "They liked you!";
+						echo "<a href='user.php?id={$row["userid"]}'>";
+						echo "<p>" . "Name: " . $temp["firstName"] . " " . $temp["lastName"] . "<br>";
+						echo "</a><br>";
+						echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
+						echo "</div>";
+					}
+					else {
+						echo "<div class=\"friendsCard\">";
+						echo "They haven't liked back";
+						echo "<a href='user.php?id={$row["peerid"]}'>";
+						echo "<p>" . "Name: " . $temp["firstName"] . " " . $temp["lastName"] . "<br>";
+						echo "</a><br>";
+						echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
+						echo "</div>";
+					}
 			}
 		}
   }
+  echo "</div>";
 }
-	  /*
-		echo "<div id='default' >"; 
-		foreach ($result as $row) {
-			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
-			$qry->bind_param("s", $row["peerid"]);
-			$qry->execute();
-			$match = $qry->get_result()->fetch_assoc();
-
-			$rtn = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND peerid = ? AND matchid = ?");
-			$rtn->bind_param("sss", $row["peerid"], $_SESSION["uid"], $row["matchid"]);
-			$rtn->execute();
-			echo "<div class=\"friendsCard\">";
-			echo "<a href='user.php?id={$row["peerid"]}'>";
-			echo "<p>" . "Name: " . $match["firstName"] . " " . $match["lastName"] . "<br>";
-			echo (($rtn->get_result()->num_rows == 1) ? "They Like You" : "They Haven't Liked Back") . "<br>";
-			echo "</a><br>";
-			echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
-			echo "</div>";
-		}
-		echo "</div>";
-	}
-*/	
 
 function likeEachother(){
 	$servername = "localhost";
@@ -78,7 +80,7 @@ function likeEachother(){
 	$stmt->bind_param("s", $_SESSION["uid"]);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	echo "<div id='likeEach' >";
+	echo "<div id='likeEach'>";
 	if ($result->num_rows == 0) {
 		echo "No matches here! Sad :(";
 	} else {
