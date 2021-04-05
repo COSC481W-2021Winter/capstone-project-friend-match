@@ -107,8 +107,8 @@ INSERT INTO users (username, password) VALUES ("MgodC", "' . password_hash("past
 INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (25, "Michael", "Corleone", "Italy", "just when i thought i was out, they pull me BACK in", "whacking_");
 
 
-INSERT INTO matches (userid, peerid, isLiked) VALUES(1, 2, TRUE);
-INSERT INTO matches (userid, peerid, isLiked) VALUES(2, 1, TRUE);
+INSERT INTO matches (userid, peerid, likeStatus) VALUES(1, 2, 1);
+INSERT INTO matches (userid, peerid, likeStatus) VALUES(2, 1, 1);
 
 
 ';
