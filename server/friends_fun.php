@@ -45,16 +45,6 @@
 						$qry->bind_param("s", $row["peerid"]);
 					$qry->execute();
 					$temp = $qry->get_result()->fetch_assoc();
-					if ($row["peerid"] == $_SESSION["uid"]){
-						echo "<div class=\"friendsCard\">";
-						echo "They liked you!";
-						echo "<a href='user.php?id={$row["userid"]}'>";
-						echo "<p>" . "Name: " . $temp["firstName"] . " " . $temp["lastName"] . "<br>";
-						echo "</a><br>";
-						echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
-						echo "</div>";
-					}
-					else {
 						echo "<div class=\"friendsCard\">";
 						echo "They haven't liked back";
 						echo "<a href='user.php?id={$row["peerid"]}'>";
@@ -62,7 +52,6 @@
 						echo "</a><br>";
 						echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 						echo "</div>";
-					}
 			}
 		}
   }
