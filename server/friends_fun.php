@@ -219,7 +219,7 @@ function currCity(){
 					$qry->execute();
 					$temp = $qry->get_result()->fetch_assoc();
 					echo "<div class=\"friendsCard\">";
-					echo "<p> You matched with </p>";
+					echo "<p> Your city matches with </p>";
 					echo "<p>" . "Name: " . $temp["firstName"] . " " . $temp["lastName"] . "<br>".$temp["city"]."<br>";
 					echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 					echo "</div>";
