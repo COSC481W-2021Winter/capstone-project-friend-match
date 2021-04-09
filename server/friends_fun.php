@@ -1,5 +1,10 @@
 <?php
-
+  if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
+  {
+    header("Location: ../app/index.php?error=noyouhavetologin");
+    exit();
+  }
+  
  function defaultFilter(){
   $servername = "localhost";
   $username = "root";
