@@ -9,7 +9,7 @@ class profileEditCest
   public function tryToTest(AcceptanceTester $I)
   {}
 
-	public function logIn(AcceptanceTester $I)
+  public function logIn(AcceptanceTester $I)
   {
     $I->amOnPage('http://localhost/capstone/app/index.php');
     $I->fillField('username','testUser');
@@ -26,7 +26,7 @@ class profileEditCest
     $I->click('Confirm');
   }
 
-	public function storeInDatabase(AcceptanceTester $I)
+  public function storeInDatabase(AcceptanceTester $I)
   {
     //Logs in as testUser
     $I->amOnPage('http://localhost/capstone/app/index.php');
@@ -44,15 +44,15 @@ class profileEditCest
     //Returns value to normal
     $I->click('Edit');
     $I->fillField('desc', 'testBio');
-	$I->fillField('#addinterest','testInterest');
-	$I->fillField('citytext','testCity');
+	  $I->fillField('#addinterest','testInterest');
+	  $I->fillField('citytext','testCity');
     $I->click('submit2');
     $I->amOnPage('http://localhost/capstone/app/profile.php');
   }
-  
+
   public function testForceLogin(AcceptanceTester $I)
   {
-	$I->amOnPage('http://localhost/capstone/app/profileedit.php');
-	$I->seeInCurrentUrl('index.php');
+	  $I->amOnPage('http://localhost/capstone/app/profileedit.php');
+	  $I->seeInCurrentUrl('index.php');
   }
 }
