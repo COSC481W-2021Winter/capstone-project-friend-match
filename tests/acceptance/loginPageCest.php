@@ -7,7 +7,7 @@ class loginPageCest {
     $I->fillField('username', 'testUser');
     $I->fillField('password', 'testPwd');
     $I->click('Login');
-    $I->see('Home');
+		$I->seeInCurrentUrl('home.php');
   }
 
   public function badCredentials(AcceptanceTester $I) {
@@ -15,6 +15,6 @@ class loginPageCest {
     $I->fillField('username', 'badUsername');
     $I->fillField('password', 'badPassword');
     $I->click('Login');
-    $I->see('Login');
+		$I->seeInCurrentUrl('index.php');
   }
 }
