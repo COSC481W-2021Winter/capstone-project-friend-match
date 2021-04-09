@@ -1,5 +1,5 @@
 <?php
-  
+
  function defaultFilter(){
   $servername = "localhost";
   $username = "root";
@@ -14,14 +14,14 @@
   echo "<div id='default'>";
   if($result->num_rows == 0) {
     echo "No Matches! Sad :(";
-  } 
+  }
   else {
 		foreach ($result as $row) {
 			$qry = $conn->prepare("SELECT * FROM matches WHERE ((userid = ? OR peerid = ?) and (userid = ? OR peerid = ?))and likeStatus = 1");
 			$qry->bind_param("ssss", $_SESSION["uid"],$_SESSION["uid"],$row["peerid"],$row["peerid"]);
 			$qry->execute();
 			$match = $qry->get_result();
-			
+
 			if ($match->num_rows == 2){
 				//might not need? leave for now, delete later if not needed.
 				if (!($row["peerid"] == $_SESSION["uid"])) {
@@ -37,7 +37,15 @@
 					echo "<button id='dislike' onclick='unlikeUser(".$row['matchid'].")'>Dislike</button>" . "<br>";//a button to unlike another user
 					echo "</div>";
 				}
-			} else if ($match->num_rows == 1){
+			}
+    }
+    foreach ($result as $row) {
+			$qry = $conn->prepare("SELECT * FROM matches WHERE ((userid = ? OR peerid = ?) and (userid = ? OR peerid = ?))and likeStatus = 1");
+			$qry->bind_param("ssss", $_SESSION["uid"],$_SESSION["uid"],$row["peerid"],$row["peerid"]);
+			$qry->execute();
+			$match = $qry->get_result();
+
+       if ($match->num_rows == 1){
 					$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
 					if ($row["peerid"] == $_SESSION["uid"])
 						$qry->bind_param("s", $row["userid"]);
@@ -96,7 +104,7 @@ function likeEachother(){
 					echo "</div>";
 				}
 			}
-			
+
 		}
 		echo "If you want more, expand your interests!";
 	}
@@ -122,14 +130,14 @@ function interests(){
 		$uidprofile = $qry->get_result()->fetch_assoc();
 		$uidinterests = explode("_",$uidprofile["interests"]);
 		$uidinterests = array_map('strtolower',$uidinterests);
-		
-		echo "<div id='sharedInt' >"; 
+
+		echo "<div id='sharedInt' >";
 		foreach ($result as $row) {
 			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
 			$qry->bind_param("s", $row["peerid"]);
 			$qry->execute();
 			$match = $qry->get_result()->fetch_assoc();
-			
+
 			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
 			$qry->bind_param("s",$row["peerid"]);
 			$qry->execute();
@@ -138,7 +146,7 @@ function interests(){
 			$friendInterests = explode("_",$peeridProf["interests"]);
 			$friendInterests = array_map('strtolower',$friendInterests);
 			$holdingArray = array();
-			foreach($uidinterests as $interests){	
+			foreach($uidinterests as $interests){
 				if (in_array($interests,$friendInterests)){
 					if ($interests != "")
 						array_push($holdingArray,$interests);
@@ -175,18 +183,18 @@ function currCity(){
 	$password = "";
 	$dbName = "friend-match";
 	$conn = new mysqli($servername, $username, $password, $dbName);
-	
+
 	$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
 	$qry->bind_param("s", $_SESSION["uid"]);
 	$qry->execute();
 	$currUser = $qry->get_result()->fetch_assoc();
-	
+
 	$stmt = $conn->prepare("SELECT * FROM profiles WHERE city = ?");
 	$stmt->bind_param("s", $currUser["city"]);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	echo "<div id='currentCity'>"; 
-	
+	echo "<div id='currentCity'>";
+
 	if ($result->num_rows == 0) {
 		echo "No friends in current city!";
 	} else {
