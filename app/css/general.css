@@ -202,3 +202,9 @@ button:hover
 	height: auto;
 	margin: auto;
 }
+
+@media (max-width: 666px) {
+	.swipe-button{
+		opacity: 0;
+	}
+}
