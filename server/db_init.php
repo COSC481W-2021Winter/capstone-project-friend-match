@@ -9,7 +9,7 @@ $conn = @new mysqli($servername, $username, $password, $dbname);
 if(!mysqli_connect_error()) {
   $sql = 'DROP DATABASE `friend-match`';
   if(mysqli_query($conn, $sql)) {
-    echo "Database exists, will be updated\n";
+    echo "Database has been dropped\n";
     mysqli_close($conn);
   } else {
     echo "Error creating database: " . mysqli_error($conn) . "\n";
