@@ -74,6 +74,7 @@ CREATE TABLE socials (
     snapchat varchar(256),
     instagram varchar(256),
     linkedin varchar(256),
+    discord varchar(256),
     FOREIGN KEY(userid) REFERENCES users(userid)
 );
 
@@ -134,7 +135,7 @@ INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES 
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(1, 2, 1);
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(2, 1, 1);
 
-INSERT INTO socials VALUES(1, "my_facebook", "my_twitter", "my_snap", "my_insta", "my_linkedin");
+INSERT INTO socials VALUES(1, "my_facebook", "my_twitter", "my_snap", "my_insta", "my_linkedin", "my_discord");
 
 ';
 

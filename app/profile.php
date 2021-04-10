@@ -93,6 +93,9 @@ require_once __DIR__ . '/../server/profile_fun.php';
 					if(@$user["linkedin"] && !is_null(@$user["linkedin"])) {
 						echo "<div style='display: table-row;'>LinkedIn: " . $user["linkedin"] . "</div>";
 					}
+					if(@$user["discord"] && !is_null(@$user["discord"])) {
+						echo "<div style='display: table-row;'>LinkedIn: " . $user["discord"] . "</div>";
+					}
 				?>
 		</div>
 	</div>
