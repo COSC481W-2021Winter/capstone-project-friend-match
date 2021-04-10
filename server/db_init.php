@@ -134,6 +134,7 @@ INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES 
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(1, 2, 1);
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(2, 1, 1);
 
+INSERT INTO socials VALUES(1, "my_facebook", "my_twitter", "my_snap", "my_insta", "my_linkedin");
 
 ';
 

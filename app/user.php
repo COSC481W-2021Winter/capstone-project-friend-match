@@ -73,6 +73,37 @@ checkPublicId($conn, $publicid);
       <?php getCity($conn, $publicid); ?>
     </p1>
   </div>
+	<div style="display: table-row;">
+		<div style="display: table;">
+			<div style="display: table-row;">Social Media:</div>
+				<?php
+				// all of the @ signs are warning suppressions, they're there to prevent the app from
+				//	printing off WARNING: TRYING TO ACCESS ARRAY OFFSET ON VALUE OF TYPE NULL every time
+				//	we try to read the socials if they don't exist
+
+				// it's the only way i could find to do it without just blocking error reporting for the
+				//	whole page
+
+					$user = @getSocials($conn, $publicid);
+					if(@$user["facebook"] && !is_null(@$user["facebook"])) {
+						echo "<div style='display: table-row;'>Facebook: " . $user["facebook"] . "</div>";
+					}
+					if(@$user["twitter"] && !is_null(@$user["twitter"])) {
+						echo "<div style='display: table-row;'>Twitter: " . $user["twitter"] . "</div>";
+					}
+					if(@$user["snapchat"] && !is_null(@$user["snapchat"])) {
+						echo "<div style='display: table-row;'>Snapchat: " . $user["snapchat"] . "</div>";
+					}
+					if(@$user["instagram"] && !is_null(@$user["instagram"])) {
+						echo "<div style='display: table-row;'>Instagram: " . $user["instagram"] . "</div>";
+					}
+					if(@$user["linkedin"] && !is_null(@$user["linkedin"])) {
+						echo "<div style='display: table-row;'>LinkedIn: " . $user["linkedin"] . "</div>";
+					}
+
+				?>
+		</div>
+	</div>
   </div>
 </body>
 </html>
