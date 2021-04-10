@@ -25,9 +25,18 @@
 
 <?php
   $query = $_SERVER['QUERY_STRING'];
+  //errors visible to users
   if($query != "") {
     if($_GET["error"] == "invalid") {
       echo "Invalid Credentials";
+	  echo "<script>alert('Invalid Username and/or Password');</script>";
     }
+  }
+  if($query != "") 
+  {
+	  if($_GET["error"] == "noyouhavetologin")
+	  {
+		  echo "<script>alert('You\'re Not Logged In, Please Login or Create an Account');</script>";
+	  }
   }
  ?>

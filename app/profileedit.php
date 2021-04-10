@@ -31,6 +31,14 @@
 		header("Location: ../app/index.php?error=noyouhavetologin");
 		exit();
 	}
+	$qu = $_SERVER['QUERY_STRING'];
+	if($qu != "") 
+	{
+		if($_GET["error"] == "emptyinput")
+		{
+			echo "<script>alert('Please Enter Something Into Description and City');</script>";
+		}
+	}
 	// Turn off all error reporting
 		error_reporting(0);
 ?>
@@ -67,6 +75,7 @@
 						$query = $_SERVER['QUERY_STRING'];
 						if($query != "") {
 							if($_GET["error"] == "invalidphoto") {
+								echo "<script>alert('Invalid Image Upload')</script>";
 								echo "<p style=\"color:red;\">Invalid Image Upload</p>";
 							}
 						}
@@ -105,9 +114,8 @@
 			</form>
 			<!--Done button-->
 			<div id="buttondiv">
-				<a href="profile.php">
+				<a href="profile.php" class="button" <?php if(empty($_SESSION['description'])||empty($_SESSION['city'])) echo "style='visibility:hidden' title='Confirm a City and Description' disabled"; ?>>To Profile
 					<!--The php in here is for checking if the description and city have been input before letting the done button be used-->
-					<button type="button" class="button" <?php if(empty($_SESSION['description'])||empty($_SESSION['city'])) echo "title='Confirm a City and Description' disabled"; ?>>To Profile</button>
 				</a>
 			</div>
 		</div>
