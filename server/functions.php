@@ -156,6 +156,14 @@ function getSocials($conn, $uid){
 	$stmt->close();
 }
 
+function updateSocials($conn, $id, $fb, $tw, $sc, $ig, $li, $dc){
+	$sql = 'UPDATE socials SET facebook = ?, twitter = ?, snapchat = ?, instagram = ?, linkedin = ?, discord = ? WHERE userid = ?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('ssssssi', $fb, $tw, $sc, $ig, $li, $dc, $id);
+	$stmt->execute();
+	$stmt->close();
+}
+
 function getEligibleUsers($conn, $uid) {
 	$sql = 'SELECT * FROM profiles WHERE userid NOT IN (SELECT peerid FROM matches WHERE userid="' . $uid . '") AND NOT userid="' . $uid . '" AND city IN (SELECT city FROM profiles WHERE userid="' . $uid . '");';
 	$result = mysqli_query($conn, $sql);

@@ -96,6 +96,9 @@ require_once __DIR__ . '/../server/profile_fun.php';
 					if(@$user["discord"] && !is_null(@$user["discord"])) {
 						echo "<div style='display: table-row;'>LinkedIn: " . $user["discord"] . "</div>";
 					}
+					if(is_null(@$user["facebook"]) && is_null(@$user["twitter"]) && is_null(@$user["snapchat"]) && is_null(@$user["instagram"]) && is_null(@$user["linkedin"]) && is_null(@$user["discord"])) {
+						echo "<div style='display: table-row;'>You have no social media accounts linked</div>";
+					}
 				?>
 		</div>
 	</div>
@@ -105,6 +108,9 @@ require_once __DIR__ . '/../server/profile_fun.php';
     </a>
 		<a href="account.php">
       <button class="button">Account</button>
+    </a>
+		<a href="addsocials.php">
+      <button class="button">Add Socials</button>
     </a>
   </div>
   </div>
