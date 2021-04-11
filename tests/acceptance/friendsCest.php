@@ -9,6 +9,6 @@ class friendsCest
 		$I->fillField('password','testPwd');
 		$I->click('Login');
 		$I->amOnPage('http://localhost/capstone/app/friends.php');
-		$I->see('Steve Jobs');
+		$I->seeInCurrentUrl('friends.php');
 	}
 }
