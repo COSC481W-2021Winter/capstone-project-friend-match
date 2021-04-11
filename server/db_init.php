@@ -3,6 +3,20 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$dbname = "friend-match";
+
+$conn = @new mysqli($servername, $username, $password, $dbname);
+if(!mysqli_connect_error()) {
+  $sql = 'DROP DATABASE `friend-match`';
+  if(mysqli_query($conn, $sql)) {
+    echo "Database has been dropped\n";
+    mysqli_close($conn);
+  } else {
+    echo "Error creating database: " . mysqli_error($conn) . "\n";
+  }
+} else {
+  echo "No database exists, generating\n";
+}
 
 $conn = new mysqli($servername, $username, $password);
 if(!$conn) {
@@ -12,9 +26,9 @@ if(!$conn) {
 $sql = 'CREATE DATABASE `friend-match`;';
 
 if(mysqli_query($conn, $sql)) {
-  echo "Database has been created";
+  echo "Database has been created\n";
 } else {
-  echo "Error creating database: " . mysqli_error($conn);
+  echo "Error creating database: " . mysqli_error($conn) . "\n";
 }
 mysqli_close($conn);
 
@@ -50,6 +64,17 @@ CREATE TABLE matches (
     peerid int(11) NOT NULL,
     likeStatus boolean NOT NULL,
     PRIMARY KEY(matchid),
+    FOREIGN KEY(userid) REFERENCES users(userid)
+);
+
+CREATE TABLE socials (
+    userid int(11) NOT NULL,
+    facebook varchar(256),
+    twitter varchar(256),
+    snapchat varchar(256),
+    instagram varchar(256),
+    linkedin varchar(256),
+    discord varchar(256),
     FOREIGN KEY(userid) REFERENCES users(userid)
 );
 
@@ -110,13 +135,14 @@ INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES 
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(1, 2, 1);
 INSERT INTO matches (userid, peerid, likeStatus) VALUES(2, 1, 1);
 
+INSERT INTO socials VALUES(1, "my_facebook", "my_twitter", "my_snap", "my_insta", "my_linkedin", "my_discord");
 
 ';
 
 if(mysqli_multi_query($conn, $sql)) {
-  echo "Database has been populated correctly";
+  echo "Database has been populated correctly\n";
 } else {
-  echo "Error populating database: " . mysqli_error($conn);
+  echo "Error populating database: " . mysqli_error($conn) . "\n";
 }
 
 
