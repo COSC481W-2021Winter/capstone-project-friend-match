@@ -42,7 +42,7 @@ function getInterests($conn, $id){
       $line = $row['interests'];
       $split = explode("_", $line);
       $length = sizeof($split);
-      for($i=0;$i<=$length;$i++){
+      for($i=0;$i<$length;$i++){
         echo "<option disabled>".$split[$i]."</option>"."<br>";
       }
     }
