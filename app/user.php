@@ -101,7 +101,7 @@ checkPublicId($conn, $publicid);
 						echo "<div style='display: table-row;'>LinkedIn: " . $user["linkedin"] . "</div>";
 					}
 					if(@$user["discord"] && !is_null(@$user["discord"])) {
-						echo "<div style='display: table-row;'>LinkedIn: " . $user["discord"] . "</div>";
+						echo "<div style='display: table-row;'>Discord: " . $user["discord"] . "</div>";
 					}
 					if(is_null(@$user["facebook"]) && is_null(@$user["twitter"]) && is_null(@$user["snapchat"]) && is_null(@$user["instagram"]) && is_null(@$user["linkedin"]) && is_null(@$user["discord"])) {
 						echo "<div style='display: table-row;'>This user has no social media accounts linked</div>";
