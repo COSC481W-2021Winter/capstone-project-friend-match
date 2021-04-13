@@ -15,21 +15,31 @@
     	<ul class = "navBarFF" id="navDiv">
     			<a href="home.php" style="text-decoration:none;"><button class="NavBarFF" id="butto"> Home</button></a>
     			<a href="profile.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto2"> Profile</button></a>
-				  <a href="friends.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto4"> Friends</button></a>
+				<a href="friends.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto4"> Friends</button></a>
     			<a href="logout.php" style="text-decoration:none;"><button class="NavBarFF" id="butto3"> Logout</button></a>
     	</ul>
     </div>
-	<div style="width:50%; margin:auto;position:fixed;margin-top:-40%; position:fixed; ">
-		<ul style="width:100%; list-style-type: none;">
-			<button id="defaultB" onclick="revealDefault()">Like you | Haven't liked back</button>
-			<button id="matchesB" onclick="revealLikeEach()">Like eachother</button>
-			<button id="sharedInterestsB" onclick="revealSharedInt()">Shared interests</button>
-			<button id="currentCityB" onclick="revealCurrentCity()" >Current City</button>
-		</ul>
+	<div style="width:50%; position:fixed; margin-top:-39%; position:fixed; z-index:1;">
+		<div style="width:100%; display:inline; ">
+			<button id="defaultB" onclick="revealDefault()" class="buttonFilter">Like you | Haven't liked back</button>
+			<button id="matchesB" onclick="revealLikeEach()" class="buttonFilter">Like eachother</button>
+			<button id="sharedInterestsB" onclick="revealSharedInt()" class="buttonFilter">Shared interests</button>
+			<button id="currentCityB" onclick="revealCurrentCity()" class="buttonFilter">Current City</button>
+		</div>
 	</div>
-    <h1>Friendos</h1>
-    <h1>(If you have any)</h1>
-    <div id="friendList"></div>
+	<div style="position:relative;margin-top:-30%;">
+		<h1>Friendos</h1>
+		<h1>(If you have any)</h1>
+	</div>
+	<div id="contain" style="margin-left:45.5%;">
+		<?php
+			require_once '../server/friends_fun.php';
+			defaultFilter();
+			likeEachother();
+			interests();
+			currCity();
+		?>
+	</div>
   </body>
     <script>
 	function revealDefault(){
@@ -59,13 +69,7 @@
   </script> 
 </html>
 
-<?php
-	require_once '../server/friends_fun.php';
-	defaultFilter();
-	likeEachother();
-	interests();
-	currCity();
-?>
+
 
 <script> //sets all displays to not show except one when page runs.
 	document.getElementById("currentCity").style.display = "none"; 
