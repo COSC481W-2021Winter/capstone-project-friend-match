@@ -27,10 +27,6 @@ div
 {
 	margin: 0 auto;
 }
-div.friendFilter
-{
-	position:absolute;
-}
 
 .container 
 {
@@ -108,24 +104,6 @@ button
 button:hover 
 {
 	background-color: #f0cf16;
-}
-.buttonFilter 
-{
-	background-color: #FFDE17;
-	border: none;
-	color: #a2adb3;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 0.85vw;
-	font-weight: bold;
-	font-family: Arial, Helvetica, sans-serif;
-	cursor: pointer;
-	border-radius: 4px;
-	margin: 5px;
-	border: var(--default-border);
-	border-radius: var(--border-radius);
 }
 
 #logo 

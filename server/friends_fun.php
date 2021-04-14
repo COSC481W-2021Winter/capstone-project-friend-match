@@ -16,7 +16,7 @@
   $stmt->bind_param("s", $_SESSION["uid"]);
   $stmt->execute();
   $result = $stmt->get_result();
-  echo "<div id='default' class = 'friendFilter'>";
+  echo "<div id='default'>";
   if($result->num_rows == 0) {
     echo "No Matches! Sad :(";
   }
@@ -81,7 +81,7 @@ function likeEachother(){
 	$stmt->bind_param("s", $_SESSION["uid"]);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	echo "<div id='likeEach' style='display:none;' class = 'friendFilter'>";
+	echo "<div id='likeEach' style='display:none;'>";
 	if ($result->num_rows == 0) {
 		echo "No matches here! Sad :(";
 	} else {
@@ -136,7 +136,7 @@ function interests(){
 		$uidinterests = explode("_",$uidprofile["interests"]);
 		$uidinterests = array_map('strtolower',$uidinterests);
 
-		echo "<div id='sharedInt' class = 'friendFilter'>";
+		echo "<div id='sharedInt' >";
 		foreach ($result as $row) {
 			$qry = $conn->prepare("SELECT * FROM profiles WHERE userid = ?");
 			$qry->bind_param("s", $row["peerid"]);
@@ -198,7 +198,7 @@ function currCity(){
 	$stmt->bind_param("s", $currUser["city"]);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	echo "<div id='currentCity' class = 'friendFilter'>";
+	echo "<div id='currentCity'>";
 
 	if ($result->num_rows == 0) {
 		echo "No friends in current city!";
