@@ -18,7 +18,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
     <link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" href="css/nav.css">
     <link rel="icon" href="img/Friend_Match_Logo.svg">
-	<div style="margin-bottom:2%; width:100%;" >
+	<div style="width:100%;" >
 		<ul class = "navBarPP" id="navDiv">
 				<a href="home.php" style="text-decoration:none;"><button class="navBarGen" id="butto"> Home</button></a>
 				<a href="profile.php" style="text-decoration:none;"><button class="navBarGen"  id="butto2"> Profile</button></a>
