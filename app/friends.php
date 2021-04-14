@@ -6,17 +6,17 @@
     <title>Friends</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/nav.css"/>
 	<link rel="stylesheet" href="css/general.css"/>
+	<link rel="stylesheet" href="css/nav.css"/>
 	<link rel="icon" href="img/Friend_Match_Logo.svg">
   </head>
   <body>
     <div style="width:100%;" >
-    	<ul class = "navBarFF" id="navDiv">
-    			<a href="home.php" style="text-decoration:none;"><button class="NavBarFF" id="butto"> Home</button></a>
-    			<a href="profile.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto2"> Profile</button></a>
-				<a href="friends.php" style="text-decoration:none;"><button class="NavBarFF"  id="butto4"> Friends</button></a>
-    			<a href="logout.php" style="text-decoration:none;"><button class="NavBarFF" id="butto3"> Logout</button></a>
+    	<ul class = "navBarPP" id="navDiv">
+    			<a href="home.php" style="text-decoration:none;"><button class="navBarGen" id="butto"> Home</button></a>
+    			<a href="profile.php" style="text-decoration:none;"><button class="navBarGen"  id="butto2"> Profile</button></a>
+				<a href="friends.php" style="text-decoration:none;"><button class="navBarGen"  id="butto4"> Friends</button></a>
+    			<a href="logout.php" style="text-decoration:none;"><button class="navBarGen" id="butto3"> Logout</button></a>
     	</ul>
     </div>
 	<div style="width:50%; position:fixed; margin-top:-39%; position:fixed; z-index:1;">
