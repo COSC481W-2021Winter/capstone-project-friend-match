@@ -17,8 +17,8 @@
     <meta charset="utf-8">
     <title>logout</title>
 	<head>
-	
+
 	<?php
-	header("Location: http://localhost/capstone/app/index.php");
+	header("Location: index.php");
 	?>
 </html>
