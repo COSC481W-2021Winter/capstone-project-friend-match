@@ -4,7 +4,7 @@
 	//if the session containing the user id is set and not empty make some variables for the user's information and match them to the database
 	if(isset($_SESSION['uid']) && !empty($_SESSION['uid']))
 	{
-		$db = mysqli_connect("localhost","root",isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "","friend-match");
+		$db = mysqli_connect("localhost",isset($_SERVER["SQL_USERNAME"]) ? $_SERVER["SQL_USERNAME"] : "root",isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "","friend-match");
 		$query = "SELECT city, bio, interests FROM profiles WHERE userid='".$_SESSION['uid']."'";
 		$result= mysqli_query($db,$query);
 		$description;
