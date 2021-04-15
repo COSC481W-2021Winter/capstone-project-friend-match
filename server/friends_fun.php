@@ -4,11 +4,11 @@
     header("Location: ../app/index.php?error=noyouhavetologin");
     exit();
   }
-  
+
  function defaultFilter(){
   $servername = "localhost";
   $username = "root";
-  $password = "";
+  $password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
   $dbName = "friend-match";
   $conn = new mysqli($servername, $username, $password, $dbName);
   //Grabs user matches
@@ -74,7 +74,7 @@
 function likeEachother(){
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
 	$dbName = "friend-match";
 	$conn = new mysqli($servername, $username, $password, $dbName);
 	$stmt = $conn->prepare("SELECT * FROM matches WHERE userid = ? AND likeStatus = 1");
@@ -119,7 +119,7 @@ function likeEachother(){
 function interests(){
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
 	$dbName = "friend-match";
 	$conn = new mysqli($servername, $username, $password, $dbName);
 
@@ -185,7 +185,7 @@ function interests(){
 function currCity(){
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
 	$dbName = "friend-match";
 	$conn = new mysqli($servername, $username, $password, $dbName);
 
