@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = isset($_ENV["SQL_PASSWORD"]) ? $_ENV["SQL_PASSWORD"] : "";
+$username = isset($_SERVER["SQL_USERNAME"]) ? $_SERVER["SQL_USERNAME"] : "root";
+$password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
 $database = "friend-match";
 
 require_once __DIR__ . "/../server/functions.php";
