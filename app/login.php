@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = isset($_ENV["SQL_PASSWORD"]) ? $_ENV["SQL_PASSWORD"] : "";
 $database = "friend-match";
 
 require_once __DIR__ . "/../server/functions.php";
@@ -30,4 +30,3 @@ session_start();
 $_SESSION["uid"] = $row['userid'];
 header("Location: ../app/home.php")
 ?>
-

@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = isset($_SERVER["SQL_PASSWORD"]) ? $_SERVER["SQL_PASSWORD"] : "";
 $dbname = "friend-match";
 
 $conn = @new mysqli($servername, $username, $password, $dbname);
