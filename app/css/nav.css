@@ -80,12 +80,13 @@ button.NavBarB {
   color:#6a0dad !important;
   background-color:#f0f8ff !important;
   display:inline;
-  margin-left:-2.25%; 
+  margin-left:-2.25%;
   border: 4px solid #FFFFFF !important;
 }
 
 button.NavBarPP {
   text-decoration: none;
+  text-align: center;
   width:23% !important;
   color:#6a0dad !important;
   background-color:#f0f8ff !important;
