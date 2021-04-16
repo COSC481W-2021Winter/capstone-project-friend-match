@@ -27,6 +27,7 @@ echo "
   <link rel="icon" href="img/Friend_Match_Logo.svg">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/general.css">
 </head>
 <body>
 	<div class="friendsCard">
