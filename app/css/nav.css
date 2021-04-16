@@ -13,7 +13,7 @@ img.navImg {
 ul.navBar {
     list-style-type: none;
     width: 100%;
-    background-color:#95ccfc;
+    background-color:#FFDE17;
 	font-family: sans-serif;
 	text-align:center;
 	font-size:200% !important;
@@ -45,7 +45,7 @@ button.NavBarB {
 ul.navBarPP {
     list-style-type: none;
 	width:100%;
-    background-color: #95ccfc;
+    background-color: #FFDE17;
 	font-family: sans-serif;
 	text-align:center;
 	text-decoration:none;
