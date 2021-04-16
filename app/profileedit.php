@@ -33,13 +33,6 @@
 		exit();
 	}
 	$qu = $_SERVER['QUERY_STRING'];
-	if($qu != "")
-	{
-		if($_GET["error"] == "emptyinput")
-		{
-			echo "<script>alert('Please Enter Something Into Description and City');</script>";
-		}
-	}
 	// Turn off all error reporting
 		error_reporting(0);
 ?>
@@ -90,8 +83,8 @@
 						$query = $_SERVER['QUERY_STRING'];
 						if($query != "") {
 							if($_GET["error"] == "invalidphoto") {
-								echo "<script>alert('Invalid Image Upload')</script>";
-								echo "<p style=\"color:red;\">Invalid Image Upload</p>";
+								//echo "<script>alert('Invalid Image Upload')</script>";
+								echo "<p style='color:red;'>Invalid Image Upload</p>";
 							}
 						}
 					 ?>
@@ -99,6 +92,16 @@
 					 <!-- <input type="submit" value="Upload" name="SubmitImage"> <br/> -->
 				</div>
 			</form>
+			<?php
+				if($qu != "")
+				{
+					if($_GET["error"] == "emptyinput")
+					{
+						//echo "<script>alert('Please Enter Something Into Description and City');</script>";
+						echo "<p style='color:red;'>Please Enter Something Into Description and City</p>";
+					}
+				}
+			?>
 			<form method="post" enctype="multipart/form-data" action="../server/profileedit_fun.php">
 				<div id="epDIformdiv" style="margin-top:20px;">
 					<!--Description&Interests&City-->
