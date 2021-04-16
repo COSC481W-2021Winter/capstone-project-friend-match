@@ -245,7 +245,7 @@ button:hover
 .inaline
 {
 	display:flex;
-	
+
 }
 .inaline input
 {
@@ -256,4 +256,35 @@ button:hover
 	.swipe-button{
 		opacity: 0;
 	}
+}
+
+.back-container
+{
+	background-color: #E9F1F7;
+	padding: 20px;
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+	text-align: center;
+	margin:auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.back-container input
+{
+	border-radius: 1em;
+	padding: .25em;
+	padding-left: 1em;
+	margin: 0 auto;
+	outline: none;
+	border: var(--default-border);
+	border-radius: var(--border-radius);
+	display: block;
+}
+
+.back-container p
+{
+	margin: 2px;
 }

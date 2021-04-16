@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/general.css"/>
 	<style>
 	button.yes {font-size:200%; margin-left:45%; margin-top:5%; }
-	button.no {font-size:200%; margin-left:47%; margin-top:4%; width:10%; }	
+	button.no {font-size:200%; margin-left:47%; margin-top:4%;}	
 	</style>
 	<head>
 	<body>

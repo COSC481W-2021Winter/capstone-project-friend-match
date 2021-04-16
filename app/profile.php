@@ -28,7 +28,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 	</div>
 </head>
 <body>
-  <div class="container">
+  <div class="back-container">
 		<?php
 		echo "<img src='img/profilePictures/".$id."' alt='profilepic' id='pfp'></img>";
 		 ?>
@@ -88,15 +88,9 @@ require_once __DIR__ . '/../server/profile_fun.php';
 		</div>
 	</div>
   <div style="display: table-row;">
-    <a href="profileedit.php">
-      <button class="button">Edit</button>
-    </a>
-		<a href="account.php">
-      <button class="button">Account</button>
-    </a>
-		<a href="addsocials.php">
-      <button class="button">Add Socials</button>
-    </a>
+    <a href="profileedit.php"><button class="button">Edit</button></a>
+		<a href="account.php"><button class="button">Account</button></a>
+		<a href="addsocials.php"><button class="button">Add Socials</button></a>
   </div>
   </div>
 </body>
