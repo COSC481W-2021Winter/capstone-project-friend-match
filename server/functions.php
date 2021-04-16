@@ -228,4 +228,26 @@ function checkPublicId($conn, $publicid){
 	}
 
 }
+
+function checkMatch($conn, $uid, $pid) {
+	$sql = "SELECT matchid FROM matches WHERE userid=? AND peerid=?";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('ii', $uid, $pid);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	if($result && mysqli_num_rows($result) > 0) {
+		$sql = "SELECT matchid FROM matches WHERE userid=? AND peerid=?";
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param('ii', $pid, $uid);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		if($result && mysqli_num_rows($result) > 0) {
+			return 1;
+		} else {
+			return 0;
+		}
+	} else {
+		return 0;
+	}
+}
 ?>
