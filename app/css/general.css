@@ -163,10 +163,19 @@ button:hover
 	background: #fff;
 	padding: 2%;
 	width: 50%;
-	height: 50%;
-	top: 25%;
+	top: 15%;
 	left: 25%;
 	text-align: center;
+}
+.inner-end {
+  position: absolute;
+  background: #fff;
+  padding: 2%;
+  width: 50%;
+  height: 50%;
+  top: 15%;
+  left: 25%;
+  text-align: center;
 }
 
 .rotate-left
