@@ -141,4 +141,6 @@ body {
   border-radius: var(--border-radius);
   padding: .75em;
   margin: .75em;
+  background-color: #E9F1F7;
+
 }
