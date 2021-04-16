@@ -52,7 +52,7 @@ checkPublicId($conn, $publicid);
 
 </head>
 <body>
-  <div class="container">
+  <div class="back-container">
 		<?php
 		echo "<img src='img/profilePictures/".$publicid."' alt='profilepic' style='max-width: 20vw;'></img>";
 		 ?>

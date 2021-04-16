@@ -28,7 +28,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 	</div>
 </head>
 <body>
-  <div class="container">
+  <div class="back-container">
 		<?php
 		echo "<img src='img/profilePictures/".$id."' alt='profilepic' id='pfp'></img>";
 		 ?>
