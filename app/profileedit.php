@@ -50,8 +50,8 @@
 		<!--<link rel="stylesheet" href="css/profed.css">-->
 		<link rel="icon" href="img/Friend_Match_Logo.svg">
 	</head>
-	<body onload="changeDescription()">		
-		<div class="container"">
+	<body onload="changeDescription()">
+		<div class="container">
 		<div><!-- Image Div -->
 			<?php
 				$query = $_SERVER['QUERY_STRING'];
@@ -141,7 +141,7 @@
 			}
 		</script>
 		<script>
-		
+
 			var interestsplit;
 			//This is actually for putting in the description and city and probably the interests
 			function changeDescription()
@@ -164,7 +164,7 @@
 			document.getElementById("add").onclick = function()
 			{
 				//Getting previous interests
-				
+
 				var label = document.getElementById("addinterest").value;
 				var node = document.createElement('li');
 				node.className="inaline";
@@ -173,7 +173,7 @@
 					document.getElementById('epul').appendChild(node);
 				}
 				document.getElementById('addinterest').value="";
-				
+
 				//Add label to previous interests
 				interestsplit.push(label);
 			}
