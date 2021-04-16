@@ -233,6 +233,24 @@ button:hover
 	height: auto;
 	margin: auto;
 }
+#pfpdisplay
+{
+	display: block;
+	max-width:5%;
+	max-height:15%;
+	width: auto;
+	height: auto;
+	margin: auto;
+}
+.inaline
+{
+	display:flex;
+	
+}
+.inaline input
+{
+	margin:0;
+}
 
 @media (max-width: 666px) {
 	.swipe-button{

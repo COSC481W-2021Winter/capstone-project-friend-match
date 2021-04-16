@@ -55,7 +55,8 @@
 		if(urlParams.get('error') == 'emptyinput'){
 			
 			console.log(urlParams.get('error'));
-			alert('Empty Input');
+			pwdMatchSpan.innerHTML ='*Empty input';
+			pwdMatchSpan.style.color = 'red';
 		}
 		if(urlParams.get('error') == 'pwdnotmatch'){
 			pwdMatchSpan.innerHTML = '*not matching';

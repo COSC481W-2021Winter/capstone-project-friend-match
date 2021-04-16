@@ -9,8 +9,23 @@
   <link rel="icon" href="img/Friend_Match_Logo.svg">
 </head>
   <body class="login">
-    
     <div class="container" style="background-color: #ffde17;">
+	  <?php
+		$query = $_SERVER['QUERY_STRING'];
+		//errors visible to users
+		if($query != "") {
+			if($_GET["error"] == "invalid") {
+			  echo "<p style='color:red;'>Invalid Credentials</p>";
+			}
+		}
+		if($query != "") 
+		{
+			if($_GET["error"] == "noyouhavetologin")
+			{
+				echo "<p style='color:red;'>You're Not Logged In, Please Login or Create an Account</p>";
+			}
+		}
+	  ?>
 	  <img id="logo" src="img/Friend_Match_Logo.svg" alt="logo">
       <form action="login.php" method="post" >
         <input type="text" id="username" name="username" placeholder="Username" style="border-color: #E9F1F7">
@@ -23,20 +38,4 @@
   </body>
 </html>
 
-<?php
-  $query = $_SERVER['QUERY_STRING'];
-  //errors visible to users
-  if($query != "") {
-    if($_GET["error"] == "invalid") {
-      echo "Invalid Credentials";
-	  echo "<script>alert('Invalid Username and/or Password');</script>";
-    }
-  }
-  if($query != "") 
-  {
-	  if($_GET["error"] == "noyouhavetologin")
-	  {
-		  echo "<script>alert('You\'re Not Logged In, Please Login or Create an Account');</script>";
-	  }
-  }
- ?>
+
