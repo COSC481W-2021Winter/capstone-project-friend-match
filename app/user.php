@@ -23,15 +23,16 @@ checkPublicId($conn, $publicid);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
     <link rel="icon" href="img/Friend_Match_Logo.svg">
 	<div style="margin-bottom:2%; width:100%;" >
 		<ul class = "navBarPP" id="navDiv">
-				<a href="home.php" style="text-decoration:none;"><button class="NavBarPP" id="butto"> Home</button></a>
-				<a href="profile.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto2"> Profile</button></a>
-				<a href="friends.php" style="text-decoration:none;"><button class="NavBarPP"  id="butto4"> Friends</button></a>
-				<a href="logout.php" style="text-decoration:none;"><button class="NavBarPP" id="butto3"> Logout</button></a>
+				<a href="home.php" style="text-decoration:none;"><button class="navBarGen" id="butto"> Home</button></a>
+				<a href="profile.php" style="text-decoration:none;"><button class="navBarGen"  id="butto2"> Profile</button></a>
+				<a href="friends.php" style="text-decoration:none;"><button class="navBarGen"  id="butto4"> Friends</button></a>
+				<a href="logout.php" style="text-decoration:none;"><button class="navBarGen" id="butto3"> Logout</button></a>
 		</ul>
 	</div>
 	<script>
