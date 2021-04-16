@@ -118,7 +118,7 @@
 					<!--Interests-->
 					<div style="margin-top:10px">
 						<div id="interestsdiv"  style="width:90%; text-align: initial;">
-							<p>Please enter your interests:</p>
+							<p>Please enter your interests without Special Characters:</p>
 							<div class="inaline">
 								<input type="text" id="addinterest" name="addinterests" style="width:30%"/>
 								<input type="button" id="add" value="Add Interest" class="button"/>
@@ -164,10 +164,11 @@
 			document.getElementById("add").onclick = function()
 			{
 				//Getting previous interests
-
+			
 				var label = document.getElementById("addinterest").value;
 				var node = document.createElement('li');
 				node.className="inaline";
+				label = label.replace(/[^A-Z0-9]+/gi, '');
 				if (label.length > 1 && !(interestsplit.includes(label))) { //if the string user inputted is greater than one, add it as an interest and interests don't already include it
 					node.innerHTML='<input class="epcheckbox" style="margin-right:10px;" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
 					document.getElementById('epul').appendChild(node);
