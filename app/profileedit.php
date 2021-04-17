@@ -57,7 +57,7 @@
 				$query = $_SERVER['QUERY_STRING'];
 				if($query != "" && $_GET["tempimage"] == "1")
 				{
-					echo "<img src='img/temp_img/".$id."?v=".rand()."' alt='profilepic' id='pfpdisplay'></img>";
+					echo "<img src='img/temp_img/".$id."' alt='profilepic' id='pfpdisplay'></img>";
 					$_SESSION['tempimage'] = "1";
 				}
 				else{
@@ -67,7 +67,7 @@
 					if(!file_exists($filepath)){
 						$filepath=$image_directory."Default";
 					}
-					echo"<img src='".$filepath."' alt='profilepic' id='pfpdisplay'></img>";
+					echo"<img src='".$filepath."?v=".rand()."' alt='profilepic' id='pfpdisplay'></img>";
 				}
 			?>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->
