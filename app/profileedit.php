@@ -169,6 +169,7 @@
 				var node = document.createElement('li');
 				node.className="inaline";
 				label = label.replace(/[^A-Z0-9]+/gi, '');
+				label = label.charAt(0).toUpperCase() + label.substr(1).toLowerCase();;
 				if (label.length > 1 && !(interestsplit.includes(label))) { //if the string user inputted is greater than one, add it as an interest and interests don't already include it
 					node.innerHTML='<input class="epcheckbox" style="margin-right:10px;" type="checkbox" id="'+label+'" name="interests[]" value="'+label+'" checked><label for="'+label+'">'+label+'</label><br>';
 					document.getElementById('epul').appendChild(node);
