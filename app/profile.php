@@ -14,9 +14,6 @@ require_once __DIR__ . '/../server/profile_fun.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache">
-	<meta http-equiv="Expires" content="0" />
     <title>Profile</title>
     <link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" href="css/nav.css">
@@ -33,7 +30,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 <body>
   <div class="back-container">
 		<?php
-		echo "<img src='img/profilePictures/".$id."' alt='profilepic' id='pfp'></img>";
+		echo "<img src='img/profilePictures/".$id."?v=".rand()."' alt='profilepic' id='pfp'></img>";
 		 ?>
   <div class="bio">
     <pre>

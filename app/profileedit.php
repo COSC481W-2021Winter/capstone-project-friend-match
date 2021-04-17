@@ -57,7 +57,7 @@
 				$query = $_SERVER['QUERY_STRING'];
 				if($query != "" && $_GET["tempimage"] == "1")
 				{
-					echo "<img src='img/temp_img/".$id."' alt='profilepic' id='pfpdisplay'></img>";
+					echo "<img src='img/temp_img/".$id."?v=".rand()."' alt='profilepic' id='pfpdisplay'></img>";
 					$_SESSION['tempimage'] = "1";
 				}
 				else{
