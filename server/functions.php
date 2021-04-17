@@ -229,25 +229,40 @@ function checkPublicId($conn, $publicid){
 
 }
 
+//Function checks to see if you and a user are matched (because apparently we
+//	don't have one of these already???)
+//The (x OR y) AND (x OR y) will work under the assumption that EVERYTHING
+//	works correctly, and the user cannot match with themself
+
 function checkMatch($conn, $uid, $pid) {
-	$sql = "SELECT matchid FROM matches WHERE userid=? AND peerid=?";
+	$sql = "SELECT matchid FROM matches WHERE (userid=? OR userid=?) AND (peerid=? OR peerid=?);";
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param('ii', $uid, $pid);
+	$stmt->bind_param('iiii', $uid, $pid, $uid, $pid);
 	$stmt->execute();
 	$result = $stmt->get_result();
-	if($result && mysqli_num_rows($result) > 0) {
-		$sql = "SELECT matchid FROM matches WHERE userid=? AND peerid=?";
-		$stmt = $conn->prepare($sql);
-		$stmt->bind_param('ii', $pid, $uid);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		if($result && mysqli_num_rows($result) > 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+	if($result && mysqli_num_rows($result) > 1) {
+		return 1;
 	} else {
 		return 0;
 	}
 }
+
+
+//~~~~~~~~~~~~Reporting Stuff~~~~~~~~~~~~
+function reportUser($conn, $uid, $rid, $reason) {
+	$sql = "INSERT INTO reports (userid, compid, reason) VALUES (?, ?, ?);";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('iis', $rid, $uid, $reason);
+	$stmt->execute();
+	$stmt->close();
+}
+
+function unmatchUsers($conn, $uid, $rid) {
+	$sql = "UPDATE matches SET likeStatus=0 WHERE (userid=? OR userid=?) AND (peerid=? OR peerid=?);";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('iiii', $uid, $rid, $uid, $rid);
+	$stmt->execute();
+	$stmt->close();
+}
+
 ?>

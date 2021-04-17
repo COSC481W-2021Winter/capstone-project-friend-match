@@ -78,6 +78,15 @@ CREATE TABLE socials (
     FOREIGN KEY(userid) REFERENCES users(userid)
 );
 
+CREATE TABLE reports (
+    reportid int(11) NOT NULL AUTO_INCREMENT,
+    userid int(11) NOT NULL,
+    compid int(11) NOT NULL,
+    reason varchar(256) NOT NULL,
+    PRIMARY KEY(reportid),
+    FOREIGN KEY(userid) REFERENCES users(userid)
+);
+
 INSERT INTO users (username, password) VALUES ("testUser", "' . password_hash("testPwd", PASSWORD_DEFAULT) . '");
 INSERT INTO profiles (userid, firstName, lastName, city, bio, interests) VALUES (1, "testFirst", "testLast", "testCity", "testBio", "testInterest_");
 

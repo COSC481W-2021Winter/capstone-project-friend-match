@@ -115,6 +115,9 @@ checkPublicId($conn, $publicid);
 				?>
 		</div>
 	</div>
+	<div style="display: table-row;">
+		<a href="report.php?id=<?=$publicid?>"><button class="report">Report User</button></a>
+	</div>
   </div>
 </body>
 </html>
