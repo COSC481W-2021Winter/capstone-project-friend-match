@@ -67,7 +67,7 @@
 					if(!file_exists($filepath)){
 						$filepath=$image_directory."Default";
 					}
-					echo"<img src='".$filepath."' alt='profilepic' id='pfpdisplay'></img>";
+					echo"<img src='".$filepath."?v=".rand()."' alt='profilepic' id='pfpdisplay'></img>";
 				}
 			?>
 		<!--<img id="logo" src="img/Friend_Match_Logo.svg" because I might need it>-->

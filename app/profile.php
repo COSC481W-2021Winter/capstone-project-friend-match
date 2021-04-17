@@ -30,7 +30,7 @@ require_once __DIR__ . '/../server/profile_fun.php';
 <body>
   <div class="back-container">
 		<?php
-		echo "<img src='img/profilePictures/".$id."' alt='profilepic' id='pfp'></img>";
+		echo "<img src='img/profilePictures/".$id."?v=".rand()."' alt='profilepic' id='pfp'></img>";
 		 ?>
   <div class="bio">
     <pre>
