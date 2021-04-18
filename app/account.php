@@ -46,7 +46,7 @@ echo "
 			<button onclick="ShowModalPassword()">Change Password</button>
 		</div>
 		<div>
-			<button href="profile.php">Back</a></button>
+			<a href="profile.php"><button class="button">Back</button></a>
 		</div>
 	</div>
 	
