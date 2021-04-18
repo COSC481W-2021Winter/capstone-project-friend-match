@@ -25,33 +25,34 @@ echo "
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Your Account</title>
   <link rel="icon" href="img/Friend_Match_Logo.svg">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/account.css">
   <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/account.css">
 </head>
 <body>
-	<div class="friendsCard">
-		<!--<span>Username:</span>
-		<p id="usernameTag">Test User</p>-->
-		<button onclick="ShowModalUsername()">Change Username</button>
-	</div>
-	<div class="friendsCard">
-		<button onclick="ShowModalPassword()">Change Password</button>
-	</div>
-	<div class="friendsCard">
-		<span>First Name:</span>
-		<p id="firstNameTag">Bob</p>
-		<span>Last Name:</span>
-		<p id="lastNameTag">Barker</p>
-		<button onclick="ShowModalNames()">Edit</button>
-	</div>
-	<div class="friendsCard">
-		<a href="profile.php">Back</a>
+	<div class="container">
+		<div>
+			<span>First Name:</span>
+			<p id="firstNameTag">Bob</p>
+			<span>Last Name:</span>
+			<p id="lastNameTag">Barker</p>
+			<button onclick="ShowModalNames()">Edit Name</button>
+		</div>
+		<div>
+			<!--<span>Username:</span>
+			<p id="usernameTag">Test User</p>-->
+			<button onclick="ShowModalUsername()">Change Username</button>
+		</div>
+		<div>
+			<button onclick="ShowModalPassword()">Change Password</button>
+		</div>
+		<div>
+			<a href="profile.php"><button class="button">Back</button></a>
+		</div>
 	</div>
 	
 	<!--Modal-->
 	<div id="modal" class="modal">
-		<div class="modal-content">
+		<div class="container">
 			<span id='fieldsNotFilled'></span>
 			<form action="../server/account_fun.php" method="post" onsubmit="return formCheck()">
 			
