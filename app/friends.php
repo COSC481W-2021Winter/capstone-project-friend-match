@@ -19,7 +19,7 @@
     			<a href="logout.php" style="text-decoration:none;"><button class="navBarGen" id="butto3"> Logout</button></a>
     	</ul>
     </div>
-	<div style="width:50%; position:fixed; margin-top:-39%; position:fixed; z-index:1;">
+	<div style="width:50%; position:fixed; margin-top:-29%; position:fixed; z-index:1;">
 		<div style="width:100%; display:inline; ">
 			<button id="defaultB" onclick="revealDefault()" class="buttonFilter">Like you | Haven't liked back</button>
 			<button id="matchesB" onclick="revealLikeEach()" class="buttonFilter">Like eachother</button>
@@ -27,7 +27,7 @@
 			<button id="currentCityB" onclick="revealCurrentCity()" class="buttonFilter">Current City</button>
 		</div>
 	</div>
-	<div style="position:relative;margin-top:-30%;">
+	<div style="position:relative;margin-top:-20%;">
 		<h1>Friendos</h1>
 		<h1>(If you have any)</h1>
 	</div>
