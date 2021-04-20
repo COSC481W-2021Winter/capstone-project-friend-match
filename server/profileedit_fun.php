@@ -80,7 +80,7 @@ elseif(!$noid) {
 	$pic = $_SESSION['picture'];
 
 
-	if(emptyInput($uid, $bio) != false){
+	if(emptyInput($uid, $bio, $city) != false){
 		header("location: ../app/profileedit.php?error=emptyinput");
 		exit();
 	}
