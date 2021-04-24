@@ -6,8 +6,8 @@ if (!isset($_SESSION['uid']) || empty($_SESSION['uid']))
 	exit();
 }
 
-require_once '..\server\friend_sql.php';
-require_once '..\server\functions.php';
+require_once '../server/friend_sql.php';
+require_once '../server/functions.php';
 $uid = $_SESSION['uid'];
 $profileRow = getProfile($conn, $uid);
 echo "
